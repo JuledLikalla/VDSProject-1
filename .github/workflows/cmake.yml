@@ -36,4 +36,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}  
     - name: Run Google Tests
-      run: build/test/VDSProject_test
+      run: /home/runner/work/VDSProject-Group2/build/test/VDSProject-Group2.test
+
+
