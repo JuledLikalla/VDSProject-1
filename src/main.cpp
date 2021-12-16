@@ -3,7 +3,7 @@
 #include <string>
 #include <random>
 #include "Manager.h"
-
+#include <algorithm>
 
 using namespace ClassProject;
 
@@ -18,6 +18,7 @@ string random_string()
 
     return str.substr(0, 32);    // assumes 32 < number of characters in str
 }
+
 void randomPrint(Manager manager1) {
     string c;
     int r;

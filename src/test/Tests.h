@@ -35,4 +35,11 @@ TEST(trueNodeId, hasIdOne){
 TEST(falseNodeId,hasIdZero){
     ASSERT_EQ(manager1.uniqueTable[0].id, 0);
 }
+
+/**
+ * Test for topVar function
+ */
+//TEST(){
+//
+//}
 #endif

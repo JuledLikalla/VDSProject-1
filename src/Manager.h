@@ -30,6 +30,7 @@ namespace ClassProject {
         const BDD_ID &False();
         void useExpression(string ex);
         void charCheck(char input_char);
+        BDD_ID topVar(const BDD_ID f);
 
     };
 }
