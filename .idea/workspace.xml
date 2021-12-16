@@ -45,9 +45,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Merged Implementation_function_isConstant with master">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
+    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation of tests and tests fail">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -391,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639692107087</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implementation of tests and tests fail">
+      <created>1639697551140</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639697551140</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,6 +432,7 @@
     <MESSAGE value="edited" />
     <MESSAGE value="Removed Gtest locally and configures to run the tests with using ctest" />
     <MESSAGE value="Merged Implementation_function_isConstant with master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged Implementation_function_isConstant with master" />
+    <MESSAGE value="Implementation of tests and tests fail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of tests and tests fail" />
   </component>
 </project>
