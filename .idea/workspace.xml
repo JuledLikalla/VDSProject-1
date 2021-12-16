@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="VDSProject" targetName="gtest_main" />
+      <config projectName="VDSProject" targetName="ContinuousStart" />
+      <config projectName="VDSProject" targetName="Manager" />
+      <config projectName="VDSProject" targetName="gmock" />
+      <config projectName="VDSProject" targetName="ContinuousUpdate" />
+      <config projectName="VDSProject" targetName="ExperimentalUpdate" />
+      <config projectName="VDSProject" targetName="NightlyUpdate" />
+      <config projectName="VDSProject" targetName="NightlyMemCheck" />
+      <config projectName="VDSProject" targetName="ExperimentalCoverage" />
+      <config projectName="VDSProject" targetName="Experimental" />
+      <config projectName="VDSProject" targetName="ExperimentalStart" />
+      <config projectName="VDSProject" targetName="ExperimentalConfigure" />
+      <config projectName="VDSProject" targetName="ExperimentalTest" />
+      <config projectName="VDSProject" targetName="Nightly" />
+      <config projectName="VDSProject" targetName="NightlySubmit" />
+      <config projectName="VDSProject" targetName="NightlyTest" />
+      <config projectName="VDSProject" targetName="ContinuousBuild" />
+      <config projectName="VDSProject" targetName="ContinuousCoverage" />
+      <config projectName="VDSProject" targetName="NightlyConfigure" />
+      <config projectName="VDSProject" targetName="ExperimentalSubmit" />
+      <config projectName="VDSProject" targetName="NightlyStart" />
+      <config projectName="VDSProject" targetName="ContinuousMemCheck" />
+      <config projectName="VDSProject" targetName="NightlyBuild" />
+      <config projectName="VDSProject" targetName="gmock_main" />
+      <config projectName="VDSProject" targetName="ExperimentalBuild" />
+      <config projectName="VDSProject" targetName="VDSProject_test" />
+      <config projectName="VDSProject" targetName="ContinuousSubmit" />
+      <config projectName="VDSProject" targetName="NightlyMemoryCheck" />
+      <config projectName="VDSProject" targetName="ContinuousConfigure" />
+      <config projectName="VDSProject" targetName="ExperimentalMemCheck" />
+      <config projectName="VDSProject" targetName="VDSProject" />
+      <config projectName="VDSProject" targetName="gtest" />
+      <config projectName="VDSProject" targetName="Continuous" />
+      <config projectName="VDSProject" targetName="ContinuousTest" />
+      <config projectName="VDSProject" targetName="NightlyCoverage" />
+    </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -9,7 +45,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a468fc28-6e43-49d6-b571-eadd48e643ed" name="Changes" comment="Ctest configuration" />
+    <list default="true" id="a468fc28-6e43-49d6-b571-eadd48e643ed" name="Changes" comment="Merged Implementation_function_isConstant with master">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +57,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -50,7 +90,7 @@
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="Google Test.Manager.test1">
+  <component name="RunManager" selected="CMake Application.VDSProject">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
@@ -330,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639683444325</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merged Implementation_function_isConstant with master">
+      <created>1639691864450</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639691864450</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +411,7 @@
     <MESSAGE value="Merge branch 'branch02'(added google test library)" />
     <MESSAGE value="edited" />
     <MESSAGE value="Removed Gtest locally and configures to run the tests with using ctest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Gtest locally and configures to run the tests with using ctest" />
+    <MESSAGE value="Merged Implementation_function_isConstant with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged Implementation_function_isConstant with master" />
   </component>
 </project>

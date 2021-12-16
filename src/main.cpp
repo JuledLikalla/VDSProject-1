@@ -58,15 +58,15 @@ void randomPrint(Manager manager1) {
     }
 }
 int main(int argc, char *argv[]) {
-
-        Manager manager1;
-
-        //randomPrint(manager1);
-        string booleanExpression ;
-        cout << "Enter a boolean expression:   ";
-        cin >> booleanExpression;
-        cout << "The value is " << booleanExpression;
-        manager1.useExpression(booleanExpression);
+    Manager manager1;
+//
+//        //randomPrint(manager1);
+//        string booleanExpression ;
+//        cout << "Enter a boolean expression:   ";
+//        cin >> booleanExpression;
+//        cout << "The value is " << booleanExpression;
+//        manager1.useExpression(booleanExpression);
+//
 
         cout
                 << endl
