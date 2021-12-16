@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="VDSProject" targetName="gtest_main" />
-      <config projectName="VDSProject" targetName="ContinuousStart" />
-      <config projectName="VDSProject" targetName="Manager" />
-      <config projectName="VDSProject" targetName="gmock" />
-      <config projectName="VDSProject" targetName="ContinuousUpdate" />
-      <config projectName="VDSProject" targetName="ExperimentalUpdate" />
-      <config projectName="VDSProject" targetName="NightlyUpdate" />
-      <config projectName="VDSProject" targetName="NightlyMemCheck" />
-      <config projectName="VDSProject" targetName="ExperimentalCoverage" />
-      <config projectName="VDSProject" targetName="Experimental" />
-      <config projectName="VDSProject" targetName="ExperimentalStart" />
-      <config projectName="VDSProject" targetName="ExperimentalConfigure" />
-      <config projectName="VDSProject" targetName="ExperimentalTest" />
-      <config projectName="VDSProject" targetName="Nightly" />
-      <config projectName="VDSProject" targetName="NightlySubmit" />
-      <config projectName="VDSProject" targetName="NightlyTest" />
-      <config projectName="VDSProject" targetName="ContinuousBuild" />
-      <config projectName="VDSProject" targetName="ContinuousCoverage" />
-      <config projectName="VDSProject" targetName="NightlyConfigure" />
-      <config projectName="VDSProject" targetName="ExperimentalSubmit" />
-      <config projectName="VDSProject" targetName="NightlyStart" />
-      <config projectName="VDSProject" targetName="ContinuousMemCheck" />
-      <config projectName="VDSProject" targetName="NightlyBuild" />
-      <config projectName="VDSProject" targetName="gmock_main" />
-      <config projectName="VDSProject" targetName="ExperimentalBuild" />
-      <config projectName="VDSProject" targetName="VDSProject_test" />
-      <config projectName="VDSProject" targetName="ContinuousSubmit" />
-      <config projectName="VDSProject" targetName="NightlyMemoryCheck" />
-      <config projectName="VDSProject" targetName="ContinuousConfigure" />
-      <config projectName="VDSProject" targetName="ExperimentalMemCheck" />
-      <config projectName="VDSProject" targetName="VDSProject" />
-      <config projectName="VDSProject" targetName="gtest" />
-      <config projectName="VDSProject" targetName="Continuous" />
-      <config projectName="VDSProject" targetName="ContinuousTest" />
-      <config projectName="VDSProject" targetName="NightlyCoverage" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -45,10 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18d14af2-1a63-4680-97ce-7790f68a69b0" name="Changes" comment="Implementation of functions: CreateVar,&amp;True() and &amp;False()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/CMakeLists.txt" afterDir="false" />
-    </list>
+    <list default="true" id="a468fc28-6e43-49d6-b571-eadd48e643ed" name="Changes" comment="Ctest configuration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +18,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -90,7 +50,7 @@
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject">
+  <component name="RunManager" selected="Google Test.Manager.test1">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
@@ -252,11 +212,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="gmock" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -277,7 +232,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All CTest" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="SUITE_TEST">
+    <configuration name="All CTest" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -323,7 +278,6 @@
       <item itemvalue="CMake Application.NightlySubmit" />
       <item itemvalue="CMake Application.NightlyTest" />
       <item itemvalue="CMake Application.NightlyUpdate" />
-      <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
       <item itemvalue="Google Test.Manager.test1" />
     </list>
