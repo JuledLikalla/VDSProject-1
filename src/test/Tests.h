@@ -4,35 +4,47 @@
 
 #include "gtest/gtest.h"
 #include <string>
-#include "Manager.h"
+#include "../Manager.h"
 #include <iostream>
 using namespace ClassProject;
+using namespace std;
+Manager manager;
+struct ManagerTest : testing::Test{
 
-Manager manager1;
+    BDD_ID false_id = manager.False();
+    BDD_ID true_id = manager.True();
+    BDD_ID a_id = manager.createVar("a");
+    BDD_ID b_id = manager.createVar("b");
+    BDD_ID c_id = manager.createVar("c");
+    BDD_ID d_id = manager.createVar("d");
+    BDD_ID neg_a_id = manager.neg(a_id);
+    BDD_ID neg_b_id = manager.neg(b_id);
+    BDD_ID a_and_b_id = manager.and2(a_id,b_id);
+    BDD_ID a_or_b_id = manager.or2(a_id,b_id);
+    BDD_ID a_xor_b_id = manager.and2(a_id,b_id);
+    BDD_ID a_nand_b_id = manager.nor2(a_id,b_id);
+    BDD_ID a_xnor_b_id = manager.xnor2(a_id,b_id);
+    BDD_ID c_or_d_id = manager.or2(c_id,d_id);
+    BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
+};
 
-TEST(createVarTest, tableHasValues){
-    ASSERT_STREQ(manager1.uniqueTable[0].label.c_str(), "FALSE");
-    ASSERT_STREQ(manager1.uniqueTable[1].label.c_str(), "TRUE");
-    //for(int i=2; i<manager1.uniqueTable.size(); i++){
-      //  ASSERT_STREQ( "NULL","NULL");
-     //   ASSERT_EQ(manager1.uniqueTable[i].id,NULL);
-   // }
+TEST_F(ManagerTest, CreateVarTest){
+    EXPECT_EQ(manager.False(),0);
+    EXPECT_EQ(manager.True(),1);
 }
-//manager1.uniqueTable[i].label.c_str(),
-
-/*TEST(createVarTest,hasUniqueId){
-
-    for(int i=0; i<manager1.uniqueTable.size()-1; i++){
-        for(int j=1; j<manager1.uniqueTable.size(); j++){
-            EXPECT_NE(manager1.uniqueTable[i].id,manager1.uniqueTable[j].id);
-    }
-   }
-}*/
-
-TEST(trueNodeId, hasIdOne){
-    ASSERT_EQ(manager1.uniqueTable[1].id, 1);
+TEST_F(ManagerTest, trueNodeTest){
+    ASSERT_EQ(manager.True(), 1);
 }
-TEST(falseNodeId,hasIdZero){
-    ASSERT_EQ(manager1.uniqueTable[0].id, 0);
+TEST_F(ManagerTest,FalseNodeTest){
+    ASSERT_EQ(manager.False(), 0);
 }
+TEST_F(ManagerTest,isConstantTest){
+    EXPECT_TRUE(manager.isConstant(false_id));
+    EXPECT_TRUE(manager.isConstant(true_id));
+    EXPECT_FALSE(manager.isConstant(a_id));
+    EXPECT_FALSE(manager.isConstant(b_id));
+    EXPECT_FALSE(manager.isConstant(c_id));
+    EXPECT_FALSE(manager.isConstant(d_id));
+}
+
 #endif
