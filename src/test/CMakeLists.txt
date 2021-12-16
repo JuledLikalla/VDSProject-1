@@ -6,3 +6,4 @@ add_executable(VDSProject_test main_test.cpp)
 target_link_libraries(VDSProject_test Manager)
 target_link_libraries(VDSProject_test gtest gtest_main pthread)
 
+
