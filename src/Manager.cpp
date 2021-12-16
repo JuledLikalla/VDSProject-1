@@ -1,7 +1,6 @@
 
 #include "Manager.h"
 #include <algorithm>
-#include <string.h>
 #include <iostream>
 
 using namespace ClassProject;
@@ -20,14 +19,14 @@ BDD_ID Manager::createVar(const string &label){
     bool k = false;
     int i=0;
        while( i<uniqueTable.size()){
-         if(uniqueTable[i].label.compare(label)==0){
-             cout << uniqueTable[i].label << "Lablel: " <<label<<endl;
+         if(uniqueTable[i].label==label){
+             cout << uniqueTable[i].label << "Label: " <<label<<endl;
             k = true;
             break;
           }
          i++;
        }
-        if(k==false) {
+        if(!k) {
             node.label = label;
             node.id = nextId;
             node.low = uniqueTable[0].id;
@@ -38,35 +37,98 @@ BDD_ID Manager::createVar(const string &label){
        }
         return node.id;
 }
-
-void Manager::useExpression(string exp){
-    vector<char> v;
-    copy(exp.begin(),exp.end(), back_inserter(v));
-
-    for(auto i = v.begin();i!=v.end(); ++i){
-        charCheck(*i);
-    }
-}
-
-void Manager::charCheck(char input_char) {
-    //it is a letter
-    if ((input_char >= 65 && input_char <= 90)|| (input_char >= 97 && input_char <= 122)){
-        string c(1,input_char);
-        createVar(c);
-    }
-        // it is a number
-    else if (input_char >= 48 && input_char <= 57){
-    }
-        // it is a  special character
-    else{
-    }
-}
-
 const BDD_ID & Manager::True(){
     return uniqueTable[1].id;
 }
 const BDD_ID & Manager::False(){
     return uniqueTable[0].id;
 }
+
+//Returns true, if the given ID represents a leaf node.
+bool Manager::isConstant(const BDD_ID f){
+    for(auto & i : uniqueTable){
+        if(i.id ==f){
+            return (i.high == i.low);
+        }
+    }
+    return false;
+}
+
+bool Manager:: isVariable(BDD_ID x) {
+    for (auto &i: uniqueTable) {
+        return (i.id == x);
+    }
+    return false;
+}
+
+BDD_ID Manager::topVar(BDD_ID f){
+return 1;
+}
+
+BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
+return 1;
+}
+
+BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
+return 1;
+}
+
+BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
+return 1;
+}
+
+BDD_ID Manager::coFactorTrue(BDD_ID f){
+return 1;
+}
+
+BDD_ID Manager::coFactorFalse(BDD_ID f){
+return 1;
+}
+
+BDD_ID Manager::neg(BDD_ID a){
+return 1;
+}
+
+BDD_ID Manager::and2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+BDD_ID Manager::or2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+BDD_ID Manager::xor2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+BDD_ID Manager::nand2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+BDD_ID Manager::nor2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+BDD_ID Manager::xnor2(BDD_ID a, BDD_ID b){
+return 1;
+}
+
+std::string Manager::getTopVarName(const BDD_ID &root){
+return "";
+}
+
+void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
+
+}
+
+void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
+
+}
+
+//Returns the number of nodes currently existing in the unique table of the Manager class.
+size_t Manager::uniqueTableSize(){
+   return uniqueTable.size();
+}
+
 
 

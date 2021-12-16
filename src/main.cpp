@@ -21,7 +21,6 @@ string random_string()
 
 void randomPrint(Manager manager1) {
     string c;
-    int r;
     for (int i = 0; i < 100; i++) {
         c = random_string();           // Convert to a character from a-z
         manager1.createVar(c);
@@ -63,7 +62,7 @@ int main(int argc, char *argv[]) {
         Manager manager1;
 
         //randomPrint(manager1);
-        string booleanExpression = "";
+        string booleanExpression ;
         cout << "Enter a boolean expression:   ";
         cin >> booleanExpression;
         cout << "The value is " << booleanExpression;
@@ -105,5 +104,4 @@ int main(int argc, char *argv[]) {
                     << manager1.uniqueTable[i].topVar
                     << endl;
         }
-
     }
