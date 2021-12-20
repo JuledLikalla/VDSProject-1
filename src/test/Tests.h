@@ -29,7 +29,7 @@ struct ManagerTest : testing::Test{
 };
 
 /**
- * 'isConstantTest' function tests
+ * 'createVar' function tests
  */
 TEST_F(ManagerTest, CreateVarTest){
     EXPECT_EQ(manager.False(),0);
