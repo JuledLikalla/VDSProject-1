@@ -14,6 +14,13 @@ Manager::Manager() {
     nextId = 2;
 }
 
+/**
+ * @brief Implementation of 'createVar' function,
+ * The function creates a variable with the given name and
+ * adds it to the unique table.
+ * @params A string which is the name of variable to be created.
+ * @retval Returns the id of the variable that it creates.
+ */
 BDD_ID Manager::createVar(const string &label){
     tableElement node;
     bool k = false;
@@ -37,14 +44,33 @@ BDD_ID Manager::createVar(const string &label){
        }
         return node.id;
 }
+
+/**
+ * @brief Implementation of 'True' function,
+ * The function gets the id of the True node from the unique table.
+ * @params none
+ * @retval Returns the id of the True node.
+ */
 const BDD_ID & Manager::True(){
     return uniqueTable[1].id;
 }
+
+/**
+ * @brief Implementation of 'False' function,
+ * The function gets the id of the False node from the unique table.
+ * @params none
+ * @retval Returns the id of the False node.
+ */
 const BDD_ID & Manager::False(){
     return uniqueTable[0].id;
 }
 
-//Returns true, if the given ID represents a leaf node.
+/**
+ * @brief Implementation of 'isConstant' function,
+ * The function checks whether the node with the given id is a leaf node.
+ * @params The id of the node to be checked.
+ * @retval Returns true, if the given ID represents a leaf node otherwise returns false.
+ */
 bool Manager::isConstant(const BDD_ID f){
     for(auto & i : uniqueTable){
         if(i.id ==f){
@@ -54,6 +80,12 @@ bool Manager::isConstant(const BDD_ID f){
     return false;
 }
 
+/**
+ * @brief Implementation of 'isVariable' function,
+ * The function checks if the given id represents a variable.
+ * @params The id to be checked.
+ * @retval Returns true, if the given id represents a variable otherwise returns false.
+ */
 bool Manager:: isVariable(BDD_ID x) {
     for (auto &i: uniqueTable) {
         return (i.id == x);
@@ -61,6 +93,12 @@ bool Manager:: isVariable(BDD_ID x) {
     return false;
 }
 
+/**
+ * @brief Implementation of 'topVar' function,
+ * The function gets the top variable of the node with the given id.
+ * @params The id of the node of which the top variable is needed.
+ * @retval Returns true, if the given ID represents a leaf node otherwise returns false.
+ */
 BDD_ID Manager::topVar(BDD_ID f){
     for(auto & i : uniqueTable){
         if(i.id == f){

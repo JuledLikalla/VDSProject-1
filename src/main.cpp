@@ -14,6 +14,7 @@ string random_string()
     random_device rd;
     mt19937 generator(rd());
 
+
     shuffle(str.begin(), str.end(), generator);
 
     return str.substr(0, 32);    // assumes 32 < number of characters in str

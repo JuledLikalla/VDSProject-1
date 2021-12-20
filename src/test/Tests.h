@@ -28,16 +28,31 @@ struct ManagerTest : testing::Test{
     BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
 };
 
+/**
+ * 'isConstantTest' function tests
+ */
 TEST_F(ManagerTest, CreateVarTest){
     EXPECT_EQ(manager.False(),0);
     EXPECT_EQ(manager.True(),1);
 }
+
+/**
+ * 'True' function tests
+ */
 TEST_F(ManagerTest, trueNodeTest){
     ASSERT_EQ(manager.True(), 1);
 }
+
+/**
+ * 'false' function tests
+ */
 TEST_F(ManagerTest,FalseNodeTest){
     ASSERT_EQ(manager.False(), 0);
 }
+
+/**
+ * 'isConstantTest' function tests
+ */
 TEST_F(ManagerTest,isConstantTest){
     EXPECT_TRUE(manager.isConstant(false_id));
     EXPECT_TRUE(manager.isConstant(true_id));
@@ -47,6 +62,9 @@ TEST_F(ManagerTest,isConstantTest){
     EXPECT_FALSE(manager.isConstant(d_id));
 }
 
+/**
+ * 'topVar' function tests
+ */
 TEST_F(ManagerTest,topVar){
     EXPECT_EQ(manager.topVar(false_id), false_id);
     EXPECT_EQ(manager.topVar(true_id), true_id);
