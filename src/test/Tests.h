@@ -8,8 +8,9 @@
 #include <iostream>
 using namespace ClassProject;
 using namespace std;
-Manager manager;
+
 struct ManagerTest : testing::Test{
+    Manager manager;
 
     BDD_ID false_id = manager.False();
     BDD_ID true_id = manager.True();
