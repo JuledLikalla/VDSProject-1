@@ -76,4 +76,18 @@ TEST_F(ManagerTest,topVar){
     EXPECT_EQ(manager.topVar(a_and_b_id), a_id);
     EXPECT_EQ(manager.topVar(c_or_d_id), c_id);
 }
+
+/**
+ * 'ite' function tests
+ */
+TEST_F(ManagerTest,ite){
+
+    //Test Terminal Cases
+    EXPECT_EQ(manager.ite(false_id, a_id, b_id), a_id);
+    EXPECT_EQ(manager.ite(true_id, b_id, a_id), a_id);
+    EXPECT_EQ(manager.ite(a_id, true_id, false_id), a_id);
+    EXPECT_EQ(manager.ite(b_id, a_id, a_id), a_id);
+    EXPECT_EQ(manager.ite(a_id, false_id, true_id), manager.neg(a_id));
+
+}
 #endif
