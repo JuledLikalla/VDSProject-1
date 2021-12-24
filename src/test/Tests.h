@@ -64,20 +64,6 @@ TEST_F(ManagerTest,isConstantTest){
 }
 
 /**
- * 'topVar' function tests
- */
-TEST_F(ManagerTest,topVar){
-    EXPECT_EQ(manager.topVar(false_id), false_id);
-    EXPECT_EQ(manager.topVar(true_id), true_id);
-    EXPECT_EQ(manager.topVar(a_id), a_id);
-    EXPECT_EQ(manager.topVar(b_id), b_id);
-    EXPECT_EQ(manager.topVar(c_id), c_id);
-    EXPECT_EQ(manager.topVar(d_id), d_id);
-    EXPECT_EQ(manager.topVar(a_and_b_id), a_id);
-    EXPECT_EQ(manager.topVar(c_or_d_id), c_id);
-}
-
-/**
  * 'ite' function tests
  */
 TEST_F(ManagerTest,ite){
