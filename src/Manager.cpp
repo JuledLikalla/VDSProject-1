@@ -97,15 +97,10 @@ bool Manager:: isVariable(BDD_ID x) {
  * @brief Implementation of 'topVar' function,
  * The function gets the top variable of the node with the given id.
  * @params The id of the node of which the top variable is needed.
- * @retval Returns true, if the given ID represents a leaf node otherwise returns false.
+ * @retval Return the top variable id of the node with the given id.
  */
 BDD_ID Manager::topVar(BDD_ID f){
-    for(auto & i : uniqueTable){
-        if(i.id == f){
-            return i.topVar;
-        }
-    }
-    return false;
+    return uniqueTable[f].topVar;
 }
 
 BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){

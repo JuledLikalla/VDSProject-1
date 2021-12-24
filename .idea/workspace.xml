@@ -46,8 +46,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation_topVar_function_and_tests&#10;(added some comments)">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +61,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Fixing-createVar-function-tests" />
+        <entry key="$PROJECT_DIR$" value="Implementation_ite_function_and_tests" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -285,7 +285,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Google Test.Manager.test1" />
       <item itemvalue="CMake Application.ContinuousBuild" />
       <item itemvalue="CMake Application.ContinuousConfigure" />
       <item itemvalue="CMake Application.ContinuousCoverage" />
@@ -316,17 +315,18 @@
       <item itemvalue="CMake Application.NightlyUpdate" />
       <item itemvalue="CMake Application.Nightly" />
       <item itemvalue="CMake Application.VDSProject" />
-      <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
+      <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
+      <item itemvalue="Google Test.Manager.test1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Google Test.Manager.test1" />
         <item itemvalue="CMake Application.VDSProject_test" />
+        <item itemvalue="Google Test.Manager.test1" />
         <item itemvalue="CMake Application.VDSProject_test" />
         <item itemvalue="Google Test.Manager.test1" />
         <item itemvalue="Google Test.Manager.test1" />
