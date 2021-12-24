@@ -82,12 +82,22 @@ TEST_F(ManagerTest,topVar){
  */
 TEST_F(ManagerTest,ite){
 
-    //Test Terminal Cases
-    EXPECT_EQ(manager.ite(false_id, a_id, b_id), a_id);
-    EXPECT_EQ(manager.ite(true_id, b_id, a_id), a_id);
+    //!Test Terminal Cases
+    EXPECT_EQ(manager.ite(false_id, b_id, a_id), a_id);
+    EXPECT_EQ(manager.ite(true_id, a_id, b_id), a_id);
     EXPECT_EQ(manager.ite(a_id, true_id, false_id), a_id);
     EXPECT_EQ(manager.ite(b_id, a_id, a_id), a_id);
-    EXPECT_EQ(manager.ite(a_id, false_id, true_id), manager.neg(a_id));
+//    EXPECT_EQ(manager.ite(a_id, false_id, true_id), manager.neg(a_id));
+
+    EXPECT_EQ(manager.ite(false_id, d_id, c_id), c_id);
+    EXPECT_EQ(manager.ite(true_id, c_id, d_id), c_id);
+    EXPECT_EQ(manager.ite(c_id, true_id, false_id), c_id);
+    EXPECT_EQ(manager.ite(d_id, c_id, c_id), c_id);
+//    EXPECT_EQ(manager.ite(c_id, false_id, true_id), manager.neg(c_id));
+
+    //!Other Tests
 
 }
+
+
 #endif

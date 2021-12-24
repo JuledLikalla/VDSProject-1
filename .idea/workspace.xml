@@ -45,9 +45,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation_topVar_function_and_tests&#10;(added some comments)">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
+    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation_ite_function_and_tests&#10;(tests-fail)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +76,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="21Vy4uqDq0UiJbXy7Me1kAVxkEl" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -95,6 +100,17 @@
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagerTest.ite" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="ite" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Manager.test1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="Manager" TEST_METHOD="test1" TEST_MODE="SUITE_TEST">
@@ -285,7 +301,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Google Test.Manager.test1" />
       <item itemvalue="CMake Application.ContinuousBuild" />
       <item itemvalue="CMake Application.ContinuousConfigure" />
       <item itemvalue="CMake Application.ContinuousCoverage" />
@@ -316,19 +331,21 @@
       <item itemvalue="CMake Application.NightlyUpdate" />
       <item itemvalue="CMake Application.Nightly" />
       <item itemvalue="CMake Application.VDSProject" />
-      <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
+      <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
+      <item itemvalue="Google Test.Manager.test1" />
+      <item itemvalue="Google Test.ManagerTest.ite" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="CMake Application.VDSProject_test" />
+        <item itemvalue="Google Test.ManagerTest.ite" />
         <item itemvalue="Google Test.Manager.test1" />
         <item itemvalue="CMake Application.VDSProject_test" />
-        <item itemvalue="CMake Application.VDSProject_test" />
-        <item itemvalue="Google Test.Manager.test1" />
         <item itemvalue="Google Test.Manager.test1" />
       </list>
     </recent_temporary>
@@ -354,6 +371,9 @@
       <workItem from="1639659596942" duration="5827000" />
       <workItem from="1640024860359" duration="2630000" />
       <workItem from="1640029719803" duration="4601000" />
+      <workItem from="1640172545900" duration="7660000" />
+      <workItem from="1640269392989" duration="7436000" />
+      <workItem from="1640350748746" duration="13772000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -425,7 +445,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640113444867</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implementation_ite_function_and_tests&#10;(tests-fail)">
+      <created>1640119855096</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1640119855096</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Implementation_ite_function_and_tests&#10;(tests-fail)">
+      <created>1640119907088</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1640119907088</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +495,7 @@
     <MESSAGE value="Merged Implementation_function_isConstant with master" />
     <MESSAGE value="Implementation of tests and tests fail" />
     <MESSAGE value="Implementation_topVar_function_and_tests&#10;(added some comments)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation_topVar_function_and_tests&#10;(added some comments)" />
+    <MESSAGE value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
   </component>
 </project>

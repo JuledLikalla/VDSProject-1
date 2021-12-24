@@ -12,19 +12,34 @@
 #include<stack>
 using namespace std;
 
+#define zero static_cast<BDD_ID>(0)
+#define one static_cast<BDD_ID>(1)
+#define smallestVarId static_cast<BDD_ID>(2)
+
+
 namespace ClassProject {
     class Manager  : public ManagerInterface {
     public:
-        struct tableElement {
+        struct u_tableElement {
             BDD_ID id;
             string label;
             BDD_ID high;
             BDD_ID low;
             BDD_ID topVar;
         };
-        vector<tableElement> uniqueTable;
+
+        struct c_tableElement {
+            BDD_ID i;
+            BDD_ID t;
+            BDD_ID e;
+            BDD_ID result;
+        };
+
+        vector<u_tableElement> uniqueTable;
+        vector<c_tableElement> computedTable;
         vector<char> operations;
         int nextId;
+        string nextLabel = "";
 
         Manager();
         BDD_ID createVar(const string &label);
@@ -33,8 +48,13 @@ namespace ClassProject {
         void useExpression(string ex);
         void charCheck(char input_char);
         bool isConstant(BDD_ID f);
-         bool isVariable(BDD_ID x);
-
+        bool isVariable(BDD_ID x);
+        bool foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
+        bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
+        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r);
+        BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
+        BDD_ID find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow);
+        string getVarName(BDD_ID var);
          BDD_ID topVar(BDD_ID f);
 
          BDD_ID ite(BDD_ID i, BDD_ID t, BDD_ID e);
