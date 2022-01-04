@@ -109,8 +109,17 @@ BDD_ID Manager::topVar(BDD_ID f){
             return i.topVar;
         }
     }
+    return 0;
 }
 
+/**
+ * @brief Implementation of 'foundInComputedTable' function,
+ * This is a helper function for ite function.
+ * The function checks if ite result is already in the computed table.
+ * @params The condition if(i), the value for then(t) and the value for else(e) of ite
+ * and the address where the result will be saved if ite is found in the computed table.
+ * @retval Returns true if ite is found in computed table otherwise it returns false.
+ */
 bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     for(auto & it : computedTable){
         if(it.i == i && it.t == t && it.e == e){
@@ -121,6 +130,16 @@ bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result)
     return false;
 }
 
+/**
+ * @brief Implementation of 'foundInUniqueTable' function,
+ * This is a helper function for ite function.
+ * The function checks if an identical BDD is already in the unique table.
+ * In this way it avoids the possibility of having isomorphic sub-graphs.
+ * @params High and Low successors of the root node of the BDD to be checked
+ * and the address of the variable
+ * where the id of the identical node will be saved.
+ * @retval Returns true if a identical node is found in the unique table otherwise it returns false.
+ */
 bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r){
     for(auto & it : uniqueTable){
         if(it.low == rLow && it.high == rHigh){
@@ -131,6 +150,14 @@ bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r){
     return false;
 }
 
+/**
+ * @brief Implementation of 'isTerminalCase' function,
+ * This is a helper function for ite function.
+ * The function checks if the ite result is a terminal case.
+ * @params The condition if(i), the value for then(t) and the value for else(e) of ite
+ * and the address of the variable where the result will be saved.
+ * @retval Returns true if it is a terminal case otherwise it returns false.
+ */
 bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     //! Check if terminal case
     if(i == one){
@@ -152,46 +179,54 @@ bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     return false;
 }
 
+/**
+ * @brief Implementation of 'defineTopVar' function,
+ * This is a helper function for ite function.
+ * The function defines as the top variable the one of the variable with the smallest id.
+ * @params The condition if(i), the value for then(t) and the value for else(e) of ite.
+ * @retval Returns the defined top variable.
+ */
 BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID topVar_i = topVar(i);
     BDD_ID topVar_t = topVar(t);
     BDD_ID topVar_e = topVar(e);
 
-    bool i_isVariable = isVariable(i);
-    bool t_isVariable = isVariable(t);
-    bool e_isVariable = isVariable(e);
-    //! Define the as top variable the one with smallest index.
-    if(i_isVariable){
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_i <= topVar_t && topVar_i <= topVar_e)
-                    return topVar_i;
-            }else{
-                if(topVar_i <= topVar_t)
-                    return topVar_i;
-                else
-                    return topVar_t;
-            }
-        } else{
-
-        }
-    } else{
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_t <= topVar_e)
-                    return topVar_t;
-                else
-                    return topVar_e;
-            }else{
+    //! Define the as top variable the one with smallest id.
+    if(!isConstant(t)){
+        if(!isConstant(e)){
+            if(topVar_i <= topVar_t && topVar_i <= topVar_e)
+                return topVar_i;
+            else if(topVar_t <= topVar_i && topVar_t <= topVar_e)
                 return topVar_t;
+            else{
+                return topVar_e;
             }
-        } else if(e_isVariable){
-            return e;
+        }else{
+            if(topVar_i <= topVar_t)
+                return topVar_i;
+            else
+                return topVar_t;
         }
     }
-    return smallestVarId;
+
+    if (!isConstant(e)) {
+        if (topVar_i <= topVar_e)
+            return topVar_i;
+        else
+            return topVar_e;
+    }
+
+    return topVar_i;
 }
 
+/**
+ * @brief Implementation of 'find_or_add_uniqueTable' function,
+ * This is a helper function for ite function.
+ * The function checks if there is a identical BDD with the given BDD
+ * in the unique table, if not it adds the BDD in the unique table.
+ * @params The defined topVar and the high and low successors of the root node of the BDD.
+ * @retval Returns the id of the root node of the new/found BDD.
+ */
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
     BDD_ID r = uniqueTableSize();
 

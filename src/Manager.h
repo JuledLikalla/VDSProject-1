@@ -14,8 +14,6 @@ using namespace std;
 
 #define zero static_cast<BDD_ID>(0)
 #define one static_cast<BDD_ID>(1)
-#define smallestVarId static_cast<BDD_ID>(2)
-
 
 namespace ClassProject {
     class Manager  : public ManagerInterface {
