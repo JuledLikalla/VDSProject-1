@@ -265,7 +265,18 @@ BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
 
 
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
-    return 1;
+    BDD_ID high = getHigh(f);
+    BDD_ID low = getLow(f);
+    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+        return f ;
+    }
+    if (topVar(f) == x) {
+        return low ;
+    }else{
+        BDD_ID T = coFactorFalse(high, x);
+        BDD_ID  F = coFactorFalse(low, x);
+        return ite(topVar(f), T, F);
+    }
 }
 
 BDD_ID Manager::coFactorTrue(BDD_ID f) {
@@ -286,7 +297,20 @@ BDD_ID Manager::coFactorTrue(BDD_ID f) {
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f){
-    return 1;
+    BDD_ID high = getHigh(f);
+    BDD_ID low = getLow(f);
+
+    BDD_ID x = topVar(f);
+    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+        return f ;
+    }
+    if (topVar(f) == x) {
+        return low ;
+    }else{
+        BDD_ID T = coFactorFalse(high, x);
+        BDD_ID  F = coFactorFalse(low, x);
+        return ite(topVar(f), T, F);
+    }
 }
 
 BDD_ID Manager::neg(BDD_ID a){
