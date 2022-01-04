@@ -229,17 +229,60 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
         return result;
     }
 }
+BDD_ID Manager::getHigh(BDD_ID id) {
+    for (auto &i: uniqueTable) {
+        if (i.id == id) {
+            return i.high;
+        }
+    }
+    return -1;
+}
+
+BDD_ID Manager::getLow(BDD_ID id) {
+    for (auto &i: uniqueTable) {
+        if (i.id == id) {
+            return i.low;
+        }
+    }
+    return -1;
+}
+
 
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
-    return 1;
+    BDD_ID high = getHigh(f);
+    BDD_ID low = getLow(f);
+    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+        return f ;
+    }
+    if (topVar(f) == x) {
+        return high;
+    }else{
+        BDD_ID T = coFactorTrue(high , x);
+        BDD_ID F = coFactorTrue(low, x);
+        return ite(topVar(f), T, F);
+    }
 }
+
 
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
     return 1;
 }
 
-BDD_ID Manager::coFactorTrue(BDD_ID f){
-    return 1;
+BDD_ID Manager::coFactorTrue(BDD_ID f) {
+    BDD_ID x = topVar(f);
+    BDD_ID high = getHigh(f);
+    BDD_ID low = getLow(f);
+
+    if (f == 0 || f == 1 || x == 0 || x == 1 || topVar(f) > x) {
+        return f;
+    }
+    if (topVar(f) == x) {
+        return high;
+    } else {
+        BDD_ID T = coFactorTrue(high, x);
+        BDD_ID F = coFactorTrue(low, x);
+        return ite(topVar(f), T, F);
+    }
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f){

@@ -45,13 +45,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation_ite_function_and_tests&#10;(tests-fail)">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
+    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Tests for function coFactorTrue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +62,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Fixing-createVar-function-tests" />
+        <entry key="$PROJECT_DIR$" value="Tests_coFactorTrue" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -388,7 +385,7 @@
       <workItem from="1640350748746" duration="13772000" />
       <workItem from="1640694351516" duration="5550000" />
       <workItem from="1640785678471" duration="5786000" />
-      <workItem from="1641307058124" duration="4384000" />
+      <workItem from="1641307058124" duration="5160000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -474,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640119907088</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Tests for function coFactorTrue">
+      <created>1641320692531</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1641320692531</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +495,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Implementation_coFactorTrue_and_tests" />
+                        <option value="Implementation_coFactorTrue_function_and_tests" />
                       </list>
                     </value>
                   </entry>
@@ -512,7 +516,8 @@
     <MESSAGE value="Implementation of tests and tests fail" />
     <MESSAGE value="Implementation_topVar_function_and_tests&#10;(added some comments)" />
     <MESSAGE value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
+    <MESSAGE value="Tests for function coFactorTrue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests for function coFactorTrue" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

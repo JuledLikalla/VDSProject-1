@@ -64,6 +64,10 @@ namespace ClassProject {
 
          BDD_ID coFactorFalse(BDD_ID f);
 
+         BDD_ID getHigh(BDD_ID id);
+
+         BDD_ID getLow(BDD_ID id);
+
          BDD_ID neg(BDD_ID a);
 
          BDD_ID and2(BDD_ID a, BDD_ID b);
