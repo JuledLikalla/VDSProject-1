@@ -121,5 +121,30 @@ TEST_F(ManagerTest,coFactorTrueTest){
     EXPECT_EQ(manager.coFactorTrue(a_or_b_id,b_id),true_id);
     EXPECT_EQ(manager.coFactorTrue(c_and_d_id,a_id),c_and_d_id);
 }
+TEST_F(ManagerTest,coFactorFalse){
+    EXPECT_EQ(manager.coFactorFalse(true_id),true_id);
+    EXPECT_EQ(manager.coFactorFalse(false_id),false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(true_id,a_id),true_id);
+    EXPECT_EQ(manager.coFactorFalse(true_id,b_id),true_id);
+
+    EXPECT_EQ(manager.coFactorFalse(false_id,a_id),false_id);
+    EXPECT_EQ(manager.coFactorFalse(false_id,b_id),false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(a_id,a_id),false_id);
+    EXPECT_EQ(manager.coFactorFalse(b_id,a_id),b_id);
+    EXPECT_EQ(manager.coFactorFalse(c_id,a_id),c_id);
+    EXPECT_EQ(manager.coFactorFalse(d_id,a_id),d_id);
+
+    EXPECT_EQ(manager.coFactorFalse(b_id,b_id),false_id);
+    EXPECT_EQ(manager.coFactorFalse(a_id,b_id),a_id);
+    EXPECT_EQ(manager.coFactorFalse(c_id,b_id),c_id);
+    EXPECT_EQ(manager.coFactorFalse(d_id,d_id),false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(a_or_b_id,a_id),b_id);
+    EXPECT_EQ(manager.coFactorFalse(a_or_b_id,b_id),a_id);
+    EXPECT_EQ(manager.coFactorFalse(c_and_d_id,a_id),c_and_d_id);
+}
 
 #endif
+
