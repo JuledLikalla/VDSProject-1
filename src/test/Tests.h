@@ -8,9 +8,9 @@
 #include <iostream>
 using namespace ClassProject;
 using namespace std;
-Manager manager;
-struct ManagerTest : testing::Test{
 
+struct ManagerTest : testing::Test{
+    Manager manager;
     BDD_ID false_id = manager.False();
     BDD_ID true_id = manager.True();
     BDD_ID a_id = manager.createVar("a");
@@ -25,19 +25,35 @@ struct ManagerTest : testing::Test{
     BDD_ID a_nand_b_id = manager.nor2(a_id,b_id);
     BDD_ID a_xnor_b_id = manager.xnor2(a_id,b_id);
     BDD_ID c_or_d_id = manager.or2(c_id,d_id);
+    BDD_ID c_and_d_id = manager.and2(c_id,d_id);
     BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
 };
 
+/**
+ * 'createVar' function tests
+ */
 TEST_F(ManagerTest, CreateVarTest){
     EXPECT_EQ(manager.False(),0);
     EXPECT_EQ(manager.True(),1);
 }
+
+/**
+ * 'True' function tests
+ */
 TEST_F(ManagerTest, trueNodeTest){
     ASSERT_EQ(manager.True(), 1);
 }
+
+/**
+ * 'false' function tests
+ */
 TEST_F(ManagerTest,FalseNodeTest){
     ASSERT_EQ(manager.False(), 0);
 }
+
+/**
+ * 'isConstantTest' function tests
+ */
 TEST_F(ManagerTest,isConstantTest){
     EXPECT_TRUE(manager.isConstant(false_id));
     EXPECT_TRUE(manager.isConstant(true_id));
@@ -46,5 +62,19 @@ TEST_F(ManagerTest,isConstantTest){
     EXPECT_FALSE(manager.isConstant(c_id));
     EXPECT_FALSE(manager.isConstant(d_id));
 }
+/**
+ * 'isVariableTest' function tests
+ */
+TEST_F(ManagerTest,isVariableTest){
+    EXPECT_FALSE(manager.isVariable(false_id));
+    EXPECT_FALSE(manager.isVariable(true_id));
+    EXPECT_TRUE(manager.isVariable(a_id));
+    EXPECT_TRUE(manager.isVariable(b_id));
+    EXPECT_TRUE(manager.isVariable(c_id));
+    EXPECT_TRUE(manager.isVariable(d_id));
+    EXPECT_FALSE(manager.isVariable(a_or_b_id));
+    EXPECT_FALSE(manager.isVariable(c_and_d_id));
+}
+
 
 #endif

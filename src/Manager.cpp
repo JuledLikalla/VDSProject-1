@@ -53,13 +53,19 @@ bool Manager::isConstant(const BDD_ID f){
     }
     return false;
 }
-
-bool Manager:: isVariable(BDD_ID x) {
+bool Manager::isVariable(const BDD_ID x){
     for (auto &i: uniqueTable) {
-        return (i.id == x);
+      if (i.id == x) {
+          if( i.high==1 && i.low==0)
+          {
+              return true;
+          }
+      }
     }
     return false;
-}
+    }
+
+
 
 BDD_ID Manager::topVar(BDD_ID f){
 return 1;

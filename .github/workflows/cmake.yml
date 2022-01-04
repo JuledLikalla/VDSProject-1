@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ master ]
+    branches: [ implentation_of_is_variable ]
   pull_request:
-    branches: [ master ]
+    branches: [ implentation_of_is_variable ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
