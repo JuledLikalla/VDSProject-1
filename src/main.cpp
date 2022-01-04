@@ -60,6 +60,17 @@ void randomPrint(Manager manager1) {
 }
 int main(int argc, char *argv[]) {
     Manager manager1;
+
+    BDD_ID a_id = manager1.createVar("a");
+    BDD_ID b_id =manager1.createVar("b");
+    BDD_ID c_id =manager1.createVar("c");
+    BDD_ID d_id =manager1.createVar("d");
+    manager1.and2(a_id, b_id);
+    manager1.and2(c_id, d_id);
+    BDD_ID ite_result = manager1.ite(a_id,1,b_id);
+    cout<<"ITE Result: "<< ite_result <<endl;
+
+
 //
 //        //randomPrint(manager1);
 //        string booleanExpression ;
@@ -87,22 +98,22 @@ int main(int argc, char *argv[]) {
                 << "Top Var"
                 << endl;
 
-        for (int i = 0; i < manager1.uniqueTable.size(); i++) {
+        for (auto & i : manager1.uniqueTable) {
             cout
                     << left
                     << setw(10)
-                    << manager1.uniqueTable[i].id
+                    << i.id
                     << left
                     << setw(10)
-                    << manager1.uniqueTable[i].label
+                    << i.label
                     << left
                     << setw(10)
-                    << manager1.uniqueTable[i].low
+                    << i.low
                     << left
                     << setw(10)
-                    << manager1.uniqueTable[i].high
+                    << i.high
                     << setw(10)
-                    << manager1.uniqueTable[i].topVar
+                    << i.topVar
                     << endl;
         }
     }

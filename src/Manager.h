@@ -8,14 +8,10 @@
 #define VDSPROJECT_MANAGER_H
 
 #include "ManagerInterface.h"
+
 #include<vector>
 #include<stack>
 using namespace std;
-
-#define zero static_cast<BDD_ID>(0)
-#define one static_cast<BDD_ID>(1)
-#define smallestVarId static_cast<BDD_ID>(2)
-
 
 namespace ClassProject {
     class Manager  : public ManagerInterface {
@@ -37,16 +33,16 @@ namespace ClassProject {
 
         vector<u_tableElement> uniqueTable;
         vector<c_tableElement> computedTable;
-        vector<char> operations;
         int nextId;
         string nextLabel = "";
+        BDD_ID zero = 0;
+        BDD_ID one = 1 ;
+        BDD_ID smallestVarId = 2 ;
 
         Manager();
         BDD_ID createVar(const string &label);
         const BDD_ID &True();
         const BDD_ID &False();
-        void useExpression(string ex);
-        void charCheck(char input_char);
         bool isConstant(BDD_ID f);
         bool isVariable(BDD_ID x);
         bool foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
@@ -55,7 +51,8 @@ namespace ClassProject {
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
         BDD_ID find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow);
         string getVarName(BDD_ID var);
-         BDD_ID topVar(BDD_ID f);
+
+        BDD_ID topVar(BDD_ID f);
 
          BDD_ID ite(BDD_ID i, BDD_ID t, BDD_ID e);
 
@@ -88,7 +85,6 @@ namespace ClassProject {
          void findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root);
 
          size_t uniqueTableSize();
-
     };
 }
 

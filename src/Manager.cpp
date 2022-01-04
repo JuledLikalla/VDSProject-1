@@ -91,8 +91,9 @@ bool Manager::isConstant(const BDD_ID f){
  * @retval Returns true, if the given id represents a variable otherwise returns false.
  */
 bool Manager:: isVariable(BDD_ID x) {
-    for (auto &i: uniqueTable) {
-        return (i.id == x);
+    for(auto & i : uniqueTable){
+        if(i.id ==x)
+            return (i.high == 1 && i.low == 0  );
     }
     return false;
 }
@@ -157,39 +158,32 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID topVar_t = topVar(t);
     BDD_ID topVar_e = topVar(e);
 
-    bool i_isVariable = isVariable(i);
-    bool t_isVariable = isVariable(t);
-    bool e_isVariable = isVariable(e);
-    //! Define the as top variable the one with smallest index.
-    if(i_isVariable){
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_i <= topVar_t && topVar_i <= topVar_e)
-                    return topVar_i;
-            }else{
-                if(topVar_i <= topVar_t)
-                    return topVar_i;
-                else
-                    return topVar_t;
-            }
-        } else{
-
-        }
-    } else{
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_t <= topVar_e)
-                    return topVar_t;
-                else
-                    return topVar_e;
-            }else{
+    //! Define the as top variable the one with smallest id.
+    if(!isConstant(t)){
+        if(!isConstant(e)){
+            if(topVar_i <= topVar_t && topVar_i <= topVar_e)
+                return topVar_i;
+            else if(topVar_t <= topVar_i && topVar_t <= topVar_e)
                 return topVar_t;
+            else{
+                return topVar_e;
             }
-        } else if(e_isVariable){
-            return e;
+        }else{
+            if(topVar_i <= topVar_t)
+                return topVar_i;
+            else
+                return topVar_t;
         }
     }
-    return smallestVarId;
+
+    if (!isConstant(e)) {
+        if (topVar_i <= topVar_e)
+            return topVar_i;
+        else
+            return topVar_e;
+    }
+
+    return topVar_i;
 }
 
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
@@ -221,8 +215,9 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
     else{
         //! If not terminal case and not in computed table
         topVarTmp = defineTopVar(i,t,e);
-        rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
-        rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
+
+       rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
+       rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
         if(rHigh == rLow) {
             newComputedIte.result = rHigh;
@@ -236,19 +231,19 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
 }
 
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
-return 1;
+    return 1;
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
-return 1;
+    return 1;
 }
 
 BDD_ID Manager::coFactorTrue(BDD_ID f){
-return 1;
+    return 1;
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f){
-return 1;
+    return 1;
 }
 
 BDD_ID Manager::neg(BDD_ID a){
@@ -298,11 +293,9 @@ return "";
 }
 
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
-
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
-
 }
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.

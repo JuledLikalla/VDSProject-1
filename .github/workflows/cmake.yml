@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ Implementation_ite_function_and_tests ]
+    branches: [ Tests_coFactorTrue ]
   pull_request:
-    branches: [ Implementation_ite_function_and_tests ]
+    branches: [ Tests_coFactorTrue ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
