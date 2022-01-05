@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ Implementation_coFactorFalse_function_and_tests ]
+    branches: [ Implementation_getTopVarName_function_and_tests ]
   pull_request:
-    branches: [ Implementation_coFactorFalse_function_and_tests ]
+    branches: [ Implementation_getTopVarName_function_and_tests ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)

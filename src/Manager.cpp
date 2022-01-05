@@ -105,11 +105,7 @@ bool Manager:: isVariable(BDD_ID x) {
  * @retval Returns the top variable of the node with the given id.
  */
 BDD_ID Manager::topVar(BDD_ID f){
-    for(auto & i : uniqueTable){
-        if(i.id == f){
-            return i.topVar;
-        }
-    }
+    return uniqueTable[f].topVar;
 }
 
 bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){

@@ -146,5 +146,16 @@ TEST_F(ManagerTest,coFactorFalse){
     EXPECT_EQ(manager.coFactorFalse(c_and_d_id,a_id),c_and_d_id);
 }
 
+TEST_F(ManagerTest,topVarName){
+    EXPECT_EQ(manager.getTopVarName(false_id),"FALSE");
+    EXPECT_EQ(manager.getTopVarName(true_id),"TRUE");
+    EXPECT_EQ(manager.getTopVarName(a_id),"a");
+    EXPECT_EQ(manager.getTopVarName(b_id),"b");
+    EXPECT_EQ(manager.getTopVarName(c_id),"c");
+    EXPECT_EQ(manager.getTopVarName(d_id),"d");
+    EXPECT_EQ(manager.getTopVarName(a_or_b_id),"a");
+    EXPECT_EQ(manager.getTopVarName(c_and_d_id),"c");
+    EXPECT_EQ(manager.getTopVarName(f1_id),"a");
+}
 #endif
 
