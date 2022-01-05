@@ -352,7 +352,13 @@ BDD_ID Manager::xnor2(BDD_ID a, BDD_ID b){
 }
 
 std::string Manager::getTopVarName(const BDD_ID &root){
-return "";
+
+    for(auto &i: uniqueTable ){
+        if( i.id == root){
+            return uniqueTable[i.topVar].label;
+        }
+    }
+    return "";
 }
 
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
