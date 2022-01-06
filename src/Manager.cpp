@@ -333,8 +333,20 @@ std::string Manager::getTopVarName(const BDD_ID &root){
     return "";
 }
 
-
+//This function takes a node root and an empty set nodes of root.
+//It returns the set of all nodes which are reachable from root including itself.
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
+    BDD_ID root_high = uniqueTable[root].high;
+    BDD_ID root_low = uniqueTable[root].low;
+    nodes_of_root.insert(root);
+
+    if(root_high == root_low)
+        return;
+    else {
+        findNodes(root_low,nodes_of_root);
+        findNodes(root_high,nodes_of_root);
+    }
+
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){

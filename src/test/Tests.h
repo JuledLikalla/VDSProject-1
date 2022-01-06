@@ -27,6 +27,8 @@ struct ManagerTest : testing::Test{
     BDD_ID c_or_d_id = manager.or2(c_id,d_id);
     BDD_ID c_and_d_id = manager.and2(c_id,d_id);
     BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
+    set<BDD_ID> nodes_from_root;
+
 };
 
 /**
@@ -78,7 +80,7 @@ TEST_F(ManagerTest,isVariableTest){
 /**
  * 'ite' function tests
  */
-TEST_F(ManagerTest,ite){
+TEST_F(ManagerTest,iteTest){
 
     //!Test Terminal Cases
     EXPECT_EQ(manager.ite(false_id, b_id, a_id), a_id);
@@ -123,7 +125,7 @@ TEST_F(ManagerTest,coFactorTrueTest){
     EXPECT_EQ(manager.coFactorTrue(a_or_b_id,b_id),true_id);
     EXPECT_EQ(manager.coFactorTrue(c_and_d_id,a_id),c_and_d_id);
 }
-TEST_F(ManagerTest,coFactorFalse){
+TEST_F(ManagerTest,coFactorFalseTest){
     EXPECT_EQ(manager.coFactorFalse(true_id),true_id);
     EXPECT_EQ(manager.coFactorFalse(false_id),false_id);
 
@@ -147,7 +149,7 @@ TEST_F(ManagerTest,coFactorFalse){
     EXPECT_EQ(manager.coFactorFalse(a_or_b_id,b_id),a_id);
     EXPECT_EQ(manager.coFactorFalse(c_and_d_id,a_id),c_and_d_id);
 }
-TEST_F(ManagerTest,topVarName){
+TEST_F(ManagerTest,topVarNameTest){
     EXPECT_EQ(manager.getTopVarName(false_id),"FALSE");
     EXPECT_EQ(manager.getTopVarName(true_id),"TRUE");
     EXPECT_EQ(manager.getTopVarName(a_id),"a");
@@ -157,6 +159,39 @@ TEST_F(ManagerTest,topVarName){
     EXPECT_EQ(manager.getTopVarName(a_or_b_id),"a");
     EXPECT_EQ(manager.getTopVarName(c_and_d_id),"c");
     EXPECT_EQ(manager.getTopVarName(f1_id),"a");
+}
+
+TEST_F(ManagerTest,findNodesTest){
+    //test for a or b
+    set<BDD_ID> nodes_from_root;
+    set<BDD_ID> test_a_or_b={false_id,true_id,b_id,a_or_b_id};
+    manager.findNodes(a_or_b_id,nodes_from_root);
+    ASSERT_EQ(nodes_from_root.size(), test_a_or_b.size()) ;
+    auto it1 = test_a_or_b.begin();
+    for (auto it = nodes_from_root.begin(); it !=nodes_from_root.end(); ++it){
+        EXPECT_EQ(*it, *it1);
+        ++it1;
+    }
+    //test for c and d
+    set<BDD_ID> nodes_from_root1;
+    set<BDD_ID> test_c_and_d={false_id,true_id,d_id,c_and_d_id};
+    manager.findNodes(c_and_d_id,nodes_from_root1);
+    ASSERT_EQ(nodes_from_root1.size(), test_c_and_d.size());
+    auto it2 = test_c_and_d.begin();
+    for (auto it = nodes_from_root1.begin(); it !=nodes_from_root1.end(); ++it){
+      EXPECT_EQ(*it, *it2);
+      ++it2;
+    }
+    //test for a
+    set<BDD_ID> nodes_from_root2;
+    set<BDD_ID> test_a={false_id,true_id,a_id};
+    manager.findNodes(a_id,nodes_from_root2);
+    ASSERT_EQ(nodes_from_root2.size(), test_a.size());
+    auto it3 = test_a.begin();
+    for (auto it = nodes_from_root2.begin(); it !=nodes_from_root2.end(); ++it){
+        EXPECT_EQ(*it, *it3);
+        ++it3;
+    }
 }
 #endif
 
