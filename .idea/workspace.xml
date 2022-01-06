@@ -45,7 +45,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Tests for function coFactorFalse" />
+    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Update of cofactor functions">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/main_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/main_test.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,15 +98,10 @@
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reduced-Order-Binary-Decision-Diagrams-master" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject_test">
+  <component name="RunManager" selected="CMake Application.VDSProject">
     <configuration name="ManagerTest.CreateVarTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="CreateVarTest" TEST_MODE="SUITE_TEST">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManagerTest.coFactorFalse" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="coFactorFalse" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -112,6 +114,12 @@
       </method>
     </configuration>
     <configuration name="ManagerTest.ite" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="ite" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagerTest.topVarName" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="topVarName" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -298,11 +306,6 @@
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="CMake Application.ContinuousBuild" />
       <item itemvalue="CMake Application.ContinuousConfigure" />
@@ -340,18 +343,18 @@
       <item itemvalue="CMake Application.gtest_main" />
       <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
-      <item itemvalue="Google Test.ManagerTest.coFactorFalse" />
       <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
       <item itemvalue="Google Test.ManagerTest.isVariableTest" />
       <item itemvalue="Google Test.ManagerTest.ite" />
+      <item itemvalue="Google Test.ManagerTest.topVarName" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="CMake Application.VDSProject_test" />
-        <item itemvalue="Google Test.ManagerTest.ite" />
         <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
+        <item itemvalue="Google Test.ManagerTest.topVarName" />
+        <item itemvalue="Google Test.ManagerTest.ite" />
         <item itemvalue="Google Test.ManagerTest.isVariableTest" />
-        <item itemvalue="Google Test.ManagerTest.coFactorFalse" />
       </list>
     </recent_temporary>
   </component>
@@ -381,7 +384,9 @@
       <workItem from="1640350748746" duration="13772000" />
       <workItem from="1640694351516" duration="5550000" />
       <workItem from="1640785678471" duration="5786000" />
-      <workItem from="1641307058124" duration="5552000" />
+      <workItem from="1641307058124" duration="9087000" />
+      <workItem from="1641421925298" duration="6839000" />
+      <workItem from="1641481292227" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -488,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641321581875</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Implementation of function coFactorFalse">
+      <created>1641321715778</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1641321715778</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +517,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Implementation_coFactorTrue_function_and_tests" />
+                        <option value="Implementation_coFactorFalse_function_and_tests" />
                       </list>
                     </value>
                   </entry>
@@ -529,7 +541,8 @@
     <MESSAGE value="Tests for function coFactorTrue" />
     <MESSAGE value="Implementation for function coFactorTrue" />
     <MESSAGE value="Tests for function coFactorFalse" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests for function coFactorFalse" />
+    <MESSAGE value="Implementation of function coFactorFalse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of function coFactorFalse" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

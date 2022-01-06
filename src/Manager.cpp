@@ -27,28 +27,28 @@ string Manager::getVarName(BDD_ID var){
  */
 BDD_ID Manager::createVar(const string &label){
     u_tableElement node;
-    bool k = false;
-    int i=0;
-       while( i<uniqueTable.size()){
-         if(uniqueTable[i].label==label){
-             cout << uniqueTable[i].label << "Label: " <<label<<endl;
-            k = true;
-            break;
-          }
-         i++;
-       }
-        if(!k) {
-            node.label = label;
-            node.id = nextId;
-            node.low = uniqueTable[0].id;
-            node.high = uniqueTable[1].id;
-            node.topVar = nextId;
-            uniqueTable.push_back(node);
-            nextId++;
-       }
+    if(!varExists(label)) {
+        node.label = label;
+        node.id = nextId;
+        node.low = uniqueTable[0].id;
+        node.high = uniqueTable[1].id;
+        node.topVar = nextId;
+        uniqueTable.push_back(node);
+        nextId++;
         return node.id;
+    }
+    else
+        return -1;
 }
-
+//checks if the variable already exists in the uniqueTable with this specific label
+bool Manager::varExists(const string &label){
+    for(auto &j: uniqueTable){
+        if(j.label == label){
+           return true;
+        }
+    }
+    return false;
+}
 /**
  * @brief Implementation of 'True' function,
  * The function gets the id of the True node from the unique table.
@@ -76,12 +76,7 @@ const BDD_ID & Manager::False(){
  * @retval Returns true, if the given ID represents a leaf node otherwise returns false.
  */
 bool Manager::isConstant(const BDD_ID f){
-    for(auto & i : uniqueTable){
-        if(i.id ==f){
-            return (i.high == i.low);
-        }
-    }
-    return false;
+    return (uniqueTable[f].high == uniqueTable[f].low);
 }
 
 /**
@@ -91,11 +86,7 @@ bool Manager::isConstant(const BDD_ID f){
  * @retval Returns true, if the given id represents a variable otherwise returns false.
  */
 bool Manager:: isVariable(BDD_ID x) {
-    for(auto & i : uniqueTable){
-        if(i.id ==x)
-            return (i.high == 1 && i.low == 0  );
-    }
-    return false;
+    return (uniqueTable[x].high == 1 && uniqueTable[x].low == 0 );
 }
 
 /**
@@ -105,11 +96,7 @@ bool Manager:: isVariable(BDD_ID x) {
  * @retval Returns the top variable of the node with the given id.
  */
 BDD_ID Manager::topVar(BDD_ID f){
-    for(auto & i : uniqueTable){
-        if(i.id == f){
-            return i.topVar;
-        }
-    }
+    return uniqueTable[f].topVar;
 }
 
 bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
@@ -229,28 +216,10 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
         return result;
     }
 }
-BDD_ID Manager::getHigh(BDD_ID id) {
-    for (auto &i: uniqueTable) {
-        if (i.id == id) {
-            return i.high;
-        }
-    }
-    return -1;
-}
-
-BDD_ID Manager::getLow(BDD_ID id) {
-    for (auto &i: uniqueTable) {
-        if (i.id == id) {
-            return i.low;
-        }
-    }
-    return -1;
-}
-
 
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
-    BDD_ID high = getHigh(f);
-    BDD_ID low = getLow(f);
+    BDD_ID high = uniqueTable[f].high;
+    BDD_ID low = uniqueTable[f].low;
     if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
         return f ;
     }
@@ -265,8 +234,8 @@ BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
 
 
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
-    BDD_ID high = getHigh(f);
-    BDD_ID low = getLow(f);
+    BDD_ID high = uniqueTable[f].high;
+    BDD_ID low = uniqueTable[f].low;
     if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
         return f ;
     }
@@ -281,8 +250,8 @@ BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
 
 BDD_ID Manager::coFactorTrue(BDD_ID f) {
     BDD_ID x = topVar(f);
-    BDD_ID high = getHigh(f);
-    BDD_ID low = getLow(f);
+    BDD_ID high = uniqueTable[f].high;
+    BDD_ID low = uniqueTable[f].low;
 
     if (f == 0 || f == 1 || x == 0 || x == 1 || topVar(f) > x) {
         return f;
@@ -297,8 +266,8 @@ BDD_ID Manager::coFactorTrue(BDD_ID f) {
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f){
-    BDD_ID high = getHigh(f);
-    BDD_ID low = getLow(f);
+    BDD_ID high = uniqueTable[f].high;
+    BDD_ID low = uniqueTable[f].low;
 
     BDD_ID x = topVar(f);
     if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
@@ -356,8 +325,14 @@ BDD_ID Manager::xnor2(BDD_ID a, BDD_ID b){
 }
 
 std::string Manager::getTopVarName(const BDD_ID &root){
-return "";
+    for(auto &i: uniqueTable ){
+       if( i.id == root){
+           return uniqueTable[i.topVar].label;
+       }
+    }
+    return "";
 }
+
 
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
 }
