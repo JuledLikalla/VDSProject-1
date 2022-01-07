@@ -193,5 +193,36 @@ TEST_F(ManagerTest,findNodesTest){
         ++it3;
     }
 }
+TEST_F(ManagerTest,findVarsTest){
+    //test for a or b
+    set<BDD_ID> vars_of_root;
+    set<BDD_ID> test_a_or_b={a_id,b_id};
+    manager.findVars(a_or_b_id,vars_of_root);
+    ASSERT_EQ(vars_of_root.size(), test_a_or_b.size()) ;
+    auto it1 = test_a_or_b.begin();
+    for (auto it = vars_of_root.begin(); it !=vars_of_root.end(); ++it){
+        EXPECT_EQ(*it, *it1);
+        ++it1;
+    }
+    //test for c and d
+    set<BDD_ID> vars_of_root1;
+    set<BDD_ID> test_c_and_d={c_id,d_id};
+    manager.findVars(c_and_d_id,vars_of_root1);
+    ASSERT_EQ(vars_of_root1.size(), test_c_and_d.size());
+    auto it2 = test_c_and_d.begin();
+    for (auto it = vars_of_root1.begin(); it !=vars_of_root1.end(); ++it){
+        EXPECT_EQ(*it, *it2);
+        ++it2;
+    }
+    //test for a
+    set<BDD_ID> vars_of_root2;
+    set<BDD_ID> test_a={a_id};
+    manager.findVars(a_id,vars_of_root2);
+    ASSERT_EQ(vars_of_root2.size(), test_a.size());
+    auto it3 = test_a.begin();
+    for (auto it = vars_of_root2.begin(); it !=vars_of_root2.end(); ++it){
+        EXPECT_EQ(*it, *it3);
+        ++it3;
+    }
+}
 #endif
-

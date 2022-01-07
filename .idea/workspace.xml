@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="VDSProject" targetName="gtest_main" />
@@ -45,10 +48,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Update of cofactor functions and createVar function.">
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Update of cofactor functions and createVar function.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +65,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Implementation_coFactorTrue_function_and_tests" />
+        <entry key="$PROJECT_DIR$" value="Implementation_findNodes_function_and_tests" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,10 +97,11 @@
     <property name="cmake.loaded.for.project" value="true" />
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reduced-Order-Binary-Decision-Diagrams-master" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject">
+  <component name="RunManager" selected="CMake Application.VDSProject_test">
     <configuration name="ManagerTest.CreateVarTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="CreateVarTest" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -333,11 +336,11 @@
       <item itemvalue="CMake Application.NightlyTest" />
       <item itemvalue="CMake Application.NightlyUpdate" />
       <item itemvalue="CMake Application.Nightly" />
-      <item itemvalue="CMake Application.VDSProject" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
+      <item itemvalue="CMake Application.VDSProject" />
       <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
       <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
@@ -346,8 +349,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="CMake Application.VDSProject" />
         <item itemvalue="CMake Application.VDSProject_test" />
+        <item itemvalue="CMake Application.VDSProject" />
         <item itemvalue="Google Test.ManagerTest.findNodes" />
         <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
         <item itemvalue="Google Test.ManagerTest.topVarName" />

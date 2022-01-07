@@ -350,7 +350,21 @@ void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
-}
+        BDD_ID root_high = uniqueTable[root].high; //1
+        BDD_ID root_low = uniqueTable[root].low;//3
+        if(!isVariable(root)){
+            if(root_high == root_low)
+                return;
+            else
+                vars_of_root.insert(topVar(root));
+        }
+        if(root_high ==1 && root_low == 0){
+            vars_of_root.insert(root);
+        }
+        findVars(root_low,vars_of_root);
+        findVars(root_high,vars_of_root);
+    }
+
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.
 size_t Manager::uniqueTableSize(){
