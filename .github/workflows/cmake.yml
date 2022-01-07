@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ Implementation_findNodes_function_and_tests ]
+    branches: [ Implementation_of_find_vars_function]
   pull_request:
-    branches: [ Implementation_findNodes_function_and_tests ]
+    branches: [ Implementation_of_find_vars_function ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
