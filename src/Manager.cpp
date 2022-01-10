@@ -104,6 +104,7 @@ BDD_ID Manager::topVar(BDD_ID f){
             return i.topVar;
         }
     }
+    return 0;
 }
 
 bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
@@ -116,9 +117,9 @@ bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result)
     return false;
 }
 
-bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r){
+bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID topVar, BDD_ID &r){
     for(auto & it : uniqueTable){
-        if(it.low == rLow && it.high == rHigh){
+        if(it.low == rLow && it.high == rHigh && it.topVar == topVar){
             r = it.id;
             return true;
         }
@@ -152,45 +153,38 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID topVar_t = topVar(t);
     BDD_ID topVar_e = topVar(e);
 
-    bool i_isVariable = isVariable(i);
-    bool t_isVariable = isVariable(t);
-    bool e_isVariable = isVariable(e);
-    //! Define the as top variable the one with smallest index.
-    if(i_isVariable){
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_i <= topVar_t && topVar_i <= topVar_e)
-                    return topVar_i;
-            }else{
-                if(topVar_i <= topVar_t)
-                    return topVar_i;
-                else
-                    return topVar_t;
-            }
-        } else{
-
-        }
-    } else{
-        if(t_isVariable){
-            if(e_isVariable){
-                if(topVar_t <= topVar_e)
-                    return topVar_t;
-                else
-                    return topVar_e;
-            }else{
+    //! Define the as top variable the one with smallest id.
+    if(!isConstant(t)){
+        if(!isConstant(e)){
+            if(topVar_i <= topVar_t && topVar_i <= topVar_e)
+                return topVar_i;
+            else if(topVar_t <= topVar_i && topVar_t <= topVar_e)
                 return topVar_t;
+            else{
+                return topVar_e;
             }
-        } else if(e_isVariable){
-            return e;
+        }else{
+            if(topVar_i <= topVar_t)
+                return topVar_i;
+            else
+                return topVar_t;
         }
     }
-    return smallestVarId;
+
+    if (!isConstant(e)) {
+        if (topVar_i <= topVar_e)
+            return topVar_i;
+        else
+            return topVar_e;
+    }
+
+    return topVar_i;
 }
 
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
     BDD_ID r = uniqueTableSize();
 
-    if(foundInUniqueTable(rLow, rHigh, r))
+    if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
     uniqueTable.push_back({

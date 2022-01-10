@@ -58,7 +58,7 @@ namespace ClassProject {
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 
-        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r);
+        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID topVar, BDD_ID &r);
 
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
 

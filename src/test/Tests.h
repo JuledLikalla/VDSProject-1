@@ -78,7 +78,7 @@ TEST_F(ManagerTest,isVariableTest){
 /**
  * 'ite' function tests
  */
-TEST_F(ManagerTest,ite){
+TEST_F(ManagerTest,ite) {
 
     //!Test Terminal Cases
     EXPECT_EQ(manager.ite(false_id, b_id, a_id), a_id);
@@ -94,8 +94,16 @@ TEST_F(ManagerTest,ite){
 //    EXPECT_EQ(manager.ite(c_id, false_id, true_id), manager.neg(c_id));
 
     //!Other Tests
-    //! TO DO
+    EXPECT_EQ(manager.ite(a_id, true_id, b_id), a_or_b_id);
 }
+
+TEST_F(ManagerTest,negTest){
+    EXPECT_EQ(manager.neg(false_id),true_id);
+    EXPECT_EQ(manager.neg(true_id),false_id);
+    EXPECT_EQ(manager.neg(a_or_b_id),a_and_b_id);
+    EXPECT_EQ(manager.neg(c_and_d_id),c_or_d_id);
+}
+
 /**
  * 'coFactorTrue' function tests
  */
