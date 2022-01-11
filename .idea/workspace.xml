@@ -48,7 +48,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)">
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="added tests for ite and logical operations">
       <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +63,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Implementation_findNodes_function_and_tests" />
+        <entry key="$PROJECT_DIR$" value="Implementation_of_find_vars_function" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
