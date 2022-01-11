@@ -48,9 +48,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation_ite_function_and_tests&#10;(tests-fail)">
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)">
       <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -512,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641547703973</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)">
+      <created>1641894841604</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1641894841604</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,7 +562,8 @@
     <MESSAGE value="Implementation of function coFactorFalse" />
     <MESSAGE value="Update of cofactor functions and createVar function." />
     <MESSAGE value="Implementation of findVars function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of findVars function" />
+    <MESSAGE value="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -2,7 +2,7 @@ name: CMake
 
 on:
   push:
-    branches: [ Implementation_of_ite_function_and_tests]
+    branches: [ Implementation_of_ite_function_and_tests ]
   pull_request:
     branches: [ Implementation_of_ite_function_and_tests ]
 
