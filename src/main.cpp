@@ -17,42 +17,6 @@ int main(int argc, char *argv[]) {
     BDD_ID c_and_d_id = manager1.and2(c_id, d_id);
     manager1.and2(a_or_b_id,c_and_d_id);
 
-        cout
-                << endl
-                << left
-                << setw(10)
-                << "ID"
-                << left
-                << setw(10)
-                << "Label"
-                << left
-                << setw(10)
-                << "High"
-                << left
-                << setw(10)
-                << "Low"
-                << setw(10)
-                << "Top Var"
-                << endl;
-
-        for (auto & i : manager1.uniqueTable) {
-            cout
-                    << left
-                    << setw(10)
-                    << i.id
-                    << left
-                    << setw(10)
-                    << i.label
-                    << left
-                    << setw(10)
-                    << i.high
-                    << left
-                    << setw(10)
-                    << i.low
-                    << setw(10)
-                    << i.topVar
-                    << endl;
-        }
     set<BDD_ID> nodes_root;
     cout << "Nodes reacheabe from root: "<<endl;
     manager1.findNodes(a_or_b_id,nodes_root);
