@@ -109,9 +109,9 @@ bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result)
     return false;
 }
 
-bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r){
+bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r,BDD_ID tVar){
     for(auto & it : uniqueTable){
-        if(it.low == rLow && it.high == rHigh){
+        if(it.low == rLow && it.high == rHigh && topVar(it.id)==tVar){
             r = it.id;
             return true;
         }
@@ -133,6 +133,7 @@ bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
         result = i;
         return true;
     }
+
     else if (t == e){
         result = t;
         return true;
@@ -176,16 +177,18 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
     BDD_ID r = uniqueTableSize();
 
-    if(foundInUniqueTable(rLow, rHigh, r))
+    if(foundInUniqueTable(rLow, rHigh, r,topVar))
         return r;
+    else {
+        uniqueTable.push_back({
+                                      r,
+                                      nextLabel,
+                                      rHigh,
+                                      rLow,
+                                      topVar
+                              });
+    }
 
-    uniqueTable.push_back({
-        r,
-        nextLabel,
-        rHigh,
-        rLow,
-        topVar
-    });
     return r;
 }
 
@@ -220,7 +223,7 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
     BDD_ID high = uniqueTable[f].high;
     BDD_ID low = uniqueTable[f].low;
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+    if (isConstant(f) || isConstant(x) || topVar(f) > x) {
         return f ;
     }
     if (topVar(f) == x) {
@@ -236,7 +239,7 @@ BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
     BDD_ID high = uniqueTable[f].high;
     BDD_ID low = uniqueTable[f].low;
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+    if (isConstant(f) || isConstant(x) || topVar(f) > x) {
         return f ;
     }
     if (topVar(f) == x) {
@@ -253,11 +256,8 @@ BDD_ID Manager::coFactorTrue(BDD_ID f) {
     BDD_ID high = uniqueTable[f].high;
     BDD_ID low = uniqueTable[f].low;
 
-    if (f == 0 || f == 1 || x == 0 || x == 1 || topVar(f) > x) {
+    if (isConstant(f) || isConstant(x) ) {
         return f;
-    }
-    if (topVar(f) == x) {
-        return high;
     } else {
         BDD_ID T = coFactorTrue(high, x);
         BDD_ID F = coFactorTrue(low, x);
@@ -270,11 +270,8 @@ BDD_ID Manager::coFactorFalse(BDD_ID f){
     BDD_ID low = uniqueTable[f].low;
 
     BDD_ID x = topVar(f);
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+    if (isConstant(f) || isConstant(x) ) {
         return f ;
-    }
-    if (topVar(f) == x) {
-        return low ;
     }else{
         BDD_ID T = coFactorFalse(high, x);
         BDD_ID  F = coFactorFalse(low, x);
@@ -350,6 +347,22 @@ void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
+
+    BDD_ID root_high = uniqueTable[root].high; //1
+    BDD_ID root_low = uniqueTable[root].low;//3
+
+    if(!isVariable(root)){
+        if(root_high == root_low)
+            return;
+        else
+            vars_of_root.insert(topVar(root));
+    }
+    if(root_high ==1 && root_low == 0){
+        vars_of_root.insert(root);
+    }
+
+    findVars(root_low,vars_of_root);
+    findVars(root_high,vars_of_root);
 }
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.

@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     BDD_ID d_id =manager1.createVar("d");
     BDD_ID a_or_b_id = manager1.or2(a_id, b_id);
     BDD_ID c_and_d_id = manager1.and2(c_id, d_id);
-    manager1.and2(a_or_b_id,c_and_d_id);
+    BDD_ID f_id = manager1.and2(a_or_b_id,c_and_d_id);
 
         cout
                 << endl
@@ -62,6 +62,17 @@ int main(int argc, char *argv[]) {
         cout <<"Node " << i++<<": " <<*it<<endl;
     }
     cout<<endl;
+
+
+    set<BDD_ID> vars_of_root;
+    cout << "Variables reacheabe from root: "<<endl;
+    manager1.findVars(f_id,vars_of_root);
+    int j =0;
+
+   for (auto it1 = vars_of_root.begin(); it1 !=vars_of_root.end(); ++it1){
+       cout <<"TopVar " << j++<<": " <<*it1<<endl;
+    }
+   cout<<endl;
 
 
 }

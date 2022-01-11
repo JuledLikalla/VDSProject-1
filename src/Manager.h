@@ -13,7 +13,8 @@ using namespace std;
 
 namespace ClassProject {
     class Manager  : public ManagerInterface {
-    public:
+
+    private:
         struct u_tableElement {
             BDD_ID id;
             string label;
@@ -29,8 +30,6 @@ namespace ClassProject {
             BDD_ID result;
         };
 
-        vector<u_tableElement> uniqueTable;
-
         vector<c_tableElement> computedTable;
 
         int nextId;
@@ -40,7 +39,7 @@ namespace ClassProject {
         BDD_ID zero = 0;
 
         BDD_ID one = 1 ;
-
+    public:
         Manager();
 
         BDD_ID createVar(const string &label);
@@ -59,7 +58,7 @@ namespace ClassProject {
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 
-        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r);
+        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r,BDD_ID tVar);
 
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
 
@@ -100,6 +99,8 @@ namespace ClassProject {
         void findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root);
 
         size_t uniqueTableSize();
+
+        vector<u_tableElement> uniqueTable;
     };
 }
 
