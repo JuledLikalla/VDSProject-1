@@ -13,12 +13,10 @@
 #include<stack>
 using namespace std;
 
-#define zero static_cast<BDD_ID>(0)
-#define one static_cast<BDD_ID>(1)
 
 namespace ClassProject {
     class Manager  : public ManagerInterface {
-    public:
+    private:
         struct u_tableElement {
             BDD_ID id;
             string label;
@@ -38,7 +36,11 @@ namespace ClassProject {
         vector<c_tableElement> computedTable;
 
         int nextId;
+        BDD_ID zero = 0;
+
+        BDD_ID one = 1 ;
         string nextLabel = "";
+    public:
 
         Manager();
 
