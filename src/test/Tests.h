@@ -19,13 +19,20 @@ struct ManagerTest : testing::Test{
     BDD_ID d_id = manager.createVar("d");
     BDD_ID neg_a_id = manager.neg(a_id);
     BDD_ID neg_b_id = manager.neg(b_id);
+    BDD_ID neg_c_id = manager.neg(c_id);
+    BDD_ID neg_d_id = manager.neg(d_id);
     BDD_ID a_and_b_id = manager.and2(a_id,b_id);
     BDD_ID a_or_b_id = manager.or2(a_id,b_id);
-    BDD_ID a_xor_b_id = manager.and2(a_id,b_id);
-    BDD_ID a_nand_b_id = manager.nor2(a_id,b_id);
+    BDD_ID a_nand_b_id = manager.nand2(a_id,b_id);
+    BDD_ID a_nor_b_id = manager.nor2(a_id,b_id);
+    BDD_ID a_xor_b_id = manager.xor2(a_id,b_id);
     BDD_ID a_xnor_b_id = manager.xnor2(a_id,b_id);
     BDD_ID c_or_d_id = manager.or2(c_id,d_id);
     BDD_ID c_and_d_id = manager.and2(c_id,d_id);
+    BDD_ID c_nand_d_id = manager.nand2(c_id,d_id);
+    BDD_ID c_nor_d_id = manager.nor2(c_id,d_id);
+    BDD_ID c_xor_d_id = manager.xor2(c_id,d_id);
+    BDD_ID c_xnor_d_id = manager.xnor2(c_id,d_id);
     BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
     set<BDD_ID> nodes_from_root;
 
@@ -87,17 +94,252 @@ TEST_F(ManagerTest,iteTest){
     EXPECT_EQ(manager.ite(true_id, a_id, b_id), a_id);
     EXPECT_EQ(manager.ite(a_id, true_id, false_id), a_id);
     EXPECT_EQ(manager.ite(b_id, a_id, a_id), a_id);
-//    EXPECT_EQ(manager.ite(a_id, false_id, true_id), manager.neg(a_id));
+    EXPECT_EQ(manager.ite(a_id, false_id, true_id), neg_a_id);
 
     EXPECT_EQ(manager.ite(false_id, d_id, c_id), c_id);
     EXPECT_EQ(manager.ite(true_id, c_id, d_id), c_id);
     EXPECT_EQ(manager.ite(c_id, true_id, false_id), c_id);
     EXPECT_EQ(manager.ite(d_id, c_id, c_id), c_id);
-//    EXPECT_EQ(manager.ite(c_id, false_id, true_id), manager.neg(c_id));
+    EXPECT_EQ(manager.ite(c_id, false_id, true_id), neg_c_id);
 
     //!Other Tests
-    //! TO DO
+    EXPECT_EQ(manager.ite(a_id, true_id, b_id), a_or_b_id);
+    EXPECT_EQ(manager.ite(a_id, b_id, false_id), a_and_b_id);
+    EXPECT_EQ(manager.ite(a_id, neg_b_id, true_id), a_nand_b_id);
+    EXPECT_EQ(manager.ite(a_id, false_id, neg_b_id), a_nor_b_id);
+    EXPECT_EQ(manager.ite(a_id, neg_b_id, b_id), a_xor_b_id);
+    EXPECT_EQ(manager.ite(a_id, b_id, neg_b_id), a_xnor_b_id);
+
+    EXPECT_EQ(manager.ite(c_id, true_id, d_id), c_or_d_id);
+    EXPECT_EQ(manager.ite(c_id, d_id, false_id), c_and_d_id);
+    EXPECT_EQ(manager.ite(c_id, neg_d_id, true_id), c_nand_d_id);
+    EXPECT_EQ(manager.ite(c_id, false_id, neg_d_id), c_nor_d_id);
+    EXPECT_EQ(manager.ite(c_id, neg_d_id, d_id), c_xor_d_id);
+    EXPECT_EQ(manager.ite(c_id, d_id, neg_d_id), c_xnor_d_id);
+
+    EXPECT_EQ(manager.ite(a_and_b_id, true_id, c_or_d_id), f1_id);
 }
+
+/**
+ * 'neg' function tests
+ */
+TEST_F(ManagerTest,negTest){
+    EXPECT_EQ(manager.neg(false_id),true_id);
+    EXPECT_EQ(manager.neg(true_id),false_id);
+
+    //! De Morgans Laws
+    EXPECT_EQ(manager.neg(a_or_b_id),manager.and2(neg_a_id, neg_b_id));
+    EXPECT_EQ(manager.neg(a_and_b_id),manager.or2(neg_a_id, neg_b_id));
+
+    EXPECT_EQ(manager.neg(c_or_d_id),manager.and2(neg_c_id, neg_d_id));
+    EXPECT_EQ(manager.neg(c_and_d_id),manager.or2(neg_c_id, neg_d_id));
+
+    EXPECT_EQ(manager.topVar(neg_a_id), a_id);
+    EXPECT_EQ(manager.topVar(neg_b_id), b_id);
+    EXPECT_EQ(manager.topVar(neg_c_id), c_id);
+    EXPECT_EQ(manager.topVar(neg_d_id), d_id);
+
+    EXPECT_EQ(manager.coFactorFalse(neg_a_id), true_id);
+    EXPECT_EQ(manager.coFactorTrue(neg_a_id), false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(neg_b_id), true_id);
+    EXPECT_EQ(manager.coFactorTrue(neg_b_id), false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(neg_c_id), true_id);
+    EXPECT_EQ(manager.coFactorTrue(neg_c_id), false_id);
+
+    EXPECT_EQ(manager.coFactorFalse(neg_d_id), true_id);
+    EXPECT_EQ(manager.coFactorTrue(neg_d_id), false_id);
+
+}
+
+/**
+ * 'and2' function tests
+ */
+TEST_F(ManagerTest,and2Test){
+    EXPECT_EQ(manager.and2(false_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(false_id, true_id),false_id);
+    EXPECT_EQ(manager.and2(true_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(true_id, true_id),true_id);
+
+    EXPECT_EQ(manager.and2(a_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(a_id, true_id),a_id);
+    EXPECT_EQ(manager.and2(a_id, neg_a_id),false_id);
+    EXPECT_EQ(manager.and2(a_id, a_id),a_id);
+
+    EXPECT_EQ(manager.and2(b_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(b_id, true_id),b_id);
+    EXPECT_EQ(manager.and2(b_id, neg_b_id),false_id);
+    EXPECT_EQ(manager.and2(b_id, b_id),b_id);
+
+    EXPECT_EQ(manager.and2(c_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(c_id, true_id),c_id);
+    EXPECT_EQ(manager.and2(c_id, neg_c_id),false_id);
+    EXPECT_EQ(manager.and2(c_id, c_id),c_id);
+
+    EXPECT_EQ(manager.and2(d_id, false_id),false_id);
+    EXPECT_EQ(manager.and2(d_id, true_id),d_id);
+    EXPECT_EQ(manager.and2(d_id, neg_d_id),false_id);
+    EXPECT_EQ(manager.and2(d_id, d_id),d_id);
+    
+}
+
+/**
+ * 'or2' function tests
+ */
+TEST_F(ManagerTest,or2Test){
+    EXPECT_EQ(manager.or2(false_id, false_id),false_id);
+    EXPECT_EQ(manager.or2(false_id, true_id),true_id);
+    EXPECT_EQ(manager.or2(true_id, false_id),true_id);
+    EXPECT_EQ(manager.or2(true_id, true_id),true_id);
+
+    EXPECT_EQ(manager.or2(a_id, false_id),a_id);
+    EXPECT_EQ(manager.or2(a_id, true_id),true_id);
+    EXPECT_EQ(manager.or2(a_id, neg_a_id),true_id);
+    EXPECT_EQ(manager.or2(a_id, a_id),a_id);
+
+    EXPECT_EQ(manager.or2(b_id, false_id),b_id);
+    EXPECT_EQ(manager.or2(b_id, true_id),true_id);
+    EXPECT_EQ(manager.or2(b_id, neg_b_id),true_id);
+    EXPECT_EQ(manager.or2(b_id, b_id),b_id);
+
+    EXPECT_EQ(manager.or2(c_id, false_id),c_id);
+    EXPECT_EQ(manager.or2(c_id, true_id),true_id);
+    EXPECT_EQ(manager.or2(c_id, neg_c_id),true_id);
+    EXPECT_EQ(manager.or2(c_id, c_id),c_id);
+
+    EXPECT_EQ(manager.or2(d_id, false_id),d_id);
+    EXPECT_EQ(manager.or2(d_id, true_id),true_id);
+    EXPECT_EQ(manager.or2(d_id, neg_d_id),true_id);
+    EXPECT_EQ(manager.or2(d_id, d_id),d_id);
+
+}
+
+/**
+ * 'nand2' function tests
+ */
+TEST_F(ManagerTest,nand2Test){
+    EXPECT_EQ(manager.nand2(false_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(false_id, true_id), true_id);
+    EXPECT_EQ(manager.nand2(true_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(true_id, true_id), false_id);
+
+    EXPECT_EQ(manager.nand2(a_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(a_id, true_id), neg_a_id);
+    EXPECT_EQ(manager.nand2(a_id, neg_a_id), true_id);
+    EXPECT_EQ(manager.nand2(a_id, a_id), neg_a_id);
+
+    EXPECT_EQ(manager.nand2(b_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(b_id, true_id), neg_b_id);
+    EXPECT_EQ(manager.nand2(b_id, neg_b_id), true_id);
+    EXPECT_EQ(manager.nand2(b_id, b_id), neg_b_id);
+
+    EXPECT_EQ(manager.nand2(c_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(c_id, true_id), neg_c_id);
+    EXPECT_EQ(manager.nand2(c_id, neg_c_id), true_id);
+    EXPECT_EQ(manager.nand2(c_id, c_id), neg_c_id);
+
+    EXPECT_EQ(manager.nand2(d_id, false_id), true_id);
+    EXPECT_EQ(manager.nand2(d_id, true_id), neg_d_id);
+    EXPECT_EQ(manager.nand2(d_id, neg_d_id), true_id);
+    EXPECT_EQ(manager.nand2(d_id, d_id), neg_d_id);
+
+}
+
+/**
+ * 'nor2' function tests
+ */
+TEST_F(ManagerTest,nor2Test){
+    EXPECT_EQ(manager.nor2(false_id, false_id),true_id);
+    EXPECT_EQ(manager.nor2(false_id, true_id),false_id);
+    EXPECT_EQ(manager.nor2(true_id, false_id),false_id);
+    EXPECT_EQ(manager.nor2(true_id, true_id),false_id);
+
+    EXPECT_EQ(manager.nor2(a_id, false_id),neg_a_id);
+    EXPECT_EQ(manager.nor2(a_id, true_id),false_id);
+    EXPECT_EQ(manager.nor2(a_id, neg_a_id),false_id);
+    EXPECT_EQ(manager.nor2(a_id, a_id),neg_a_id);
+
+    EXPECT_EQ(manager.nor2(b_id, false_id),neg_b_id);
+    EXPECT_EQ(manager.nor2(b_id, true_id),false_id);
+    EXPECT_EQ(manager.nor2(b_id, neg_b_id),false_id);
+    EXPECT_EQ(manager.nor2(b_id, b_id),neg_b_id);
+
+    EXPECT_EQ(manager.nor2(c_id, false_id),neg_c_id);
+    EXPECT_EQ(manager.nor2(c_id, true_id),false_id);
+    EXPECT_EQ(manager.nor2(c_id, neg_c_id),false_id);
+    EXPECT_EQ(manager.nor2(c_id, c_id),neg_c_id);
+
+    EXPECT_EQ(manager.nor2(d_id, false_id),neg_d_id);
+    EXPECT_EQ(manager.nor2(d_id, true_id),false_id);
+    EXPECT_EQ(manager.nor2(d_id, neg_d_id),false_id);
+    EXPECT_EQ(manager.nor2(d_id, d_id),neg_d_id);
+
+}
+
+/**
+ * 'xor2' function tests
+ */
+TEST_F(ManagerTest,xor2Test){
+    
+    EXPECT_EQ(manager.xor2(false_id, false_id),false_id);
+    EXPECT_EQ(manager.xor2(false_id, true_id),true_id);
+    EXPECT_EQ(manager.xor2(true_id, false_id),true_id);
+    EXPECT_EQ(manager.xor2(true_id, true_id),false_id);
+
+    EXPECT_EQ(manager.xor2(a_id, false_id),a_id);
+    EXPECT_EQ(manager.xor2(a_id, true_id),neg_a_id);
+    EXPECT_EQ(manager.xor2(a_id, neg_a_id),true_id);
+    EXPECT_EQ(manager.xor2(a_id, a_id),false_id);
+
+    EXPECT_EQ(manager.xor2(b_id, false_id),b_id);
+    EXPECT_EQ(manager.xor2(b_id, true_id),neg_b_id);
+    EXPECT_EQ(manager.xor2(b_id, neg_b_id),true_id);
+    EXPECT_EQ(manager.xor2(b_id, b_id),false_id);
+
+    EXPECT_EQ(manager.xor2(c_id, false_id),c_id);
+    EXPECT_EQ(manager.xor2(c_id, true_id),neg_c_id);
+    EXPECT_EQ(manager.xor2(c_id, neg_c_id),true_id);
+    EXPECT_EQ(manager.xor2(c_id, c_id),false_id);
+
+    EXPECT_EQ(manager.xor2(d_id, false_id),d_id);
+    EXPECT_EQ(manager.xor2(d_id, true_id),neg_d_id);
+    EXPECT_EQ(manager.xor2(d_id, neg_d_id),true_id);
+    EXPECT_EQ(manager.xor2(d_id, d_id),false_id);
+
+}
+
+/**
+ * 'xnor2' function tests
+ */
+TEST_F(ManagerTest,xnor2Test){
+    EXPECT_EQ(manager.xnor2(false_id, false_id),true_id);
+    EXPECT_EQ(manager.xnor2(false_id, true_id),false_id);
+    EXPECT_EQ(manager.xnor2(true_id, false_id),false_id);
+    EXPECT_EQ(manager.xnor2(true_id, true_id),true_id);
+
+    EXPECT_EQ(manager.xnor2(a_id, false_id),neg_a_id);
+    EXPECT_EQ(manager.xnor2(a_id, true_id),a_id);
+    EXPECT_EQ(manager.xnor2(a_id, neg_a_id),false_id);
+    EXPECT_EQ(manager.xnor2(a_id, a_id),true_id);
+
+    EXPECT_EQ(manager.xnor2(b_id, false_id),neg_b_id);
+    EXPECT_EQ(manager.xnor2(b_id, true_id),b_id);
+    EXPECT_EQ(manager.xnor2(b_id, neg_b_id),false_id);
+    EXPECT_EQ(manager.xnor2(b_id, b_id),true_id);
+
+    EXPECT_EQ(manager.xnor2(c_id, false_id),neg_c_id);
+    EXPECT_EQ(manager.xnor2(c_id, true_id),c_id);
+    EXPECT_EQ(manager.xnor2(c_id, neg_c_id),false_id);
+    EXPECT_EQ(manager.xnor2(c_id, c_id),true_id);
+
+    EXPECT_EQ(manager.xnor2(d_id, false_id),neg_d_id);
+    EXPECT_EQ(manager.xnor2(d_id, true_id),d_id);
+    EXPECT_EQ(manager.xnor2(d_id, neg_d_id),false_id);
+    EXPECT_EQ(manager.xnor2(d_id, d_id),true_id);
+
+}
+
 /**
  * 'coFactorTrue' function tests
  */
@@ -125,6 +367,10 @@ TEST_F(ManagerTest,coFactorTrueTest){
     EXPECT_EQ(manager.coFactorTrue(a_or_b_id,b_id),true_id);
     EXPECT_EQ(manager.coFactorTrue(c_and_d_id,a_id),c_and_d_id);
 }
+
+/**
+ * 'coFactorFalse' function tests
+ */
 TEST_F(ManagerTest,coFactorFalseTest){
     EXPECT_EQ(manager.coFactorFalse(true_id),true_id);
     EXPECT_EQ(manager.coFactorFalse(false_id),false_id);
@@ -149,7 +395,11 @@ TEST_F(ManagerTest,coFactorFalseTest){
     EXPECT_EQ(manager.coFactorFalse(a_or_b_id,b_id),a_id);
     EXPECT_EQ(manager.coFactorFalse(c_and_d_id,a_id),c_and_d_id);
 }
-TEST_F(ManagerTest,topVarNameTest){
+
+/**
+ * 'getTopVarName' function tests
+ */
+TEST_F(ManagerTest,getTopVarNameTest){
     EXPECT_EQ(manager.getTopVarName(false_id),"FALSE");
     EXPECT_EQ(manager.getTopVarName(true_id),"TRUE");
     EXPECT_EQ(manager.getTopVarName(a_id),"a");
@@ -161,6 +411,9 @@ TEST_F(ManagerTest,topVarNameTest){
     EXPECT_EQ(manager.getTopVarName(f1_id),"a");
 }
 
+/**
+ * 'findNodes' function tests
+ */
 TEST_F(ManagerTest,findNodesTest){
     //test for a or b
     set<BDD_ID> nodes_from_root;
@@ -193,6 +446,10 @@ TEST_F(ManagerTest,findNodesTest){
         ++it3;
     }
 }
+
+/**
+ * 'findVars' function tests
+ */
 TEST_F(ManagerTest,findVarsTest){
     //test for a or b
     set<BDD_ID> vars_of_root;

@@ -48,9 +48,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of findVars function">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of tests and tests fails">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

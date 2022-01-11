@@ -109,9 +109,9 @@ bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result)
     return false;
 }
 
-bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID &r){
+bool Manager::foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID topVar, BDD_ID &r){
     for(auto & it : uniqueTable){
-        if(it.low == rLow && it.high == rHigh){
+        if(it.low == rLow && it.high == rHigh && it.topVar == topVar){
             r = it.id;
             return true;
         }
@@ -176,7 +176,7 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
     BDD_ID r = uniqueTableSize();
 
-    if(foundInUniqueTable(rLow, rHigh, r))
+    if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
     uniqueTable.push_back({
