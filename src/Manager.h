@@ -37,7 +37,6 @@ namespace ClassProject {
 
         int nextId;
         BDD_ID zero = 0;
-
         BDD_ID one = 1 ;
         string nextLabel = "";
     public:
