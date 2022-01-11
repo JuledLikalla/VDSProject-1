@@ -27,28 +27,28 @@ string Manager::getVarName(BDD_ID var){
  */
 BDD_ID Manager::createVar(const string &label){
     u_tableElement node;
-    bool k = false;
-    int i=0;
-       while( i<uniqueTable.size()){
-         if(uniqueTable[i].label==label){
-             cout << uniqueTable[i].label << "Label: " <<label<<endl;
-            k = true;
-            break;
-          }
-         i++;
-       }
-        if(!k) {
-            node.label = label;
-            node.id = nextId;
-            node.low = uniqueTable[0].id;
-            node.high = uniqueTable[1].id;
-            node.topVar = nextId;
-            uniqueTable.push_back(node);
-            nextId++;
-       }
+    if(!varExists(label)) {
+        node.label = label;
+        node.id = nextId;
+        node.low = uniqueTable[0].id;
+        node.high = uniqueTable[1].id;
+        node.topVar = nextId;
+        uniqueTable.push_back(node);
+        nextId++;
         return node.id;
+    }
+    else
+        return -1;
 }
-
+//checks if the variable already exists in the uniqueTable with this specific label
+bool Manager::varExists(const string &label){
+    for(auto &j: uniqueTable){
+        if(j.label == label){
+           return true;
+        }
+    }
+    return false;
+}
 /**
  * @brief Implementation of 'True' function,
  * The function gets the id of the True node from the unique table.
@@ -86,10 +86,7 @@ bool Manager::isConstant(const BDD_ID f){
  * @retval Returns true, if the given id represents a variable otherwise returns false.
  */
 bool Manager:: isVariable(BDD_ID x) {
-    for (auto &i: uniqueTable) {
-        return (i.id == x);
-    }
-    return false;
+    return (uniqueTable[x].high == 1 && uniqueTable[x].low == 0 );
 }
 
 /**
@@ -99,12 +96,7 @@ bool Manager:: isVariable(BDD_ID x) {
  * @retval Returns the top variable of the node with the given id.
  */
 BDD_ID Manager::topVar(BDD_ID f){
-    for(auto & i : uniqueTable){
-        if(i.id == f){
-            return i.topVar;
-        }
-    }
-    return 0;
+    return uniqueTable[f].topVar;
 }
 
 bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
@@ -210,8 +202,9 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
     else{
         //! If not terminal case and not in computed table
         topVarTmp = defineTopVar(i,t,e);
-        rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
-        rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
+
+       rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
+       rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
         if(rHigh == rLow) {
             newComputedIte.result = rHigh;
@@ -238,6 +231,7 @@ BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
         return ite(topVar(f), T, F);
     }
 }
+
 
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
     BDD_ID high = uniqueTable[f].high;
@@ -331,16 +325,46 @@ BDD_ID Manager::xnor2(BDD_ID a, BDD_ID b){
 }
 
 std::string Manager::getTopVarName(const BDD_ID &root){
-return "";
+    for(auto &i: uniqueTable ){
+       if( i.id == root){
+           return uniqueTable[i.topVar].label;
+       }
+    }
+    return "";
 }
 
+//This function takes a node root and an empty set nodes of root.
+//It returns the set of all nodes which are reachable from root including itself.
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
+    BDD_ID root_high = uniqueTable[root].high;
+    BDD_ID root_low = uniqueTable[root].low;
+    nodes_of_root.insert(root);
+
+    if(root_high == root_low)
+        return;
+    else {
+        findNodes(root_low,nodes_of_root);
+        findNodes(root_high,nodes_of_root);
+    }
 
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
+        BDD_ID root_high = uniqueTable[root].high; //1
+        BDD_ID root_low = uniqueTable[root].low;//3
+        if(!isVariable(root)){
+            if(root_high == root_low)
+                return;
+            else
+                vars_of_root.insert(topVar(root));
+        }
+        if(root_high ==1 && root_low == 0){
+            vars_of_root.insert(root);
+        }
+        findVars(root_low,vars_of_root);
+        findVars(root_high,vars_of_root);
+    }
 
-}
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.
 size_t Manager::uniqueTableSize(){

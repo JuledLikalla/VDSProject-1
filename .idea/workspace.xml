@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="VDSProject" targetName="gtest_main" />
@@ -45,7 +48,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation_ite_function_and_tests&#10;(tests-fail)">
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of tests and tests fails">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
@@ -63,11 +66,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Fixing-createVar-function-tests" />
+        <entry key="$PROJECT_DIR$" value="Implementation_findNodes_function_and_tests" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -90,26 +92,30 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.advertisement.text.has.clang-format" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="ctest.advertisement.all.test.configuration.is.created" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reduced-Order-Binary-Decision-Diagrams-master" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunManager" selected="CMake Application.VDSProject_test">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ManagerTest.ite" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="ite" TEST_MODE="SUITE_TEST">
+    <configuration name="ManagerTest.CreateVarTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="CreateVarTest" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Manager.test1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="Manager" TEST_METHOD="test1" TEST_MODE="SUITE_TEST">
+    <configuration name="ManagerTest.findNodes" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="findNodes" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagerTest.topVarName" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="topVarName" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -260,12 +266,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject">
+    <configuration name="VDSProject" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_test" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test">
+    <configuration name="VDSProject_test" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -331,23 +337,24 @@
       <item itemvalue="CMake Application.NightlyTest" />
       <item itemvalue="CMake Application.NightlyUpdate" />
       <item itemvalue="CMake Application.Nightly" />
-      <item itemvalue="CMake Application.VDSProject" />
       <item itemvalue="CMake Application.gmock" />
       <item itemvalue="CMake Application.gmock_main" />
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
+      <item itemvalue="CMake Application.VDSProject" />
       <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
-      <item itemvalue="Google Test.Manager.test1" />
-      <item itemvalue="Google Test.ManagerTest.ite" />
+      <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
+      <item itemvalue="Google Test.ManagerTest.topVarName" />
+      <item itemvalue="Google Test.ManagerTest.findNodes" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="CMake Application.VDSProject_test" />
-        <item itemvalue="Google Test.ManagerTest.ite" />
-        <item itemvalue="Google Test.Manager.test1" />
-        <item itemvalue="CMake Application.VDSProject_test" />
-        <item itemvalue="Google Test.Manager.test1" />
+        <item itemvalue="CMake Application.VDSProject" />
+        <item itemvalue="Google Test.ManagerTest.findNodes" />
+        <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
+        <item itemvalue="Google Test.ManagerTest.topVarName" />
       </list>
     </recent_temporary>
   </component>
@@ -375,6 +382,11 @@
       <workItem from="1640172545900" duration="7660000" />
       <workItem from="1640269392989" duration="7436000" />
       <workItem from="1640350748746" duration="13772000" />
+      <workItem from="1640694351516" duration="5550000" />
+      <workItem from="1640785678471" duration="5786000" />
+      <workItem from="1641307058124" duration="9087000" />
+      <workItem from="1641421925298" duration="6839000" />
+      <workItem from="1641481292227" duration="7178000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -460,7 +472,49 @@
       <option name="project" value="LOCAL" />
       <updated>1640119907088</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Tests for function coFactorTrue">
+      <created>1641320692531</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1641320692531</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implementation for function coFactorTrue">
+      <created>1641321269288</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1641321269288</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Tests for function coFactorFalse">
+      <created>1641321581875</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1641321581875</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Implementation of function coFactorFalse">
+      <created>1641321715778</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1641321715778</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Update of cofactor functions and createVar function.">
+      <created>1641481375783</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1641481375783</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Implementation of findVars function">
+      <created>1641547703973</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1641547703973</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +531,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="Implementation_coFactorFalse_function_and_tests" />
                       </list>
                     </value>
                   </entry>
@@ -498,6 +552,19 @@
     <MESSAGE value="Implementation of tests and tests fail" />
     <MESSAGE value="Implementation_topVar_function_and_tests&#10;(added some comments)" />
     <MESSAGE value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation_ite_function_and_tests&#10;(tests-fail)" />
+    <MESSAGE value="Tests for function coFactorTrue" />
+    <MESSAGE value="Implementation for function coFactorTrue" />
+    <MESSAGE value="Tests for function coFactorFalse" />
+    <MESSAGE value="Implementation of function coFactorFalse" />
+    <MESSAGE value="Update of cofactor functions and createVar function." />
+    <MESSAGE value="Implementation of findVars function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation of findVars function" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeGoogleTestRunConfigurationType">
+        <watch expression="Exception" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
