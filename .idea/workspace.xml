@@ -45,11 +45,15 @@
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-Coverage" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Merged all functions">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +64,11 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-Coverage" />
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Implementation_of_find_vars_function" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -98,10 +102,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Reduced-Order-Binary-Decision-Diagrams-master" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject_test">
-    <configuration name="ManagerTest.CreateVarTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="CreateVarTest" TEST_MODE="SUITE_TEST">
+  <component name="RunManager" selected="CMake Application.VDSProject">
+    <configuration name="ManagerTest.CreateVarTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="CreateVarTest" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -113,7 +117,7 @@
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManagerTest.topVarName" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="topVarName" TEST_MODE="SUITE_TEST">
+    <configuration name="ManagerTest.getTopVarNameTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="getTopVarNameTest" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -269,7 +273,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_test" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test">
+    <configuration name="VDSProject_test" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -298,11 +307,6 @@
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -343,23 +347,23 @@
       <item itemvalue="CMake Application.VDSProject_test" />
       <item itemvalue="CTest Application.All CTest" />
       <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
-      <item itemvalue="Google Test.ManagerTest.topVarName" />
       <item itemvalue="Google Test.ManagerTest.findNodes" />
+      <item itemvalue="Google Test.ManagerTest.getTopVarNameTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="CMake Application.VDSProject_test" />
         <item itemvalue="CMake Application.VDSProject" />
+        <item itemvalue="CMake Application.VDSProject_test" />
+        <item itemvalue="Google Test.ManagerTest.getTopVarNameTest" />
         <item itemvalue="Google Test.ManagerTest.findNodes" />
         <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
-        <item itemvalue="Google Test.ManagerTest.topVarName" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0ee77b52-e4f5-4d18-88cc-11318200d720" name="Changes" comment="Implementation of tests and tests fail" />
+      <changelist id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Merged all functions" />
       <created>1638040362378</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -385,6 +389,9 @@
       <workItem from="1641307058124" duration="9087000" />
       <workItem from="1641421925298" duration="6839000" />
       <workItem from="1641481292227" duration="7178000" />
+      <workItem from="1642197968667" duration="191000" />
+      <workItem from="1642198384764" duration="598000" />
+      <workItem from="1642416774699" duration="8308000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -526,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641896785294</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Merged all functions">
+      <created>1641896903134</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1641896903134</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,5 +594,9 @@
         <watch expression="Exception" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="../../../../Documents/C&amp;C++ Workspace/C++ Workspace/VDSProject-Group2/cmake-build-debug-coverage" NAME="VDSProject_test Coverage Results" MODIFIED="1641897939745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="../../../../Documents/C&amp;C++ Workspace/C++ Workspace/VDSProject-Group2/cmake-build-debug-coverage" NAME="VDSProject_test Coverage Results" MODIFIED="1642425166533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

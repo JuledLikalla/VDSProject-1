@@ -10,7 +10,8 @@
 #include "ManagerInterface.h"
 
 #include<vector>
-#include<stack>
+#include<map>
+
 using namespace std;
 
 
@@ -25,15 +26,8 @@ namespace ClassProject {
             BDD_ID topVar;
         };
 
-        struct c_tableElement {
-            BDD_ID i;
-            BDD_ID t;
-            BDD_ID e;
-            BDD_ID result;
-        };
-
         vector<u_tableElement> uniqueTable;
-        vector<c_tableElement> computedTable;
+        map<vector<BDD_ID>, BDD_ID> computedTable;
 
         int nextId;
         BDD_ID zero = 0;
@@ -47,6 +41,8 @@ namespace ClassProject {
 
         bool varExists(const string &label);
 
+        void printUniqueTable();
+
         const BDD_ID &True();
 
         const BDD_ID &False();
@@ -55,7 +51,7 @@ namespace ClassProject {
 
         bool isVariable(BDD_ID x);
 
-        bool foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
+        bool foundInComputedTable(vector<BDD_ID> ite_key, BDD_ID &result);
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 

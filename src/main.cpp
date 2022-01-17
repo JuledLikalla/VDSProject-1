@@ -17,16 +17,7 @@ int main(int argc, char *argv[]) {
     BDD_ID c_and_d_id = manager1.and2(c_id, d_id);
     manager1.and2(a_or_b_id,c_and_d_id);
 
-    set<BDD_ID> nodes_root;
-    cout << "Nodes reacheabe from root: "<<endl;
-    manager1.findNodes(a_or_b_id,nodes_root);
-    int i =0;
-
-    for (auto it = nodes_root.begin(); it !=nodes_root.end(); ++it){
-        cout <<"Node " << i++<<": " <<*it<<endl;
-    }
-    cout<<endl;
-
+    manager1.printUniqueTable();
 
 }
 

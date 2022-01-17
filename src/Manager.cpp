@@ -18,6 +18,13 @@ string Manager::getVarName(BDD_ID var){
     return uniqueTable[var].label;
 }
 
+void Manager::printUniqueTable(){
+    cout <<  "ID  " <<"Label     " << "High  " << "Low  " << "Topvar  " << endl;
+    for (auto &it : uniqueTable) {
+        cout << it.id << "  " << it.label << "     " << it.high << " " << it.low << " " << it.topVar << endl;
+    }
+}
+
 /**
  * @brief Implementation of 'createVar' function,
  * The function creates a variable with the given name and
@@ -99,12 +106,12 @@ BDD_ID Manager::topVar(BDD_ID f){
     return uniqueTable[f].topVar;
 }
 
-bool Manager::foundInComputedTable(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
-    for(auto & it : computedTable){
-        if(it.i == i && it.t == t && it.e == e){
-            result = it.result;
-            return true;
-        }
+bool Manager::foundInComputedTable(vector<BDD_ID> ite_key, BDD_ID &result){
+    auto it = computedTable.find(ite_key);
+    if(it != computedTable.end())
+    {
+        result = it->second;
+        return true;
     }
     return false;
 }
@@ -179,6 +186,7 @@ BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow
     if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
+
     uniqueTable.push_back({
         r,
         nextLabel,
@@ -192,11 +200,11 @@ BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow
 BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID result;
     BDD_ID topVarTmp, rHigh, rLow;
-    c_tableElement newComputedIte = {i, t, e, result};
+    vector<BDD_ID> ite_key = {i,t,e};
     if(isTerminalCase(i, t, e, result))
         //! If it is a terminal case
         return result;
-    else if (!computedTable.empty() && foundInComputedTable(i, t, e, result))
+    else if (!computedTable.empty() && foundInComputedTable(ite_key, result))
         //! check if computed table is not empty and if result is already computed
         return result;
     else{
@@ -207,12 +215,12 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
        rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
         if(rHigh == rLow) {
-            newComputedIte.result = rHigh;
-            computedTable.push_back(newComputedIte);
+            computedTable.insert(pair<vector<BDD_ID>, BDD_ID>(ite_key,rHigh));
             return rHigh;
         }
 
         result = find_or_add_uniqueTable(topVarTmp, rHigh, rLow);
+        computedTable.insert(pair<vector<BDD_ID>, BDD_ID>(ite_key,result));
         return result;
     }
 }
