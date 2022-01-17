@@ -31,7 +31,6 @@ namespace ClassProject {
             BDD_ID e;
             BDD_ID result;
         };
-
         vector<u_tableElement> uniqueTable;
         vector<c_tableElement> computedTable;
 
@@ -100,6 +99,7 @@ namespace ClassProject {
         void findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root);
 
         size_t uniqueTableSize();
+
     };
 }
 

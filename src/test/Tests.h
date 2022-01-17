@@ -23,18 +23,17 @@ struct ManagerTest : testing::Test{
     BDD_ID neg_d_id = manager.neg(d_id);
     BDD_ID a_and_b_id = manager.and2(a_id,b_id);
     BDD_ID a_or_b_id = manager.or2(a_id,b_id);
-    BDD_ID a_nand_b_id = manager.nand2(a_id,b_id);
-    BDD_ID a_nor_b_id = manager.nor2(a_id,b_id);
     BDD_ID a_xor_b_id = manager.xor2(a_id,b_id);
+    BDD_ID a_nand_b_id = manager.nand2(a_id,b_id);
     BDD_ID a_xnor_b_id = manager.xnor2(a_id,b_id);
     BDD_ID c_or_d_id = manager.or2(c_id,d_id);
     BDD_ID c_and_d_id = manager.and2(c_id,d_id);
+    BDD_ID a_nor_b_id = manager.nor2(a_id,b_id);
     BDD_ID c_nand_d_id = manager.nand2(c_id,d_id);
     BDD_ID c_nor_d_id = manager.nor2(c_id,d_id);
     BDD_ID c_xor_d_id = manager.xor2(c_id,d_id);
     BDD_ID c_xnor_d_id = manager.xnor2(c_id,d_id);
-    BDD_ID f1_id = manager.or2(a_and_b_id,c_or_d_id);
-    set<BDD_ID> nodes_from_root;
+    BDD_ID f1_id = manager.and2(a_or_b_id,c_and_d_id);
 
 };
 
@@ -116,8 +115,7 @@ TEST_F(ManagerTest,iteTest){
     EXPECT_EQ(manager.ite(c_id, false_id, neg_d_id), c_nor_d_id);
     EXPECT_EQ(manager.ite(c_id, neg_d_id, d_id), c_xor_d_id);
     EXPECT_EQ(manager.ite(c_id, d_id, neg_d_id), c_xnor_d_id);
-
-    EXPECT_EQ(manager.ite(a_and_b_id, true_id, c_or_d_id), f1_id);
+    EXPECT_EQ(manager.ite(a_or_b_id, c_and_d_id,false_id), f1_id);
 }
 
 /**
@@ -212,7 +210,6 @@ TEST_F(ManagerTest,or2Test){
     EXPECT_EQ(manager.or2(d_id, true_id),true_id);
     EXPECT_EQ(manager.or2(d_id, neg_d_id),true_id);
     EXPECT_EQ(manager.or2(d_id, d_id),d_id);
-
 }
 
 /**
@@ -409,77 +406,67 @@ TEST_F(ManagerTest,getTopVarNameTest){
     EXPECT_EQ(manager.getTopVarName(a_or_b_id),"a");
     EXPECT_EQ(manager.getTopVarName(c_and_d_id),"c");
     EXPECT_EQ(manager.getTopVarName(f1_id),"a");
+    EXPECT_EQ(manager.getTopVarName(f1_id),"a");
 }
 
 /**
  * 'findNodes' function tests
  */
 TEST_F(ManagerTest,findNodesTest){
-    //test for a or b
-    set<BDD_ID> nodes_from_root;
-    set<BDD_ID> test_a_or_b={false_id,true_id,b_id,a_or_b_id};
-    manager.findNodes(a_or_b_id,nodes_from_root);
-    ASSERT_EQ(nodes_from_root.size(), test_a_or_b.size()) ;
-    auto it1 = test_a_or_b.begin();
-    for (auto it = nodes_from_root.begin(); it !=nodes_from_root.end(); ++it){
-        EXPECT_EQ(*it, *it1);
-        ++it1;
-    }
-    //test for c and d
-    set<BDD_ID> nodes_from_root1;
-    set<BDD_ID> test_c_and_d={false_id,true_id,d_id,c_and_d_id};
-    manager.findNodes(c_and_d_id,nodes_from_root1);
-    ASSERT_EQ(nodes_from_root1.size(), test_c_and_d.size());
-    auto it2 = test_c_and_d.begin();
-    for (auto it = nodes_from_root1.begin(); it !=nodes_from_root1.end(); ++it){
-      EXPECT_EQ(*it, *it2);
-      ++it2;
-    }
-    //test for a
-    set<BDD_ID> nodes_from_root2;
-    set<BDD_ID> test_a={false_id,true_id,a_id};
-    manager.findNodes(a_id,nodes_from_root2);
-    ASSERT_EQ(nodes_from_root2.size(), test_a.size());
-    auto it3 = test_a.begin();
-    for (auto it = nodes_from_root2.begin(); it !=nodes_from_root2.end(); ++it){
-        EXPECT_EQ(*it, *it3);
-        ++it3;
-    }
+    set<BDD_ID> a_or_b_nodes;
+    set<BDD_ID> c_and_d_nodes;
+    set<BDD_ID> f1_nodes;
+
+    manager.findNodes(a_or_b_id,a_or_b_nodes);
+    manager.findNodes(c_and_d_id,c_and_d_nodes);
+    manager.findNodes(f1_id,f1_nodes);
+
+    EXPECT_EQ(a_or_b_nodes.size(),4);
+    EXPECT_TRUE(a_or_b_nodes.find(false_id)!=a_or_b_nodes.end());
+    EXPECT_TRUE(a_or_b_nodes.find(true_id)!=a_or_b_nodes.end());
+    EXPECT_TRUE(a_or_b_nodes.find(b_id)!=a_or_b_nodes.end());
+    EXPECT_TRUE(a_or_b_nodes.find(a_or_b_id) != a_or_b_nodes.end());
+
+    EXPECT_EQ(c_and_d_nodes.size(),4);
+    EXPECT_TRUE(c_and_d_nodes.find(false_id)!=c_and_d_nodes.end());
+    EXPECT_TRUE(c_and_d_nodes.find(true_id)!=c_and_d_nodes.end());
+    EXPECT_TRUE(c_and_d_nodes.find(d_id)!=c_and_d_nodes.end());
+    EXPECT_TRUE(c_and_d_nodes.find(c_and_d_id) != c_and_d_nodes.end());
+
+    EXPECT_EQ(f1_nodes.size(),6);
+    EXPECT_TRUE(f1_nodes.find(false_id)!=f1_nodes.end());
+    EXPECT_TRUE(f1_nodes.find(true_id)!=f1_nodes.end());
+    EXPECT_TRUE(f1_nodes.find(d_id)!=f1_nodes.end());
+    EXPECT_TRUE(f1_nodes.find(c_and_d_id) != f1_nodes.end());
+    EXPECT_TRUE(f1_nodes.find(manager.and2(b_id,c_and_d_id)) != f1_nodes.end());
+    EXPECT_TRUE(f1_nodes.find(f1_id) != f1_nodes.end());
 }
+
 
 /**
  * 'findVars' function tests
  */
 TEST_F(ManagerTest,findVarsTest){
-    //test for a or b
-    set<BDD_ID> vars_of_root;
-    set<BDD_ID> test_a_or_b={a_id,b_id};
-    manager.findVars(a_or_b_id,vars_of_root);
-    ASSERT_EQ(vars_of_root.size(), test_a_or_b.size()) ;
-    auto it1 = test_a_or_b.begin();
-    for (auto it = vars_of_root.begin(); it !=vars_of_root.end(); ++it){
-        EXPECT_EQ(*it, *it1);
-        ++it1;
-    }
-    //test for c and d
-    set<BDD_ID> vars_of_root1;
-    set<BDD_ID> test_c_and_d={c_id,d_id};
-    manager.findVars(c_and_d_id,vars_of_root1);
-    ASSERT_EQ(vars_of_root1.size(), test_c_and_d.size());
-    auto it2 = test_c_and_d.begin();
-    for (auto it = vars_of_root1.begin(); it !=vars_of_root1.end(); ++it){
-        EXPECT_EQ(*it, *it2);
-        ++it2;
-    }
-    //test for a
-    set<BDD_ID> vars_of_root2;
-    set<BDD_ID> test_a={a_id};
-    manager.findVars(a_id,vars_of_root2);
-    ASSERT_EQ(vars_of_root2.size(), test_a.size());
-    auto it3 = test_a.begin();
-    for (auto it = vars_of_root2.begin(); it !=vars_of_root2.end(); ++it){
-        EXPECT_EQ(*it, *it3);
-        ++it3;
-    }
+    set<BDD_ID> a_or_b_vars;
+    set<BDD_ID> c_and_d_vars;
+    set<BDD_ID> f1_vars;
+
+    manager.findVars(a_or_b_id,a_or_b_vars);
+    manager.findVars(c_and_d_id,c_and_d_vars);
+    manager.findVars(f1_id,f1_vars);
+
+    EXPECT_EQ(a_or_b_vars.size(),2);
+    EXPECT_TRUE(a_or_b_vars.find(a_id)!=a_or_b_vars.end());
+    EXPECT_TRUE(a_or_b_vars.find(b_id) != a_or_b_vars.end());
+
+    EXPECT_EQ(c_and_d_vars.size(),2);
+    EXPECT_TRUE(c_and_d_vars.find(c_id)!=c_and_d_vars.end());
+    EXPECT_TRUE(c_and_d_vars.find(d_id) != c_and_d_vars.end());
+
+    EXPECT_EQ(f1_vars.size(),4);
+    EXPECT_TRUE(f1_vars.find(a_id) != f1_vars.end());
+    EXPECT_TRUE(f1_vars.find(b_id) != f1_vars.end());
+    EXPECT_TRUE(f1_vars.find(c_id) != f1_vars.end());
+    EXPECT_TRUE(f1_vars.find(d_id)!=f1_vars.end());
 }
 #endif
