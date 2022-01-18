@@ -180,7 +180,7 @@
       <workItem from="1642517988060" duration="2085000" />
       <workItem from="1642520121198" duration="62000" />
       <workItem from="1642520203062" duration="5635000" />
-      <workItem from="1642526928630" duration="473000" />
+      <workItem from="1642526928630" duration="536000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -357,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642527372072</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="made ite computed table with a hash table.&#10;(Runned some benchmarks)">
+      <created>1642527409202</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1642527409202</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
