@@ -2,6 +2,7 @@
 #include "Manager.h"
 #include <algorithm>
 #include <iostream>
+#include <iomanip>
 
 using namespace ClassProject;
 using namespace std;
@@ -19,9 +20,33 @@ string Manager::getVarName(BDD_ID var){
 }
 
 void Manager::printUniqueTable(){
-    cout <<  "ID  " <<"Label     " << "High  " << "Low  " << "Topvar  " << endl;
+    cout <<  "ID"
+         << setw(20)
+         << "Label"
+         << setw(10)
+         << "High"
+         << setw(10)
+         << "Low"
+         << setw(10)
+         << "Topvar"
+         << endl;
     for (auto &it : uniqueTable) {
-        cout << it.id << "  " << it.label << "     " << it.high << " " << it.low << " " << it.topVar << endl;
+        cout << it.id
+             << setw(20)
+             << it.label
+             << setw(10)
+             << it.high
+             << setw(10)
+             << it.low
+             << setw(10)
+             << it.topVar
+             << endl;
+    }
+}
+
+void Manager::getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable){
+    for(auto &it : uniqueTable){
+        copyUniqueTable.push_back(it);
     }
 }
 
@@ -182,14 +207,14 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
     BDD_ID r = uniqueTableSize();
+    string label = nextLabel;
 
     if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
-
     uniqueTable.push_back({
         r,
-        nextLabel,
+        label,
         rHigh,
         rLow,
         topVar
@@ -211,8 +236,8 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
         //! If not terminal case and not in computed table
         topVarTmp = defineTopVar(i,t,e);
 
-       rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
-       rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
+        rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
+        rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
         if(rHigh == rLow) {
             computedTable.insert(pair<vector<BDD_ID>, BDD_ID>(ite_key,rHigh));
@@ -228,7 +253,7 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
     BDD_ID high = uniqueTable[f].high;
     BDD_ID low = uniqueTable[f].low;
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+    if (isConstant(f) || isConstant(x) || topVar(f) > x) {
         return f ;
     }
     if (topVar(f) == x) {
@@ -244,7 +269,7 @@ BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
 BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
     BDD_ID high = uniqueTable[f].high;
     BDD_ID low = uniqueTable[f].low;
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
+    if (isConstant(f) || isConstant(x) || topVar(f) > x) {
         return f ;
     }
     if (topVar(f) == x) {
@@ -257,37 +282,15 @@ BDD_ID Manager::coFactorFalse(BDD_ID f, BDD_ID x){
 }
 
 BDD_ID Manager::coFactorTrue(BDD_ID f) {
-    BDD_ID x = topVar(f);
-    BDD_ID high = uniqueTable[f].high;
-    BDD_ID low = uniqueTable[f].low;
+    return uniqueTable[f].high;
+    //return coFactorTrue(f, topVar(f));
 
-    if (f == 0 || f == 1 || x == 0 || x == 1 || topVar(f) > x) {
-        return f;
-    }
-    if (topVar(f) == x) {
-        return high;
-    } else {
-        BDD_ID T = coFactorTrue(high, x);
-        BDD_ID F = coFactorTrue(low, x);
-        return ite(topVar(f), T, F);
-    }
 }
 
 BDD_ID Manager::coFactorFalse(BDD_ID f){
-    BDD_ID high = uniqueTable[f].high;
-    BDD_ID low = uniqueTable[f].low;
+    return uniqueTable[f].low;
+    //return coFactorFalse(f, topVar(f));
 
-    BDD_ID x = topVar(f);
-    if (f == 0 || f==1 || x==0 || x==1 || topVar(f)>x) {
-        return f ;
-    }
-    if (topVar(f) == x) {
-        return low ;
-    }else{
-        BDD_ID T = coFactorFalse(high, x);
-        BDD_ID  F = coFactorFalse(low, x);
-        return ite(topVar(f), T, F);
-    }
 }
 
 BDD_ID Manager::neg(BDD_ID a){
@@ -310,35 +313,34 @@ BDD_ID Manager::or2(BDD_ID a, BDD_ID b){
 
 BDD_ID Manager::xor2(BDD_ID a, BDD_ID b){
     nextLabel = "("+getVarName(a)+"x"+getVarName(b)+")'";
-    BDD_ID result = ite(a, neg(b) ,b);
+    BDD_ID neg_b_id = neg(b);
+    BDD_ID result = ite(a, neg_b_id ,b);
     return result;
 }
 
 BDD_ID Manager::nand2(BDD_ID a, BDD_ID b){
     nextLabel = "("+getVarName(a)+"*"+getVarName(b)+")'";
-    BDD_ID result = ite(a, neg(b) ,one);
+    BDD_ID neg_b_id = neg(b);
+    BDD_ID result = ite(a, neg_b_id ,one);
     return result;
 }
 
 BDD_ID Manager::nor2(BDD_ID a, BDD_ID b){
     nextLabel = "("+getVarName(a)+"+"+getVarName(b)+")'";
-    BDD_ID result = ite(a, zero ,neg(b));
+    BDD_ID neg_b_id = neg(b);
+    BDD_ID result = ite(a, zero ,neg_b_id);
     return result;
 }
 
 BDD_ID Manager::xnor2(BDD_ID a, BDD_ID b){
     nextLabel = "("+getVarName(a)+"x"+getVarName(b)+")'";
-    BDD_ID result = ite(a, b ,neg(b));
+    BDD_ID neg_b_id = neg(b);
+    BDD_ID result = ite(a, b ,neg_b_id);
     return result;
 }
 
 std::string Manager::getTopVarName(const BDD_ID &root){
-    for(auto &i: uniqueTable ){
-       if( i.id == root){
-           return uniqueTable[i.topVar].label;
-       }
-    }
-    return "";
+    return uniqueTable[topVar(root)].label;
 }
 
 //This function takes a node root and an empty set nodes of root.

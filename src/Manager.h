@@ -29,10 +29,12 @@ namespace ClassProject {
         vector<u_tableElement> uniqueTable;
         map<vector<BDD_ID>, BDD_ID> computedTable;
 
-        int nextId;
+        BDD_ID nextId;
+
         BDD_ID zero = 0;
         BDD_ID one = 1 ;
-        string nextLabel = "";
+        string nextLabel;
+
     public:
 
         Manager();
@@ -42,6 +44,8 @@ namespace ClassProject {
         bool varExists(const string &label);
 
         void printUniqueTable();
+
+        void getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable);
 
         const BDD_ID &True();
 
