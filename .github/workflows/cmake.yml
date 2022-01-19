@@ -51,9 +51,9 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: echo "Running benchmark c432:" &&
-           ./VDSProject_bench ${{BENCHMARK_C432_PATH}} &&
+           ./VDSProject_bench ${{env.BENCHMARK_C432_PATH}} &&
            echo "Running benchmark c3540:" &&
-           ./VDSProject_bench ${{BENCHMARK_C3540_PATH}}
+           ./VDSProject_bench ${{env.BENCHMARK_C3540_PATH}}
 
 
 
