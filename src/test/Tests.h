@@ -72,6 +72,10 @@ TEST_F(ManagerTest,isConstantTest){
     EXPECT_FALSE(manager.isConstant(c_id));
     EXPECT_FALSE(manager.isConstant(d_id));
 }
+
+/**
+ * 'isVariable' function tests
+ */
 TEST_F(ManagerTest,isVariableTest){
     EXPECT_FALSE(manager.isVariable(false_id));
     EXPECT_FALSE(manager.isVariable(true_id));
@@ -81,6 +85,44 @@ TEST_F(ManagerTest,isVariableTest){
     EXPECT_TRUE(manager.isVariable(d_id));
     EXPECT_FALSE(manager.isVariable(a_or_b_id));
     EXPECT_FALSE(manager.isVariable(c_and_d_id));
+}
+
+/**
+ * 'topVar' function tests
+ */
+TEST_F(ManagerTest,topVar){
+    EXPECT_EQ(manager.topVar(false_id), false_id);
+    EXPECT_EQ(manager.topVar(true_id), true_id);
+
+    EXPECT_EQ(manager.topVar(a_id), a_id);
+    EXPECT_EQ(manager.topVar(b_id), b_id);
+    EXPECT_EQ(manager.topVar(c_id), c_id);
+    EXPECT_EQ(manager.topVar(d_id), d_id);
+
+    EXPECT_EQ(manager.topVar(neg_a_id), a_id);
+    EXPECT_EQ(manager.topVar(neg_b_id), b_id);
+    EXPECT_EQ(manager.topVar(neg_c_id), c_id);
+    EXPECT_EQ(manager.topVar(neg_d_id), d_id);
+
+    EXPECT_EQ(manager.topVar(a_and_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_and_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(a_or_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_or_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(a_nand_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_nand_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(a_nor_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_nor_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(a_xor_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_xor_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(a_xnor_b_id), a_id);
+    EXPECT_EQ(manager.topVar(c_xnor_d_id), c_id);
+
+    EXPECT_EQ(manager.topVar(f1_id), a_id);
 }
 
 /**
