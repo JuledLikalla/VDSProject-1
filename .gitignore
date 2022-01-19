@@ -2,13 +2,11 @@ cmake-build-debug/
 .idea/
 cmake-build-debug-coverage/
 /benchmarks/iscas85/c17.bench
-/benchmarks/iscas85/c432.bench
 /benchmarks/iscas85/c499.bench
 /benchmarks/iscas85/c880.bench
 /benchmarks/iscas85/c1355.bench
 /benchmarks/iscas85/c1908.bench
 /benchmarks/iscas85/c2670.bench
-/benchmarks/iscas85/c3540.bench
 /benchmarks/iscas85/c5315.bench
 /benchmarks/iscas85/c6288.bench
 /benchmarks/iscas85/c7552.bench
