@@ -76,7 +76,7 @@ BDD_ID Manager::createVar(const string &label){
 bool Manager::varExists(const string &label){
     for(auto &j: uniqueTable){
         if(j.label == label){
-           return true;
+            return true;
         }
     }
     return false;
@@ -131,8 +131,8 @@ BDD_ID Manager::topVar(BDD_ID f){
     return uniqueTable[f].topVar;
 }
 
-bool Manager::foundInComputedTable(vector<BDD_ID> ite_key, BDD_ID &result){
-    auto it = computedTable.find(ite_key);
+bool Manager::foundInComputedTable(ite_key ite_k, BDD_ID &result){
+    auto it = computedTable.find(ite_k);
     if(it != computedTable.end())
     {
         result = it->second;
@@ -206,30 +206,31 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 }
 
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
-    BDD_ID r = uniqueTableSize();
+    BDD_ID r = nextId;
     string label = nextLabel;
 
     if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
     uniqueTable.push_back({
-        r,
-        label,
-        rHigh,
-        rLow,
-        topVar
+          r,
+          label,
+          rHigh,
+          rLow,
+          topVar
     });
+    nextId++;
     return r;
 }
 
 BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID result;
     BDD_ID topVarTmp, rHigh, rLow;
-    vector<BDD_ID> ite_key = {i,t,e};
+    ite_key ite_k = {i,t,e};
     if(isTerminalCase(i, t, e, result))
         //! If it is a terminal case
         return result;
-    else if (!computedTable.empty() && foundInComputedTable(ite_key, result))
+    else if (!computedTable.empty() && foundInComputedTable(ite_k, result))
         //! check if computed table is not empty and if result is already computed
         return result;
     else{
@@ -240,12 +241,12 @@ BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
         rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
         if(rHigh == rLow) {
-            computedTable.insert(pair<vector<BDD_ID>, BDD_ID>(ite_key,rHigh));
+            computedTable.insert(pair<ite_key, BDD_ID>(ite_k,rHigh));
             return rHigh;
         }
 
         result = find_or_add_uniqueTable(topVarTmp, rHigh, rLow);
-        computedTable.insert(pair<vector<BDD_ID>, BDD_ID>(ite_key,result));
+        computedTable.insert(pair<ite_key, BDD_ID>(ite_k,result));
         return result;
     }
 }
@@ -360,26 +361,25 @@ void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
 }
 
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
-        BDD_ID root_high = uniqueTable[root].high; //1
-        BDD_ID root_low = uniqueTable[root].low;//3
-        if(!isVariable(root)){
-            if(root_high == root_low)
-                return;
-            else
-                vars_of_root.insert(topVar(root));
-        }
-        if(root_high ==1 && root_low == 0){
-            vars_of_root.insert(root);
-        }
-        findVars(root_low,vars_of_root);
-        findVars(root_high,vars_of_root);
+    BDD_ID root_high = uniqueTable[root].high; //1
+    BDD_ID root_low = uniqueTable[root].low;//3
+    if(!isVariable(root)){
+        if(root_high == root_low)
+            return;
+        else
+            vars_of_root.insert(topVar(root));
     }
+    if(root_high ==1 && root_low == 0){
+        vars_of_root.insert(root);
+    }
+    findVars(root_low,vars_of_root);
+    findVars(root_high,vars_of_root);
+}
 
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.
 size_t Manager::uniqueTableSize(){
-   return uniqueTable.size();
+    return uniqueTable.size();
 }
-
 
 

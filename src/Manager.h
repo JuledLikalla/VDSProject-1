@@ -10,14 +10,17 @@
 #include "ManagerInterface.h"
 
 #include<vector>
-#include<map>
+#include<unordered_map>
+#include<boost/functional/hash.hpp>
 
 using namespace std;
 
-
 namespace ClassProject {
+
     class Manager  : public ManagerInterface {
     private:
+        typedef tuple<BDD_ID, BDD_ID, BDD_ID> ite_key;
+
         struct u_tableElement {
             BDD_ID id;
             string label;
@@ -27,7 +30,7 @@ namespace ClassProject {
         };
 
         vector<u_tableElement> uniqueTable;
-        map<vector<BDD_ID>, BDD_ID> computedTable;
+        unordered_map<ite_key, BDD_ID, boost::hash<ite_key>> computedTable;
 
         BDD_ID nextId;
 
@@ -55,7 +58,7 @@ namespace ClassProject {
 
         bool isVariable(BDD_ID x);
 
-        bool foundInComputedTable(vector<BDD_ID> ite_key, BDD_ID &result);
+        bool foundInComputedTable(ite_key ite_k, BDD_ID &result);
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 
@@ -63,7 +66,7 @@ namespace ClassProject {
 
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
 
-        BDD_ID find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow);
+        BDD_ID find_or_add_uniqueTable(BDD_ID rHigh, BDD_ID rLow, BDD_ID topVar);
 
         string getVarName(BDD_ID var);
 

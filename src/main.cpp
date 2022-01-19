@@ -15,5 +15,6 @@ int main(int argc, char *argv[]) {
 
     manager1.printUniqueTable();
 
+    return 0;
 }
 

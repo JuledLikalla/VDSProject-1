@@ -175,6 +175,7 @@ TEST_F(ManagerTest,negTest){
     EXPECT_EQ(manager.neg(c_and_d_id),manager.or2(neg_c_id, neg_d_id));
 
     EXPECT_EQ(manager.topVar(neg_a_id), a_id);
+    EXPECT_EQ(manager.topVar(manager.neg(neg_a_id)), a_id);
     EXPECT_EQ(manager.topVar(neg_b_id), b_id);
     EXPECT_EQ(manager.topVar(neg_c_id), c_id);
     EXPECT_EQ(manager.topVar(neg_d_id), d_id);
