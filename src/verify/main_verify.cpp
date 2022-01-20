@@ -18,6 +18,7 @@ typedef std::map<int, node> uniqueTable;
 
 bool isEquivalent(uniqueTable BDD1, uniqueTable BDD2, int root1, int root2)
 {
+
 	if(BDD1.find(root1) == BDD1.end() || BDD2.find(root2) == BDD2.end())
 		return false;
 	if(root1 == 1 && root2 == 1)

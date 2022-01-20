@@ -53,10 +53,11 @@
   <component name="ChangeListManager">
     <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)">
       <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/verify/main_verify.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/verify/main_verify.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,9 +116,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject_bench">
+  <component name="RunManager" selected="CMake Application.VDSProject">
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -301,7 +302,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_bench" type="CMakeRunConfiguration" factoryName="Application" temporary="true" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/benchmarks/iscas85/c3540.bench" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_bench" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_bench">
+    <configuration name="VDSProject_bench" type="CMakeRunConfiguration" factoryName="Application" temporary="true" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/benchmarks/iscas85/c432.bench" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_bench" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_bench">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -311,7 +312,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_verify" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/cmake-build-release/src/bench/results_c3540/txt/1713.txt /mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/results/results_c3540/txt/1713.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_verify" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_verify">
+    <configuration name="VDSProject_verify" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/cmake-build-release/src/bench/results_c432/txt/329.txt /mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/results/results_c432/txt/329.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_verify" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_verify">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -388,8 +389,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="CMake Application.VDSProject_bench" />
         <item itemvalue="CMake Application.VDSProject_test" />
+        <item itemvalue="CMake Application.VDSProject_bench" />
         <item itemvalue="Google Test.ManagerTest.getTopVarNameTest" />
         <item itemvalue="Google Test.ManagerTest.findNodes" />
         <item itemvalue="Google Test.ManagerTest.CreateVarTest" />
@@ -454,7 +455,7 @@
       <workItem from="1642588270892" duration="3667000" />
       <workItem from="1642599980071" duration="106000" />
       <workItem from="1642609190904" duration="1000" />
-      <workItem from="1642636679937" duration="7048000" />
+      <workItem from="1642636679937" duration="14670000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -680,7 +681,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642555992439</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)">
+      <created>1642643810201</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1642643810201</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -746,9 +754,9 @@
     <MESSAGE value="Implementation of tests and tests fails(&#10;added ite tests and logical operations tests)" />
     <MESSAGE value="Merged all functions" />
     <MESSAGE value="made ite computed table with a hash table.&#10;(Runned some benchmarks)" />
-    <MESSAGE value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
     <MESSAGE value="Finished_part_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished_part_2" />
+    <MESSAGE value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
+    <option name="LAST_COMMIT_MESSAGE" value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

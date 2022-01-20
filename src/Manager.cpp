@@ -12,7 +12,7 @@ Manager::Manager() {
     u_tableElement trueNode = {1,"TRUE",1,1,1};
     uniqueTable.push_back(falseNode);
     uniqueTable.push_back(trueNode);
-    nextId = 2;
+    //nextId = 2;
 }
 
 string Manager::getVarName(BDD_ID var){
@@ -32,14 +32,36 @@ void Manager::printUniqueTable(){
          << endl;
     for (auto &it : uniqueTable) {
         cout << it.id
-             << setw(20)
-             << it.label
              << setw(10)
+             << it.label
+             << setw(20)
              << it.high
              << setw(10)
              << it.low
              << setw(10)
              << it.topVar
+             << endl;
+    }
+}
+
+void Manager::printComputedTable(){
+
+    cout << "i"
+         << setw(10)
+         << "t"
+         << setw(10)
+         << "e"
+         << setw(10)
+         << "result"
+         << endl;
+    for (auto &it : computedTable) {
+        cout << get<0>(it.first)
+             << setw(10)
+             << get<1>(it.first)
+             << setw(10)
+             << get<2>(it.first)
+             << setw(10)
+             << it.second
              << endl;
     }
 }
@@ -61,12 +83,12 @@ BDD_ID Manager::createVar(const string &label){
     u_tableElement node;
     if(!varExists(label)) {
         node.label = label;
-        node.id = nextId;
+        node.id = uniqueTableSize();
         node.low = uniqueTable[0].id;
         node.high = uniqueTable[1].id;
-        node.topVar = nextId;
+        node.topVar = uniqueTableSize();
         uniqueTable.push_back(node);
-        nextId++;
+        //nextId++;
         return node.id;
     }
     else
@@ -207,14 +229,13 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 }
 
 BDD_ID Manager::find_or_add_uniqueTable(BDD_ID topVar, BDD_ID rHigh, BDD_ID rLow){
-    BDD_ID r = nextId;
+    BDD_ID r = uniqueTableSize();
     string label = nextLabel;
-
 
     if(foundInUniqueTable(rLow, rHigh, topVar, r))
         return r;
 
-    nextId++;
+    //nextId++;
     uniqueTable.push_back({
         r,
         label,

@@ -54,17 +54,13 @@ jobs:
       working-directory: ${{github.workspace}}/build/src/bench
       # Execute the given benchmarks.
       run: echo "Running benchmark c432:" &&
-           ./VDSProject_bench ${{env.BENCHMARK_C432_PATH}} &&
-           echo "Running benchmark c3540:" &&
-           ./VDSProject_bench ${{env.BENCHMARK_C3540_PATH}}
+           ./VDSProject_bench ${{env.BENCHMARK_C432_PATH}}
 
     - name: Verify Benchmarks Results
       working-directory: ${{github.workspace}}/build/src/verify
       # Verifu Results
       run: echo "Verifying benchmark c432 Results:" &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt &&
-        echo "Running benchmark c3540:" &&
-        ./VDSProject_bench ${{env.Result_C3540_PATH}}/1713.txt ${{env.Given_Result_C3540_PATH}}/1713.txt
+        ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt
 
 
 

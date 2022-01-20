@@ -15,7 +15,6 @@
 
 using namespace std;
 
-
 namespace ClassProject {
     class Manager  : public ManagerInterface {
     private:
@@ -32,7 +31,7 @@ namespace ClassProject {
         vector<u_tableElement> uniqueTable;
         unordered_map<ite_key, BDD_ID, boost::hash<ite_key>> computedTable;
 
-        BDD_ID nextId;
+        //BDD_ID nextId;
 
         BDD_ID zero = 0;
         BDD_ID one = 1 ;
@@ -47,7 +46,7 @@ namespace ClassProject {
         bool varExists(const string &label);
 
         void printUniqueTable();
-
+        void printComputedTable();
         void getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable);
 
         const BDD_ID &True();
