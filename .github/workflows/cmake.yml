@@ -11,24 +11,11 @@ env:
   BUILD_TYPE: Release
   BENCHMARK_C432_PATH: ${{github.workspace}}/benchmarks/iscas85/c432.bench
   BENCHMARK_C3540_PATH: ${{github.workspace}}/benchmarks/iscas85/c3540.bench
-  Result1_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/223.txt
-  Result2_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/329.txt
-  Result3_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/370.txt
-  Result4_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/421.txt
-  Result5_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/430.txt
-  Result6_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/431.txt
-  Result7_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt/432.txt
+  Result_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt
+  Given_Result_C432_PATH: ${{github.workspace}}/results/results_c432/txt
+  Result_C3540_PATH: ${{github.workspace}}/build/src/bench/results_c3540/txt
+  Given_Result_C3540_PATH: ${{github.workspace}}/results/results_c3540/txt
 
-  Given_Result1_C432_PATH: ${{github.workspace}}/results/results_c432/txt/223.txt
-  Given_Result2_C432_PATH: ${{github.workspace}}/results/results_c432/txt/329.txt
-  Given_Result3_C432_PATH: ${{github.workspace}}/results/results_c432/txt/370.txt
-  Given_Result4_C432_PATH: ${{github.workspace}}/results/results_c432/txt/421.txt
-  Given_Result5_C432_PATH: ${{github.workspace}}/results/results_c432/txt/430.txt
-  Given_Result6_C432_PATH: ${{github.workspace}}/results/results_c432/txt/431.txt
-  Given_Result7_C432_PATH: ${{github.workspace}}/results/results_c432/txt/432.txt
-
-  Result_C3540_PATH: ${{github.workspace}}/build/src/bench/results_c3540/txt/1713.txt
-  Given_Result_C3540_PATH: ${{github.workspace}}/results/results_c3540/txt/1713.txt
 jobs:
   build:
     # The CMake configure and build commands are platform agnostic and should work equally
@@ -73,11 +60,11 @@ jobs:
 
     - name: Verify Benchmarks Results
       working-directory: ${{github.workspace}}/build/src/verify
-      # Compare Generated ROBDDs From Benchmarks with the correct ROBBDs
+      # Verifu Results
       run: echo "Verifying benchmark c432 Results:" &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}} ${{env.Given_Result_C432_PATH}} &&
+        ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt &&
         echo "Running benchmark c3540:" &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}} ${{env.Given_Result_C1713_PATH}}
+        ./VDSProject_bench ${{env.Result_C3540_PATH}}/1713.txt ${{env.Given_Result_C3540_PATH}}/1713.txt
 
 
 
