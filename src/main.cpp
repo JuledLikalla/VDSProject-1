@@ -1,4 +1,8 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
 #include "Manager.h"
+#include <algorithm>
 
 using namespace ClassProject;
 
@@ -13,7 +17,10 @@ int main(int argc, char *argv[]) {
     BDD_ID c_and_d_id = manager1.and2(c_id, d_id);
     manager1.and2(a_or_b_id,c_and_d_id);
 
+    cout<<"****************** Unique Table ********************"<<endl;
     manager1.printUniqueTable();
+    cout<<"******** Reverse Unique Table ********"<<endl;
+    manager1.printRevUniqueTable();
 
 }
 

@@ -1,6 +1,9 @@
 cmake-build-debug/
 cmake-build-release/
+cmake-build-debug_remote/
+cmake-build-debug_remote-coverage/
 .idea/
+results/
 cmake-build-debug-coverage/
 /benchmarks/iscas85/c17.bench
 /benchmarks/iscas85/c499.bench

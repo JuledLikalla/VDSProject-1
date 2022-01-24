@@ -19,7 +19,8 @@ using namespace std;
 namespace ClassProject {
     class Manager  : public ManagerInterface {
     private:
-        typedef tuple<BDD_ID, BDD_ID, BDD_ID> ite_key;
+         typedef tuple<BDD_ID, BDD_ID, BDD_ID> triple_key;
+         //typedef tuple<BDD_ID, BDD_ID, BDD_ID> unique_key; //topVar, high, low
 
         struct u_tableElement {
             BDD_ID id;
@@ -30,16 +31,15 @@ namespace ClassProject {
         };
 
         vector<u_tableElement> uniqueTable;
-        unordered_map<ite_key, BDD_ID, boost::hash<ite_key>> computedTable;
+        unordered_map<triple_key, BDD_ID, boost::hash<triple_key>> computedTable;
+        unordered_map<triple_key,BDD_ID,boost::hash<triple_key>> rev_unique_table;
 
         BDD_ID nextId;
-
         BDD_ID zero = 0;
         BDD_ID one = 1 ;
         string nextLabel;
 
     public:
-
         Manager();
 
         BDD_ID createVar(const string &label);
@@ -47,6 +47,8 @@ namespace ClassProject {
         bool varExists(const string &label);
 
         void printUniqueTable();
+
+        void printRevUniqueTable();
 
         void getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable);
 
@@ -58,9 +60,13 @@ namespace ClassProject {
 
         bool isVariable(BDD_ID x);
 
-        bool foundInComputedTable(ite_key ite_k);
+        bool foundInComputedTable(triple_key ite_k);
 
-        bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
+        bool foundInUniqueTable(triple_key uniqueKey);
+
+        //BDD_ID foundInUniqueTable(triple_key uniqueKey);
+
+        bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result) const;
 
         bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID topVar, BDD_ID &r);
 

@@ -34,7 +34,6 @@ struct ManagerTest : testing::Test{
     BDD_ID c_xor_d_id = manager.xor2(c_id,d_id);
     BDD_ID c_xnor_d_id = manager.xnor2(c_id,d_id);
     BDD_ID f1_id = manager.and2(a_or_b_id,c_and_d_id);
-
 };
 
 /**
@@ -190,7 +189,6 @@ TEST_F(ManagerTest,negTest){
 
     EXPECT_EQ(manager.coFactorFalse(neg_d_id), true_id);
     EXPECT_EQ(manager.coFactorTrue(neg_d_id), false_id);
-
 }
 
 /**
