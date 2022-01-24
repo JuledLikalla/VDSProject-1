@@ -11,7 +11,7 @@ env:
   BUILD_TYPE: Release
   BENCHMARK_C432_PATH: ${{github.workspace}}/benchmarks/iscas85/c432.bench
   BENCHMARK_C3540_PATH: ${{github.workspace}}/benchmarks/iscas85/c3540.bench
-  Result1_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt
+  Result_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt
   Given_Result_C432_PATH: ${{github.workspace}}/results/results_c432/txt
   Result_C3540_PATH: ${{github.workspace}}/build/src/bench/results_c3540/txt
   Given_Result_C3540_PATH: ${{github.workspace}}/results/results_c3540/txt
