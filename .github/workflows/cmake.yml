@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ Made_improvements_and_started_part_2 ]
+    branches: [ Improvments_using_tuples ]
   pull_request:
-    branches: [ Made_improvements_and_started_part_2 ]
+    branches: [ Improvments_using_tuples ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
