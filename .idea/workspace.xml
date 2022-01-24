@@ -51,8 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="fixed a bug at ite(Assign Id using uniqueTableSize and not a nextId variable)">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Finished_Part_2">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -701,7 +700,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642609348561</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Finished_Part_2">
+      <created>1643062562107</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1643062562107</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -768,7 +774,8 @@
     <MESSAGE value="Merged all functions" />
     <MESSAGE value="made ite computed table with a hash table.&#10;(Runned some benchmarks)" />
     <MESSAGE value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
-    <option name="LAST_COMMIT_MESSAGE" value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
+    <MESSAGE value="Finished_Part_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished_Part_2" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
