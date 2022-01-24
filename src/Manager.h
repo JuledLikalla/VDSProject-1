@@ -19,90 +19,156 @@ namespace ClassProject {
 
     class Manager  : public ManagerInterface {
     private:
-        typedef tuple<BDD_ID, BDD_ID, BDD_ID> ite_key;
 
+        BDD_ID zero = 0;
+        BDD_ID one = 1 ;
+        string nextLabel;
+
+        static const size_t uTableSize = 1000000;
+        static const size_t cTableSize = 1000000;
+
+        struct ite_key
+        {
+            BDD_ID first;
+            BDD_ID second;
+            BDD_ID third;
+
+            bool operator==(const ite_key &other) const
+            {
+                return (first == other.first
+                        && second == other.second
+                        && third == other.third);
+            }
+        };
+
+        struct uKeyHasher
+        {
+            BDD_ID operator()(const ite_key& k) const;
+        };
+
+        struct cKeyHasher
+        {
+            BDD_ID operator()(const ite_key& k) const;
+        };
+//        struct c_tableElement {
+//            BDD_ID i;
+//            string t;
+//            BDD_ID e;
+//            BDD_ID result;
+//
+//            c_tableElement(BDD_ID i, BDD_ID t, BDD_ID e)
+//            {
+//                this->i = i;
+//                this->t = t;
+//                this->e = e;
+//            }
+//
+//            bool operator==(const c_tableElement &el) const{
+//                return i == el.i && t == el.t && e == el.e;
+//            }
+//        };
+//
+//        struct hash_function
+//        {
+//            template <BDD_ID, BDD_ID, BDD_ID>
+//            std::size_t operator() ( c_tableElement<T1, T2, T3> &node) const
+//            {
+//                std::size_t h1 = std::hash<T1>()(c_tableElement.i);
+//                std::size_t h2 = std::hash<T2>()(c_tableElement.y);
+//
+//                return h1 ^ h2;
+//            }
+//        };
         struct u_tableElement {
             BDD_ID id;
             string label;
             BDD_ID high;
             BDD_ID low;
             BDD_ID topVar;
+
+            bool operator==(const u_tableElement &other) const
+            {
+                return (high == other.high
+                        && low == other.low
+                        && topVar == other.topVar);
+            }
         };
 
         vector<u_tableElement> uniqueTable;
-        unordered_map<ite_key, BDD_ID, boost::hash<ite_key>> computedTable;
-
-        BDD_ID nextId;
-
-        BDD_ID zero = 0;
-        BDD_ID one = 1 ;
-        string nextLabel;
+        unordered_multimap<ite_key, u_tableElement, uKeyHasher> uniqueTableCache;
+        unordered_map<ite_key, BDD_ID, cKeyHasher> computedTable;
 
     public:
 
         Manager();
 
-        BDD_ID createVar(const string &label);
+        ~Manager();
 
-        bool varExists(const string &label);
+        void printComputedTable();
 
         void printUniqueTable();
 
+        void printUniqueHashTable();
+
         void getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable);
 
-        const BDD_ID &True();
+        BDD_ID createVar(const string &label) override;
 
-        const BDD_ID &False();
+        bool varExists(const string &label, BDD_ID &varId);
 
-        bool isConstant(BDD_ID f);
+        const BDD_ID &True() override;
 
-        bool isVariable(BDD_ID x);
+        const BDD_ID &False() override;
 
-        bool foundInComputedTable(ite_key ite_k, BDD_ID &result);
+        bool isConstant(BDD_ID f) override;
+
+        bool isVariable(BDD_ID x) override;
+
+        bool foundInComputedTable(ite_key ite_k);
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 
-        bool foundInUniqueTable(BDD_ID rLow, BDD_ID rHigh, BDD_ID topVar, BDD_ID &r);
+        bool foundInUniqueTable(ite_key ite_k);
 
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
 
-        BDD_ID find_or_add_uniqueTable(BDD_ID rHigh, BDD_ID rLow, BDD_ID topVar);
+        BDD_ID find_or_add_uniqueTable(ite_key u_ite_k);
 
         string getVarName(BDD_ID var);
 
-        BDD_ID topVar(BDD_ID f);
+        BDD_ID topVar(BDD_ID f) override;
 
-        BDD_ID ite(BDD_ID i, BDD_ID t, BDD_ID e);
+        BDD_ID ite(BDD_ID i, BDD_ID t, BDD_ID e) override;
 
-        BDD_ID coFactorTrue(BDD_ID f, BDD_ID x);
+        BDD_ID coFactorTrue(BDD_ID f, BDD_ID x) override;
 
-        BDD_ID coFactorFalse(BDD_ID f, BDD_ID x);
+        BDD_ID coFactorFalse(BDD_ID f, BDD_ID x) override;
 
-        BDD_ID coFactorTrue(BDD_ID f);
+        BDD_ID coFactorTrue(BDD_ID f) override;
 
-        BDD_ID coFactorFalse(BDD_ID f);
+        BDD_ID coFactorFalse(BDD_ID f) override;
 
-        BDD_ID neg(BDD_ID a);
+        BDD_ID neg(BDD_ID a) override;
 
-        BDD_ID and2(BDD_ID a, BDD_ID b);
+        BDD_ID and2(BDD_ID a, BDD_ID b) override;
 
-        BDD_ID or2(BDD_ID a, BDD_ID b);
+        BDD_ID or2(BDD_ID a, BDD_ID b) override;
 
-        BDD_ID xor2(BDD_ID a, BDD_ID b);
+        BDD_ID xor2(BDD_ID a, BDD_ID b) override;
 
-        BDD_ID nand2(BDD_ID a, BDD_ID b);
+        BDD_ID nand2(BDD_ID a, BDD_ID b) override;
 
-        BDD_ID nor2(BDD_ID a, BDD_ID b);
+        BDD_ID nor2(BDD_ID a, BDD_ID b) override;
 
-        BDD_ID xnor2(BDD_ID a, BDD_ID b);
+        BDD_ID xnor2(BDD_ID a, BDD_ID b) override;
 
-        std::string getTopVarName(const BDD_ID &root);
+        std::string getTopVarName(const BDD_ID &root) override;
 
-        void findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root);
+        void findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root) override;
 
-        void findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root);
+        void findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root) override;
 
-        size_t uniqueTableSize();
+        size_t uniqueTableSize() override;
     };
 }
 

@@ -1,4 +1,5 @@
 #include "Manager.h"
+#include<iostream>
 
 using namespace ClassProject;
 
@@ -14,6 +15,11 @@ int main(int argc, char *argv[]) {
     manager1.and2(a_or_b_id,c_and_d_id);
 
     manager1.printUniqueTable();
+    cout<<endl;
+    manager1.printUniqueHashTable();
+    cout<<endl;
+    manager1.printComputedTable();
+    cout<<endl;
 
     return 0;
 }

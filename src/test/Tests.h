@@ -43,8 +43,14 @@ struct ManagerTest : testing::Test{
 TEST_F(ManagerTest, CreateVarTest){
     EXPECT_EQ(manager.False(),0);
     EXPECT_EQ(manager.True(),1);
-    EXPECT_EQ(manager.createVar("a"),-1);
-    EXPECT_EQ(manager.topVar(a_id),a_id);
+    EXPECT_EQ(manager.createVar("a"),a_id);
+    EXPECT_EQ(manager.createVar("b"),b_id);
+    EXPECT_EQ(manager.createVar("c"),c_id);
+    EXPECT_EQ(manager.createVar("d"),d_id);
+    EXPECT_EQ(manager.topVar(a_id), a_id);
+    EXPECT_EQ(manager.topVar(b_id), b_id);
+    EXPECT_EQ(manager.topVar(c_id), c_id);
+    EXPECT_EQ(manager.topVar(d_id), d_id);
 }
 
 /**
@@ -511,5 +517,17 @@ TEST_F(ManagerTest,findVarsTest){
     EXPECT_TRUE(f1_vars.find(b_id) != f1_vars.end());
     EXPECT_TRUE(f1_vars.find(c_id) != f1_vars.end());
     EXPECT_TRUE(f1_vars.find(d_id)!=f1_vars.end());
+}
+
+/**
+ * 'findVars' function tests
+ */
+TEST_F(ManagerTest,printTablesTest){
+    EXPECT_TRUE(true);
+    manager.printUniqueTable();
+    cout<<endl;
+    manager.printUniqueHashTable();
+    cout<<endl;
+    manager.printComputedTable();
 }
 #endif
