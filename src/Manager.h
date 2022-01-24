@@ -50,35 +50,7 @@ namespace ClassProject {
         {
             BDD_ID operator()(const ite_key& k) const;
         };
-//        struct c_tableElement {
-//            BDD_ID i;
-//            string t;
-//            BDD_ID e;
-//            BDD_ID result;
-//
-//            c_tableElement(BDD_ID i, BDD_ID t, BDD_ID e)
-//            {
-//                this->i = i;
-//                this->t = t;
-//                this->e = e;
-//            }
-//
-//            bool operator==(const c_tableElement &el) const{
-//                return i == el.i && t == el.t && e == el.e;
-//            }
-//        };
-//
-//        struct hash_function
-//        {
-//            template <BDD_ID, BDD_ID, BDD_ID>
-//            std::size_t operator() ( c_tableElement<T1, T2, T3> &node) const
-//            {
-//                std::size_t h1 = std::hash<T1>()(c_tableElement.i);
-//                std::size_t h2 = std::hash<T2>()(c_tableElement.y);
-//
-//                return h1 ^ h2;
-//            }
-//        };
+
         struct u_tableElement {
             BDD_ID id;
             string label;

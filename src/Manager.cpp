@@ -47,15 +47,14 @@ Manager::Manager() {
     u_tableElement trueNode = {1, "TRUE", 1, 1, 1};
     uniqueTable.push_back(falseNode);
     uniqueTable.push_back(trueNode);
-    uniqueTableCache.insert(pair<ite_key, u_tableElement>({0, 0, 0}, falseNode));
-    uniqueTableCache.insert(pair<ite_key, u_tableElement>({1, 1, 1}, trueNode));
+    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({0, 0, 0}, falseNode));
+    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({1, 1, 1}, trueNode));
 }
 
 Manager::~Manager() {
     uniqueTableCache.clear();
     computedTable.clear();
     uniqueTable.clear();
-
 }
 
 string Manager::getVarName(BDD_ID var){
@@ -150,23 +149,15 @@ void Manager::getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable){
  * @retval Returns the id of the variable that it creates.
  */
 BDD_ID Manager::createVar(const string &label){
-    u_tableElement node;
     ite_key u_ite_k={1,0,uniqueTableSize()};
     BDD_ID varId;
     if(varExists(label, varId)) {
         return varId;
     }
-    else{
-        BDD_ID ID = uniqueTableSize();
-        node.label = label;
-        node.id = ID;
-        node.low = uniqueTable[0].id;
-        node.high = uniqueTable[1].id;
-        node.topVar = ID;
-        uniqueTable.push_back(node);
-        uniqueTableCache.insert(pair<ite_key,u_tableElement>(u_ite_k,node));
-        return node.id;
-    }
+    BDD_ID ID = uniqueTableSize();
+    uniqueTable.push_back({ID, label, one, zero, ID});
+    uniqueTableCache.emplace(pair<ite_key,u_tableElement>(u_ite_k,{ID, label, one, zero, ID}));
+    return ID;
 }
 //checks if the variable already exists in the uniqueTable with this specific label
 bool Manager::varExists(const string &label, BDD_ID &varId){
@@ -230,7 +221,7 @@ BDD_ID Manager::topVar(BDD_ID f){
 
 bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     //! Check if terminal case
-    if(i == one){
+    if(i == one || t == e){
         result = t;
         return true;
     }
@@ -240,10 +231,6 @@ bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     }
     else if (t == one && e == zero){
         result = i;
-        return true;
-    }
-    else if (t == e){
-        result = t;
         return true;
     }
     return false;
@@ -311,7 +298,7 @@ BDD_ID Manager::find_or_add_uniqueTable(ite_key u_ite_k){
           u_ite_k.third
     });
 
-    uniqueTableCache.insert(pair<ite_key, u_tableElement>(u_ite_k,{
+    uniqueTableCache.emplace(pair<ite_key, u_tableElement>(u_ite_k,{
             r,
             "-",
             u_ite_k.first,
@@ -323,53 +310,32 @@ BDD_ID Manager::find_or_add_uniqueTable(ite_key u_ite_k){
 }
 
 BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
-    //printUniqueTable();
-    //GETTIME(start)
     BDD_ID result;
     BDD_ID topVarTmp, rHigh, rLow;
     ite_key c_ite_key = {i,t,e};
-    //PRINTINFO("Inside ite",(std::to_string(i)+","+ std::to_string(t)+","+ std::to_string(e)))
     if(isTerminalCase(i, t, e, result))
     {
-        //PRINTINFO("Inside if",(std::to_string(i)+","+ std::to_string(t)+","+ std::to_string(e)))
         //! If it is a terminal case
-        //GETTIME(stop)
-        //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);\
-        //cout <<"Duration: " << duration.count() << endl;
         return result;
     }
     else if (!computedTable.empty() && foundInComputedTable(c_ite_key)){
-        //PRINTINFO("Inside elseif",(std::to_string(i)+","+ std::to_string(t)+","+ std::to_string(e)))
         //! check if computed table is not empty and if result is already computed
         return computedTable.at(c_ite_key);
-        //GETTIME(stop)
-        //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);\
-        //cout <<"Duration: " << duration.count() << endl;
-        //return result;
     }
 
     //! If not terminal case and not in computed table
-    //PRINTINFO("Inside ite_else",(std::to_string(i)+","+ std::to_string(t)+","+ std::to_string(e)))
     topVarTmp = defineTopVar(i,t,e);
 
     rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
     rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
 
     if(rHigh == rLow) {
-        computedTable.insert(pair<ite_key, BDD_ID>(c_ite_key, rHigh));
-        //GETTIME(stop)
-        //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+        computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_key, rHigh));
         return rHigh;
     }
     ite_key u_ite_k = {rHigh, rLow, topVarTmp};
     result = find_or_add_uniqueTable(u_ite_k);
-    computedTable.insert(pair<ite_key, BDD_ID>(c_ite_key,result));
-//    double vm, rss;
-//    mem_usage(vm, rss);
-//    cout << "Virtual Memory: " << vm << "\nResident set size: " << rss << endl;
-    //GETTIME(stop)
-    //auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);\
-    //cout <<"Duration: " << duration.count() << endl;
+    computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_key,result));
     return result;
 
 }
