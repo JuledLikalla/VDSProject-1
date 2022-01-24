@@ -12,7 +12,7 @@ env:
   BENCHMARK_C432_PATH: ${{github.workspace}}/benchmarks/iscas85/c432.bench
   BENCHMARK_C3540_PATH: ${{github.workspace}}/benchmarks/iscas85/c3540.bench
   Result1_C432_PATH: ${{github.workspace}}/build/src/bench/results_c432/txt
-  Given_Result1_C432_PATH: ${{github.workspace}}/results/results_c432/txt
+  Given_Result_C432_PATH: ${{github.workspace}}/results/results_c432/txt
   Result_C3540_PATH: ${{github.workspace}}/build/src/bench/results_c3540/txt
   Given_Result_C3540_PATH: ${{github.workspace}}/results/results_c3540/txt
 jobs:
@@ -69,7 +69,7 @@ jobs:
         ./VDSProject_verify ${{env.Result_C432_PATH}}/431.txt ${{env.Given_Result_C432_PATH}}/431.txt &&
         ./VDSProject_verify ${{env.Result_C432_PATH}}/432.txt ${{env.Given_Result_C432_PATH}}/432.txt &&
         echo "Running benchmark c3540:" &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/1713 ${{env.Given_Result_C1713_PATH}}/1713 &&
+        ./VDSProject_bench ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713 &&
         ./VDSProject_bench ${{env.Result_C1713_PATH}}/1947 ${{env.Given_Result_C1713_PATH}}/1947 &&
         ./VDSProject_bench ${{env.Result_C1713_PATH}}/3195 ${{env.Given_Result_C1713_PATH}}/3195 &&
         ./VDSProject_bench ${{env.Result_C1713_PATH}}/3833 ${{env.Given_Result_C1713_PATH}}/3833 &&
