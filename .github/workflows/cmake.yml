@@ -60,36 +60,36 @@ jobs:
     - name: Verify Benchmarks Results
       working-directory: ${{github.workspace}}/build/src/verify
       # Compare Generated ROBDDs From Benchmarks with the correct ROBBDs
-      run: echo "Verifying benchmark c432 Results:" &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/329.txt ${{env.Given_Result_C432_PATH}}/329.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/370.txt ${{env.Given_Result_C432_PATH}}/370.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/421.txt ${{env.Given_Result_C432_PATH}}/421.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/430.txt ${{env.Given_Result_C432_PATH}}/430.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/431.txt ${{env.Given_Result_C432_PATH}}/431.txt &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/432.txt ${{env.Given_Result_C432_PATH}}/432.txt &&
-        echo "Running benchmark c3540:" &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/1947.txt ${{env.Given_Result_C1713_PATH}}/1947.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/3195.txt ${{env.Given_Result_C1713_PATH}}/3195.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/3833.txt ${{env.Given_Result_C1713_PATH}}/3833.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/3987.txt ${{env.Given_Result_C1713_PATH}}/3987.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4028.txt ${{env.Given_Result_C1713_PATH}}/4028.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4145.txt ${{env.Given_Result_C1713_PATH}}/4145.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4589.txt ${{env.Given_Result_C1713_PATH}}/4589.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4667.txt ${{env.Given_Result_C1713_PATH}}/4667.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4815.txt ${{env.Given_Result_C1713_PATH}}/4815.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/4944.txt ${{env.Given_Result_C1713_PATH}}/4944.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5002.txt ${{env.Given_Result_C1713_PATH}}/5002.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5045.txt ${{env.Given_Result_C1713_PATH}}/5045.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5047.txt ${{env.Given_Result_C1713_PATH}}/5047.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5078.txt ${{env.Given_Result_C1713_PATH}}/5078.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5102.txt ${{env.Given_Result_C1713_PATH}}/5102.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5120.txt ${{env.Given_Result_C1713_PATH}}/5120.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5121.txt ${{env.Given_Result_C1713_PATH}}/5121.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5192.txt ${{env.Given_Result_C1713_PATH}}/5192.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5231.txt ${{env.Given_Result_C1713_PATH}}/5231.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5360.txt ${{env.Given_Result_C1713_PATH}}/5360.txt &&
-        ./VDSProject_bench ${{env.Result_C1713_PATH}}/5361.txt ${{env.Given_Result_C1713_PATH}}/5361.txt
+      run: echo "Verifying benchmark c432 Results:"
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/329.txt ${{env.Given_Result_C432_PATH}}/329.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/370.txt ${{env.Given_Result_C432_PATH}}/370.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/421.txt ${{env.Given_Result_C432_PATH}}/421.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/430.txt ${{env.Given_Result_C432_PATH}}/430.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/431.txt ${{env.Given_Result_C432_PATH}}/431.txt
+    - run: ./VDSProject_verify ${{env.Result_C432_PATH}}/432.txt ${{env.Given_Result_C432_PATH}}/432.txt
+    - run: echo "Running benchmark c3540:" &&
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/1947.txt ${{env.Given_Result_C1713_PATH}}/1947.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/3195.txt ${{env.Given_Result_C1713_PATH}}/3195.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/3833.txt ${{env.Given_Result_C1713_PATH}}/3833.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/3987.txt ${{env.Given_Result_C1713_PATH}}/3987.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4028.txt ${{env.Given_Result_C1713_PATH}}/4028.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4145.txt ${{env.Given_Result_C1713_PATH}}/4145.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4589.txt ${{env.Given_Result_C1713_PATH}}/4589.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4667.txt ${{env.Given_Result_C1713_PATH}}/4667.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4815.txt ${{env.Given_Result_C1713_PATH}}/4815.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/4944.txt ${{env.Given_Result_C1713_PATH}}/4944.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5002.txt ${{env.Given_Result_C1713_PATH}}/5002.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5045.txt ${{env.Given_Result_C1713_PATH}}/5045.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5047.txt ${{env.Given_Result_C1713_PATH}}/5047.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5078.txt ${{env.Given_Result_C1713_PATH}}/5078.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5102.txt ${{env.Given_Result_C1713_PATH}}/5102.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5120.txt ${{env.Given_Result_C1713_PATH}}/5120.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5121.txt ${{env.Given_Result_C1713_PATH}}/5121.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5192.txt ${{env.Given_Result_C1713_PATH}}/5192.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5231.txt ${{env.Given_Result_C1713_PATH}}/5231.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5360.txt ${{env.Given_Result_C1713_PATH}}/5360.txt
+    - run: ./VDSProject_bench ${{env.Result_C1713_PATH}}/5361.txt ${{env.Given_Result_C1713_PATH}}/5361.txt
 
 

@@ -2,11 +2,7 @@
 #include "Manager.h"
 #include <algorithm>
 #include <iomanip>
-#include <chrono>
-#include <unistd.h>
-#include <ios>
 #include <iostream>
-#include <fstream>
 #include <string>
 
 using namespace ClassProject;
@@ -438,7 +434,7 @@ std::string Manager::getTopVarName(const BDD_ID &root){
 void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
     BDD_ID root_high = uniqueTable[root].high;
     BDD_ID root_low = uniqueTable[root].low;
-    nodes_of_root.insert(root);
+    nodes_of_root.emplace(root);
 
     if(root_high == root_low)
         return;
@@ -449,32 +445,16 @@ void Manager::findNodes(const BDD_ID &root, std::set<BDD_ID> &nodes_of_root){
 
 }
 
-//void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
-//    set <BDD_ID> nodes_from_root;
-//    findNodes(root, nodes_from_root);
-//    auto it = next(nodes_from_root.begin(), 2);
-//    while( it != nodes_from_root.end()) {
-//        vars_of_root.insert(topVar(*it));
-//        ++it;
-//    }
-//}
-
+//Emplace it does in-place insertion and avoids an unnecessary copy of object.
 void Manager::findVars(const BDD_ID &root, std::set<BDD_ID> &vars_of_root){
-    BDD_ID root_high = uniqueTable[root].high; //1
-    BDD_ID root_low = uniqueTable[root].low;//3
-    if(!isVariable(root)){
-        if(root_high == root_low)
-            return;
-        else
-            vars_of_root.insert(topVar(root));
+    set <BDD_ID> nodes_from_root;
+    findNodes(root, nodes_from_root);
+    auto it = next(nodes_from_root.begin(), 2);
+    while( it != nodes_from_root.end()) {
+        vars_of_root.emplace(topVar(*it));
+        ++it;
     }
-    if(root_high ==1 && root_low == 0){
-        vars_of_root.insert(root);
-    }
-    findVars(root_low,vars_of_root);
-    findVars(root_high,vars_of_root);
 }
-
 
 //Returns the number of nodes currently existing in the unique table of the Manager class.
 size_t Manager::uniqueTableSize(){

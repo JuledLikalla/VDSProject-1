@@ -54,6 +54,8 @@
     <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Finished_Part_2">
       <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,15 +123,10 @@
       <recent name="C:\Users\juled\Documents\C-Cpp-Workspace\Cpp-Workspace\VDSProject-Group2\run" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject_verify">
+  <component name="RunManager" selected="CMake Application.VDSProject_bench">
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ManagerTest.findNodes" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="findNodes" TEST_MODE="SUITE_TEST">
@@ -311,6 +308,11 @@
       </method>
     </configuration>
     <configuration name="VDSProject_verify" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/cmake-build-release/src/bench/results_c3540/txt/5361.txt /mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/results/results_c3540/txt/5361.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_verify" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_verify">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
