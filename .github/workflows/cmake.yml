@@ -78,48 +78,48 @@ jobs:
           ./VDSProject_verify ${{env.Result_C432_PATH}}/432.txt ${{env.Given_Result_C432_PATH}}/432.txt &&
           echo "Running benchmark c3540:" &&
           echo "1713-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713.txt &&
           echo "1947-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/1947.txt ${{env.Given_Result_C1713_PATH}}/1947.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/1947.txt ${{env.Given_Result_C1713_PATH}}/1947.txt &&
           echo "3195-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/3195.txt ${{env.Given_Result_C1713_PATH}}/3195.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3195.txt ${{env.Given_Result_C1713_PATH}}/3195.txt &&
           echo "3833-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/3833.txt ${{env.Given_Result_C1713_PATH}}/3833.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3833.txt ${{env.Given_Result_C1713_PATH}}/3833.txt &&
           echo "3987-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/3987.txt ${{env.Given_Result_C1713_PATH}}/3987.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3987.txt ${{env.Given_Result_C1713_PATH}}/3987.txt &&
           echo "4028-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4028.txt ${{env.Given_Result_C1713_PATH}}/4028.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4028.txt ${{env.Given_Result_C1713_PATH}}/4028.txt &&
           echo "4145-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4145.txt ${{env.Given_Result_C1713_PATH}}/4145.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4145.txt ${{env.Given_Result_C1713_PATH}}/4145.txt &&
           echo "4589-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4589.txt ${{env.Given_Result_C1713_PATH}}/4589.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4589.txt ${{env.Given_Result_C1713_PATH}}/4589.txt &&
           echo "4667-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4667.txt ${{env.Given_Result_C1713_PATH}}/4667.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4667.txt ${{env.Given_Result_C1713_PATH}}/4667.txt &&
           echo "4815-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4815.txt ${{env.Given_Result_C1713_PATH}}/4815.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4815.txt ${{env.Given_Result_C1713_PATH}}/4815.txt &&
           echo "4944-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/4944.txt ${{env.Given_Result_C1713_PATH}}/4944.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4944.txt ${{env.Given_Result_C1713_PATH}}/4944.txt &&
           echo "5002-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5002.txt ${{env.Given_Result_C1713_PATH}}/5002.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5002.txt ${{env.Given_Result_C1713_PATH}}/5002.txt &&
           echo "5045-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5045.txt ${{env.Given_Result_C1713_PATH}}/5045.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5045.txt ${{env.Given_Result_C1713_PATH}}/5045.txt &&
           echo "5047-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5047.txt ${{env.Given_Result_C1713_PATH}}/5047.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5047.txt ${{env.Given_Result_C1713_PATH}}/5047.txt &&
           echo "5078-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5078.txt ${{env.Given_Result_C1713_PATH}}/5078.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5078.txt ${{env.Given_Result_C1713_PATH}}/5078.txt &&
           echo "5102-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5102.txt ${{env.Given_Result_C1713_PATH}}/5102.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5102.txt ${{env.Given_Result_C1713_PATH}}/5102.txt &&
           echo "5120-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5120.txt ${{env.Given_Result_C1713_PATH}}/5120.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5120.txt ${{env.Given_Result_C1713_PATH}}/5120.txt &&
           echo "5121-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5121.txt ${{env.Given_Result_C1713_PATH}}/5121.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5121.txt ${{env.Given_Result_C1713_PATH}}/5121.txt &&
           echo "5192-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5192.txt ${{env.Given_Result_C1713_PATH}}/5192.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5192.txt ${{env.Given_Result_C1713_PATH}}/5192.txt &&
           echo "5231-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5231.txt ${{env.Given_Result_C1713_PATH}}/5231.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5231.txt ${{env.Given_Result_C1713_PATH}}/5231.txt &&
           echo "5360-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5360.txt ${{env.Given_Result_C1713_PATH}}/5360.txt &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5360.txt ${{env.Given_Result_C1713_PATH}}/5360.txt &&
           echo "5361-txt:" &&
-          ./VDSProject_bench ${{env.Result_C1713_PATH}}/5361.txt ${{env.Given_Result_C1713_PATH}}/5361.txt
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5361.txt ${{env.Given_Result_C1713_PATH}}/5361.txt
 
 
