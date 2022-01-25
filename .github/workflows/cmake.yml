@@ -15,7 +15,6 @@ env:
   Given_Result_C432_PATH: ${{github.workspace}}/results/results_c432/txt
   Result_C3540_PATH: ${{github.workspace}}/build/src/bench/results_c3540/txt
   Given_Result_C3540_PATH: ${{github.workspace}}/results/results_c3540/txt
-
 jobs:
   build:
     # The CMake configure and build commands are platform agnostic and should work equally
@@ -25,42 +24,101 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: update
-      #Check for updates for github linux server
-      run: sudo apt-get update
+      - name: update
+        #Check for updates for github linux server
+        run: sudo apt-get update
 
-    - name: Install Boost
-      #Install Boost Library on github linux server
-      run: sudo apt-get install -y libboost-all-dev
+      - name: Install Boost
+        #Install Boost Library on github linux server
+        run: sudo apt-get install -y libboost-all-dev
 
-    - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -S . -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - name: Configure CMake
+        # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+        # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+        run: cmake -S . -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      - name: Build
+        # Build your program with the given configuration
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Run Tests
-      working-directory: ${{github.workspace}}/build/src/test
-      # Execute tests defined by the CMake configuration.  
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: ctest -V --verbose --output-on-failure -C ${{env.BUILD_TYPE}}
+      - name: Run Tests
+        working-directory: ${{github.workspace}}/build/src/test
+        # Execute tests defined by the CMake configuration.
+        # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+        run: ctest -V --verbose --output-on-failure -C ${{env.BUILD_TYPE}}
 
-    - name: Run Benchmarks
-      working-directory: ${{github.workspace}}/build/src/bench
-      # Execute the given benchmarks.
-      run: echo "Running benchmark c432:" &&
-           ./VDSProject_bench ${{env.BENCHMARK_C432_PATH}}
+      - name: Run Benchmarks
+        working-directory: ${{github.workspace}}/build/src/bench
+        # Execute the given benchmarks.
+        run: echo "Running benchmark c432:" &&
+          ./VDSProject_bench ${{env.BENCHMARK_C432_PATH}} &&
+          echo "Running benchmark c3540:" &&
+          ./VDSProject_bench ${{env.BENCHMARK_C3540_PATH}}
 
-    - name: Verify Benchmarks Results
-      working-directory: ${{github.workspace}}/build/src/verify
-      # Verifu Results
-      run: echo "Verifying benchmark c432 Results:" &&
-        ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt
-
-
+      - name: Verify Benchmarks Results
+        working-directory: ${{github.workspace}}/build/src/verify
+        run:
+          # Compare Generated ROBDDs From Benchmarks with the correct ROBBDs
+          echo "Verifying benchmark c432 Results:" &&
+          echo "223-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/223.txt ${{env.Given_Result_C432_PATH}}/223.txt &&
+          echo "329-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/329.txt ${{env.Given_Result_C432_PATH}}/329.txt &&
+          echo "370-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/370.txt ${{env.Given_Result_C432_PATH}}/370.txt &&
+          echo "421-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/421.txt ${{env.Given_Result_C432_PATH}}/421.txt &&
+          echo "430-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/430.txt ${{env.Given_Result_C432_PATH}}/430.txt &&
+          echo "431-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/431.txt ${{env.Given_Result_C432_PATH}}/431.txt &&
+          echo "432-txt:" &&
+          ./VDSProject_verify ${{env.Result_C432_PATH}}/432.txt ${{env.Given_Result_C432_PATH}}/432.txt &&
+          echo "Running benchmark c3540:" &&
+          echo "1713-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/1713.txt ${{env.Given_Result_C1713_PATH}}/1713.txt &&
+          echo "1947-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/1947.txt ${{env.Given_Result_C1713_PATH}}/1947.txt &&
+          echo "3195-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3195.txt ${{env.Given_Result_C1713_PATH}}/3195.txt &&
+          echo "3833-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3833.txt ${{env.Given_Result_C1713_PATH}}/3833.txt &&
+          echo "3987-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/3987.txt ${{env.Given_Result_C1713_PATH}}/3987.txt &&
+          echo "4028-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4028.txt ${{env.Given_Result_C1713_PATH}}/4028.txt &&
+          echo "4145-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4145.txt ${{env.Given_Result_C1713_PATH}}/4145.txt &&
+          echo "4589-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4589.txt ${{env.Given_Result_C1713_PATH}}/4589.txt &&
+          echo "4667-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4667.txt ${{env.Given_Result_C1713_PATH}}/4667.txt &&
+          echo "4815-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4815.txt ${{env.Given_Result_C1713_PATH}}/4815.txt &&
+          echo "4944-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/4944.txt ${{env.Given_Result_C1713_PATH}}/4944.txt &&
+          echo "5002-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5002.txt ${{env.Given_Result_C1713_PATH}}/5002.txt &&
+          echo "5045-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5045.txt ${{env.Given_Result_C1713_PATH}}/5045.txt &&
+          echo "5047-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5047.txt ${{env.Given_Result_C1713_PATH}}/5047.txt &&
+          echo "5078-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5078.txt ${{env.Given_Result_C1713_PATH}}/5078.txt &&
+          echo "5102-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5102.txt ${{env.Given_Result_C1713_PATH}}/5102.txt &&
+          echo "5120-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5120.txt ${{env.Given_Result_C1713_PATH}}/5120.txt &&
+          echo "5121-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5121.txt ${{env.Given_Result_C1713_PATH}}/5121.txt &&
+          echo "5192-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5192.txt ${{env.Given_Result_C1713_PATH}}/5192.txt &&
+          echo "5231-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5231.txt ${{env.Given_Result_C1713_PATH}}/5231.txt &&
+          echo "5360-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5360.txt ${{env.Given_Result_C1713_PATH}}/5360.txt &&
+          echo "5361-txt:" &&
+          ./VDSProject_verify ${{env.Result_C1713_PATH}}/5361.txt ${{env.Given_Result_C1713_PATH}}/5361.txt
 

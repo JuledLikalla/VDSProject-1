@@ -51,16 +51,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Implementation of tests and tests fails">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cmake.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cmake.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Tests.h" afterDir="false" />
-    </list>
-    <list id="6b6b7763-2975-40b5-b987-05ffba53f11b" name="Changes by besitomja" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Finished_Part_2(Fixed cmake.yml file)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,15 +78,17 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/cmake_install.cmake" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/test/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/verify/main_verify.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/verify/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/verify/main_verify.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Manager.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Manager.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/verify/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/bench/main_bench.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/bench/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/bench/BenchmarkLib.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/cmake_install.cmake" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/cmake_install.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/bench/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -128,10 +121,15 @@
       <recent name="C:\Users\User\Desktop\github\VDSProject-Group2" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject">
+  <component name="RunManager" selected="CMake Application.VDSProject_verify">
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ManagerTest.findNodes" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="findNodes" TEST_MODE="SUITE_TEST">
@@ -301,12 +299,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProjectTest" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/benchmarks/iscas85/results_c432/txt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_bench" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_bench">
+    <configuration name="VDSProjectTest" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_bench" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="c3540.bench" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/benchmarks/iscas85/" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_bench" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_bench">
+    <configuration name="VDSProject_bench" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/benchmarks/iscas85/c3540.bench" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/cmake-build-release/src/bench" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_bench" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_bench">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -316,7 +314,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VDSProject_verify" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="223.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/results/results_c432/txt/" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_verify" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_verify">
+    <configuration name="VDSProject_verify" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="/mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/cmake-build-release/src/bench/results_c3540/txt/1713.txt /mnt/c/Users/juled/Documents/C-Cpp-Workspace/Cpp-Workspace/VDSProject-Group2/results/results_c3540/txt/1713.txt" REDIRECT_INPUT="false" ELEVATE="true" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_verify" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_verify">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -348,14 +346,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.VDSProjectTest" />
-      <item itemvalue="CMake Application.gmock" />
-      <item itemvalue="CMake Application.gmock_main" />
-      <item itemvalue="CMake Application.gtest" />
-      <item itemvalue="CMake Application.gtest_main" />
-      <item itemvalue="CMake Application.Manager" />
+      <item itemvalue="Google Test.ManagerTest.findNodes" />
+      <item itemvalue="Google Test.ManagerTest.getTopVarNameTest" />
       <item itemvalue="CMake Application.Benchmark" />
-      <item itemvalue="CMake Application.Continuous" />
       <item itemvalue="CMake Application.ContinuousBuild" />
       <item itemvalue="CMake Application.ContinuousConfigure" />
       <item itemvalue="CMake Application.ContinuousCoverage" />
@@ -364,7 +357,7 @@
       <item itemvalue="CMake Application.ContinuousSubmit" />
       <item itemvalue="CMake Application.ContinuousTest" />
       <item itemvalue="CMake Application.ContinuousUpdate" />
-      <item itemvalue="CMake Application.Experimental" />
+      <item itemvalue="CMake Application.Continuous" />
       <item itemvalue="CMake Application.ExperimentalBuild" />
       <item itemvalue="CMake Application.ExperimentalConfigure" />
       <item itemvalue="CMake Application.ExperimentalCoverage" />
@@ -373,7 +366,8 @@
       <item itemvalue="CMake Application.ExperimentalSubmit" />
       <item itemvalue="CMake Application.ExperimentalTest" />
       <item itemvalue="CMake Application.ExperimentalUpdate" />
-      <item itemvalue="CMake Application.Nightly" />
+      <item itemvalue="CMake Application.Experimental" />
+      <item itemvalue="CMake Application.Manager" />
       <item itemvalue="CMake Application.NightlyBuild" />
       <item itemvalue="CMake Application.NightlyConfigure" />
       <item itemvalue="CMake Application.NightlyCoverage" />
@@ -383,13 +377,17 @@
       <item itemvalue="CMake Application.NightlySubmit" />
       <item itemvalue="CMake Application.NightlyTest" />
       <item itemvalue="CMake Application.NightlyUpdate" />
-      <item itemvalue="CMake Application.VDSProject_verify" />
+      <item itemvalue="CMake Application.Nightly" />
+      <item itemvalue="CMake Application.VDSProjectTest" />
+      <item itemvalue="CMake Application.VDSProject" />
       <item itemvalue="CMake Application.VDSProject_bench" />
       <item itemvalue="CMake Application.VDSProject_test" />
-      <item itemvalue="CMake Application.VDSProject" />
+      <item itemvalue="CMake Application.VDSProject_verify" />
+      <item itemvalue="CMake Application.gmock" />
+      <item itemvalue="CMake Application.gmock_main" />
+      <item itemvalue="CMake Application.gtest" />
+      <item itemvalue="CMake Application.gtest_main" />
       <item itemvalue="CTest Application.All CTest" />
-      <item itemvalue="Google Test.ManagerTest.findNodes" />
-      <item itemvalue="Google Test.ManagerTest.getTopVarNameTest" />
     </list>
     <recent_temporary>
       <list>
@@ -464,6 +462,7 @@
       <workItem from="1642975569262" duration="97000" />
       <workItem from="1642975907106" duration="1150000" />
       <workItem from="1643056383707" duration="2331000" />
+      <workItem from="1643126436841" duration="3435000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -696,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642643810201</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Finished_Part_2_solution_1">
+      <created>1643133361198</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1643133361198</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -736,6 +742,16 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="Improvments_using_tuples" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Made_other_improvements_and_Finished_Part_2" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="origin/master" />
                 </option>
               </RecentGroup>
@@ -764,7 +780,8 @@
     <MESSAGE value="made ite computed table with a hash table.&#10;(Runned some benchmarks)" />
     <MESSAGE value="Finished_part_2" />
     <MESSAGE value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
-    <option name="LAST_COMMIT_MESSAGE" value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
+    <MESSAGE value="Finished_Part_2_solution_1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished_Part_2_solution_1" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -777,6 +794,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="../../../../Documents/BT GitHub/VDSProject-Group2/cmake-build-debug-coverage" NAME="VDSProject_test Coverage Results" MODIFIED="1642450809618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="../../../../Documents/C&amp;C++ Workspace/C++ Workspace/VDSProject-Group2/cmake-build-debug-coverage" NAME="VDSProject_test Coverage Results" MODIFIED="1641897939745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
