@@ -53,6 +53,7 @@
   <component name="ChangeListManager">
     <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Finished_Part_2(Fixed cmake.yml file)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -464,6 +465,7 @@
       <workItem from="1642895588859" duration="3537000" />
       <workItem from="1642945171794" duration="41021000" />
       <workItem from="1643158625890" duration="1000" />
+      <workItem from="1643241646013" duration="525000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>

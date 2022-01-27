@@ -266,11 +266,11 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
 }
 
 bool Manager::foundInComputedTable(ite_key ite_k){
-    return (computedTable.find(ite_k) != computedTable.end());
+    return (computedTable.contains(ite_k));
 }
 
 bool Manager::foundInUniqueTable(ite_key ite_k){
-    return (uniqueTableCache.find(ite_k) != uniqueTableCache.end());
+    return (uniqueTableCache.contains(ite_k));
 }
 
 BDD_ID Manager::find_or_add_uniqueTable(ite_key u_ite_k){
