@@ -17,9 +17,9 @@ using std::hash;
  *   and add the results. Finally compute the remainder of the sum
  *   on division by the table size.
  **/
-return ((hash<ClassProject::BDD_ID>()(k.first) << 1)
-+ (hash<ClassProject::BDD_ID>()(k.second) << 2)
-+ (hash<ClassProject::BDD_ID>()(k.third) << 3))%cTableSize;
+return ((k.first << 1)
+        + (k.second << 2)
+        + (k.third << 3))%cTableSize;
 }
 
 BDD_ID Manager::uKeyHasher::operator()(const ite_key& k) const{
@@ -33,9 +33,9 @@ BDD_ID Manager::uKeyHasher::operator()(const ite_key& k) const{
  *   on division by the table size.
  **/
 
-    return ((hash<ClassProject::BDD_ID>()(k.first) << 1)
-            + (hash<ClassProject::BDD_ID>()(k.second) << 2)
-            + (hash<ClassProject::BDD_ID>()(k.third) << 3))%uTableSize;
+    return ((k.first << 1)
+            + (k.second << 2)
+            + (k.third << 3))%uTableSize;
 }
 
 Manager::Manager() {
@@ -43,8 +43,8 @@ Manager::Manager() {
     u_tableElement trueNode = {1, "TRUE", 1, 1, 1};
     uniqueTable.push_back(falseNode);
     uniqueTable.push_back(trueNode);
-    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({0, 0, 0}, falseNode));
-    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({1, 1, 1}, trueNode));
+    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({0,0,0}, falseNode));
+    uniqueTableCache.emplace(pair<ite_key, u_tableElement>({1,1,1}, trueNode));
 }
 
 Manager::~Manager() {
@@ -131,12 +131,6 @@ void Manager::printComputedTable(){
     }
 }
 
-void Manager::getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable){
-    for(auto &it : uniqueTable){
-        copyUniqueTable.push_back(it);
-    }
-}
-
 /**
  * @brief Implementation of 'createVar' function,
  * The function creates a variable with the given name and
@@ -145,26 +139,27 @@ void Manager::getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable){
  * @retval Returns the id of the variable that it creates.
  */
 BDD_ID Manager::createVar(const string &label){
-    ite_key u_ite_k={1,0,uniqueTableSize()};
-    BDD_ID varId;
-    if(varExists(label, varId)) {
-        return varId;
-    }
-    BDD_ID ID = uniqueTableSize();
-    uniqueTable.push_back({ID, label, one, zero, ID});
-    uniqueTableCache.emplace(pair<ite_key,u_tableElement>(u_ite_k,{ID, label, one, zero, ID}));
-    return ID;
+    BDD_ID id = uniqueTableSize();
+    uniqueTable.push_back({id, label, ONE, ZERO, id});
+    uniqueTableCache.emplace(pair<ite_key,u_tableElement>({ONE, ZERO,id},{
+        id,
+        label,
+        ONE,
+        ZERO,
+        id
+    }));
+    return id;
 }
-//checks if the variable already exists in the uniqueTable with this specific label
-bool Manager::varExists(const string &label, BDD_ID &varId){
-    for(auto &j: uniqueTable){
-        if(j.label == label){
-            varId = j.id;
-            return true;
-        }
-    }
-    return false;
-}
+////checks if the variable already exists in the uniqueTable with this specific label
+//bool Manager::varExists(const string &label, BDD_ID &varId){
+//    for(auto &j: uniqueTable){
+//        if(j.label == label){
+//            varId = j.id;
+//            return true;
+//        }
+//    }
+//    return false;
+//}
 /**
  * @brief Implementation of 'True' function,
  * The function gets the id of the True node from the unique table.
@@ -217,15 +212,15 @@ BDD_ID Manager::topVar(BDD_ID f){
 
 bool Manager::isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result){
     //! Check if terminal case
-    if(i == one || t == e){
+    if(i == ONE || t == e){
         result = t;
         return true;
     }
-    else if (i == zero){
+    else if (i == ZERO){
         result = e;
         return true;
     }
-    else if (t == one && e == zero){
+    else if (t == ONE && e == ZERO){
         result = i;
         return true;
     }
@@ -265,17 +260,16 @@ BDD_ID Manager::defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e){
     return topVar_i;
 }
 
-bool Manager::foundInComputedTable(ite_key ite_k){
-    return (computedTable.contains(ite_k));
+bool Manager::foundInComputedTable(ite_key &ite_k){
+    return (computedTable.count(ite_k) > 0);
 }
 
-bool Manager::foundInUniqueTable(ite_key ite_k){
-    return (uniqueTableCache.contains(ite_k));
+bool Manager::foundInUniqueTable(ite_key &ite_k){
+    return (uniqueTableCache.count(ite_k) > 0);
 }
 
-BDD_ID Manager::find_or_add_uniqueTable(ite_key u_ite_k){
+BDD_ID Manager::find_or_add_uniqueTable(ite_key &u_ite_k){
     BDD_ID r = uniqueTableSize();
-
     if(foundInUniqueTable(u_ite_k)){
         auto valueRange = uniqueTableCache.equal_range(u_ite_k);
         for(auto &it = valueRange.first; it != valueRange.second; ++it){
@@ -308,32 +302,31 @@ BDD_ID Manager::find_or_add_uniqueTable(ite_key u_ite_k){
 BDD_ID Manager::ite(BDD_ID i, BDD_ID t, BDD_ID e){
     BDD_ID result;
     BDD_ID topVarTmp, rHigh, rLow;
-    ite_key c_ite_key = {i,t,e};
+    ite_key c_ite_k = {i,t,e};
     if(isTerminalCase(i, t, e, result))
     {
         //! If it is a terminal case
         return result;
     }
-    else if (!computedTable.empty() && foundInComputedTable(c_ite_key)){
+    else if (!computedTable.empty() && foundInComputedTable(c_ite_k)){
         //! check if computed table is not empty and if result is already computed
-        return computedTable.at(c_ite_key);
+        return computedTable.at(c_ite_k);
+    }else{
+        //! If not terminal case and not in computed table
+        topVarTmp = defineTopVar(i,t,e);
+
+        rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
+        rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
+
+        if(rHigh == rLow) {
+            computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_k, rHigh));
+            return rHigh;
+        }
+        ite_key u_ite_k =  {rHigh, rLow, topVarTmp};
+        result = find_or_add_uniqueTable(u_ite_k);
+        computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_k,result));
     }
-
-    //! If not terminal case and not in computed table
-    topVarTmp = defineTopVar(i,t,e);
-
-    rHigh = ite(coFactorTrue(i, topVarTmp), coFactorTrue(t,topVarTmp), coFactorTrue(e, topVarTmp));
-    rLow = ite(coFactorFalse(i, topVarTmp), coFactorFalse(t,topVarTmp), coFactorFalse(e, topVarTmp));
-
-    if(rHigh == rLow) {
-        computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_key, rHigh));
-        return rHigh;
-    }
-    ite_key u_ite_k = {rHigh, rLow, topVarTmp};
-    result = find_or_add_uniqueTable(u_ite_k);
-    computedTable.emplace(pair<ite_key, BDD_ID>(c_ite_key,result));
     return result;
-
 }
 
 BDD_ID Manager::coFactorTrue(BDD_ID f, BDD_ID x){
@@ -381,19 +374,19 @@ BDD_ID Manager::coFactorFalse(BDD_ID f){
 
 BDD_ID Manager::neg(BDD_ID a){
     //nextLabel = "("+getVarName(a)+")'";
-    BDD_ID result = ite(a, zero ,one);
+    BDD_ID result = ite(a, ZERO ,ONE);
     return result;
 }
 
 BDD_ID Manager::and2(BDD_ID a, BDD_ID b){
     //nextLabel = getVarName(a)+"*"+getVarName(b);
-    BDD_ID result = ite(a, b ,zero);
+    BDD_ID result = ite(a, b ,ZERO);
     return result;
 }
 
 BDD_ID Manager::or2(BDD_ID a, BDD_ID b){
     //nextLabel = getVarName(a)+"+"+getVarName(b);
-    BDD_ID result = ite(a, one ,b);
+    BDD_ID result = ite(a, ONE ,b);
     return result;
 }
 
@@ -407,14 +400,14 @@ BDD_ID Manager::xor2(BDD_ID a, BDD_ID b){
 BDD_ID Manager::nand2(BDD_ID a, BDD_ID b){
     BDD_ID neg_b_id = neg(b);
     //nextLabel = "("+getVarName(a)+"*"+getVarName(b)+")'";
-    BDD_ID result = ite(a, neg_b_id ,one);
+    BDD_ID result = ite(a, neg_b_id ,ONE);
     return result;
 }
 
 BDD_ID Manager::nor2(BDD_ID a, BDD_ID b){
     BDD_ID neg_b_id = neg(b);
     //nextLabel = "("+getVarName(a)+"+"+getVarName(b)+")'";
-    BDD_ID result = ite(a, zero ,neg_b_id);
+    BDD_ID result = ite(a, ZERO ,neg_b_id);
     return result;
 }
 

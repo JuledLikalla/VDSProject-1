@@ -11,7 +11,7 @@
 
 #include<vector>
 #include<unordered_map>
-#include<boost/functional/hash.hpp>
+#include<tuple>
 
 using namespace std;
 
@@ -20,12 +20,11 @@ namespace ClassProject {
     class Manager  : public ManagerInterface {
     private:
 
-        BDD_ID zero = 0;
-        BDD_ID one = 1 ;
-        string nextLabel;
+        BDD_ID ZERO = 0;
+        BDD_ID ONE = 1;
 
-        static const size_t uTableSize = 1000000;
-        static const size_t cTableSize = 1000000;
+        static const size_t uTableSize = 100000000000;
+        static const size_t cTableSize = 100000000000;
 
         struct ite_key
         {
@@ -82,11 +81,9 @@ namespace ClassProject {
 
         void printUniqueHashTable();
 
-        void getCopyOfUniqueTable(vector<u_tableElement> &copyUniqueTable);
-
         BDD_ID createVar(const string &label) override;
 
-        bool varExists(const string &label, BDD_ID &varId);
+//        bool varExists(const string &label, BDD_ID &varId);
 
         const BDD_ID &True() override;
 
@@ -96,15 +93,15 @@ namespace ClassProject {
 
         bool isVariable(BDD_ID x) override;
 
-        bool foundInComputedTable(ite_key ite_k);
+        bool foundInComputedTable(ite_key &ite_k);
 
         bool isTerminalCase(BDD_ID i, BDD_ID t, BDD_ID e, BDD_ID &result);
 
-        bool foundInUniqueTable(ite_key ite_k);
+        bool foundInUniqueTable(ite_key &ite_k);
 
         BDD_ID defineTopVar(BDD_ID i, BDD_ID t, BDD_ID e);
 
-        BDD_ID find_or_add_uniqueTable(ite_key u_ite_k);
+        BDD_ID find_or_add_uniqueTable(ite_key &u_ite_k);
 
         string getVarName(BDD_ID var);
 
