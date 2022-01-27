@@ -43,10 +43,6 @@ struct ManagerTest : testing::Test{
 TEST_F(ManagerTest, CreateVarTest){
     EXPECT_EQ(manager.False(),0);
     EXPECT_EQ(manager.True(),1);
-    EXPECT_EQ(manager.createVar("a"),a_id);
-    EXPECT_EQ(manager.createVar("b"),b_id);
-    EXPECT_EQ(manager.createVar("c"),c_id);
-    EXPECT_EQ(manager.createVar("d"),d_id);
     EXPECT_EQ(manager.topVar(a_id), a_id);
     EXPECT_EQ(manager.topVar(b_id), b_id);
     EXPECT_EQ(manager.topVar(c_id), c_id);
