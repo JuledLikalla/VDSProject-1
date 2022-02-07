@@ -52,10 +52,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Finished_Part_2">
+    <list default="true" id="72501b0a-7116-4efc-94e9-57b44c682367" name="Changes" comment="Started_Part_3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reachability/Reachability.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/reachability/Reachability.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reachability/Reachability.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/reachability/Reachability.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Made_other_improvements_and_Finished_Part_2_backup" />
+        <entry key="$PROJECT_DIR$" value="Made_other_improvements_and_Finished_Part_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -127,11 +127,6 @@
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="ManagerTest.findNodesTest" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VDSProject" TARGET_NAME="VDSProject_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VDSProject" RUN_TARGET_NAME="VDSProject_test" TEST_CLASS="ManagerTest" TEST_METHOD="findNodesTest" TEST_MODE="SUITE_TEST">
@@ -483,7 +478,11 @@
       <workItem from="1643301895029" duration="6016000" />
       <workItem from="1643628456091" duration="158000" />
       <workItem from="1643732760080" duration="820000" />
-      <workItem from="1643911791424" duration="4978000" />
+      <workItem from="1643911791424" duration="5258000" />
+      <workItem from="1644106045069" duration="1661000" />
+      <workItem from="1644112786388" duration="375000" />
+      <workItem from="1644174010900" duration="4188000" />
+      <workItem from="1644264043041" duration="6040000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -786,7 +785,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643322503344</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Started_Part_3">
+      <created>1643917402523</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1643917402523</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -808,7 +814,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Made_other_improvements_and_Finished_Part_2" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -859,7 +865,8 @@
     <MESSAGE value="made ite computed table with a hash table.&#10;(Runned some benchmarks)" />
     <MESSAGE value="made ite computed table with a hash table.&#10;(Added benchmarks run on git action)" />
     <MESSAGE value="Finished_Part_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished_Part_2" />
+    <MESSAGE value="Started_Part_3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started_Part_3" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

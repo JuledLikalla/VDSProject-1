@@ -10,15 +10,19 @@
 namespace ClassProject {
     class Reachability : public ReachabilityInterface {
         explicit Reachability(unsigned int stateSize);
-        //BDD_ID xnor2(BDD_ID a, BDD_ID b);
-       // const std::vector<BDD_ID> &getStates() const;
+
+        const std::vector<BDD_ID> &getStates() const;
+        void setTransitionFunctions(vector<BDD_ID> &transitionFunctions);
+        BDD_ID compute_reachable_states();
         //bool is_reachable(const std::vector<bool>& stateVector);
         //void setTransitionFunctions(const std::vector<BDD_ID> &transitionFunctions);
-       // void setInitState(const std::vector<bool> &stateVector);
+        void setInitState(const std::vector<bool> &stateVector);
     private:
         unsigned int stateSize;
         std::vector<BDD_ID> states;
         std::vector<BDD_ID> next_states;
+        BDD_ID tau;
+        BDD_ID Cs_0;
     };
 
 };
