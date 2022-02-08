@@ -56,6 +56,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reachability/Reachability.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/reachability/Reachability.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reachability/Reachability.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/reachability/Reachability.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reachability/Tests.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/reachability/Tests.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,7 @@
       <recent name="C:\Users\juled\Documents\C-Cpp-Workspace\Cpp-Workspace\VDSProject-Group2\run" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.VDSProject">
+  <component name="RunManager" selected="CMake Application.VDSProject_reachability">
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -482,7 +483,8 @@
       <workItem from="1644106045069" duration="1661000" />
       <workItem from="1644112786388" duration="375000" />
       <workItem from="1644174010900" duration="4188000" />
-      <workItem from="1644264043041" duration="6040000" />
+      <workItem from="1644264043041" duration="10401000" />
+      <workItem from="1644347110234" duration="4796000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'branch02'(added google test library)">
       <created>1638040793955</created>
@@ -792,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643917402523</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Started_Part_3">
+      <created>1644272259607</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1644272259607</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
