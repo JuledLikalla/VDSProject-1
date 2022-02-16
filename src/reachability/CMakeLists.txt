@@ -6,4 +6,6 @@ add_executable(VDSProject_reachability main_test.cpp Reachability.cpp Reachabili
 target_link_libraries(VDSProject_reachability Manager)
 target_link_libraries(VDSProject_reachability gtest gtest_main pthread)
 
+include(GoogleTest)
+gtest_discover_tests(VDSProject_reachability)
 

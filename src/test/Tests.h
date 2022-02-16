@@ -515,15 +515,15 @@ TEST_F(ManagerTest,findVarsTest){
     EXPECT_TRUE(f1_vars.find(d_id)!=f1_vars.end());
 }
 
-///**
-// * 'findVars' function tests
-// */
-//TEST_F(ManagerTest,printTablesTest){
-//    EXPECT_TRUE(true);
-//    manager.printUniqueTable();
-//    cout<<endl;
-//    manager.printUniqueHashTable();
-//    cout<<endl;
-//    manager.printComputedTable();
-//}
+/**
+ * 'findVars' function tests
+ */
+TEST_F(ManagerTest,printTablesTest){
+    EXPECT_TRUE(true);
+    manager.printUniqueTable();
+    cout<<endl;
+    manager.printUniqueHashTable();
+    cout<<endl;
+    manager.printComputedTable();
+}
 #endif

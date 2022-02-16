@@ -17,12 +17,19 @@ Reachability::Reachability(unsigned int stateSize) : ReachabilityInterface(state
     {
         if(stateSize == 0)
             throw runtime_error("stateSize is 0");
-
+        vector<bool> initialstate;
         this->stateSize = stateSize;
-        for(auto i =0; i<stateSize; i++){
-            states.push_back(createVar("s"+to_string(i)));
-            next_states.push_back(createVar("s`"+ to_string(i)));
+        for(auto i =0; i<stateSize; i++) {
+            states.push_back(createVar("s" + to_string(i)));
+            //next_states.push_back(createVar("s`" + to_string(i)));
+            //initialstate.push_back(false);
         }
+        for(auto i =0; i<stateSize; i++) {
+            //states.push_back(createVar("s" + to_string(i)));
+            next_states.push_back(createVar("s`" + to_string(i)));
+            initialstate.push_back(false);
+        }
+        setInitState(initialstate);
     }
     catch (const runtime_error& e)
     {
@@ -40,10 +47,10 @@ void Reachability::setTransitionFunctions(const vector<BDD_ID> &transitionFuncti
         if(stateSize != transitionFunctions.size())
             throw runtime_error("The number of given transition functions does not match the number of state bits!");
 
-        for(auto i=0; i<stateSize; i++){
-            if (find(next_states.begin(), next_states.end(), transitionFunctions.at(i))== next_states.end())
-                throw runtime_error("An unknown ID is provided!");
-        }
+//        for(auto i=0; i<stateSize; i++){
+//            if (find(next_states.begin(), next_states.end(), transitionFunctions.at(i))== next_states.end())
+//                throw runtime_error("An unknown ID is provided!");
+//        }
 
         tFunctions = transitionFunctions;
     }
@@ -71,22 +78,34 @@ BDD_ID Reachability::compute_reachable_states() {
     BDD_ID  temp2;
     BDD_ID  img_next;
     BDD_ID img_current;
+    cout<<"u fut5"<<endl;
+    computeTransitionRelation();
     do{
         CR = CR_it;
+        cout<<"u fut6"<<endl;
         temp1 = and2(CR,tau);
-        for(auto i= 0; i<(stateSize-1);i++){
-            temp2 = or2(coFactorTrue(temp1,states.at(i+1)), coFactorFalse(temp1, states.at(i+1)));
-            img_next = or2(coFactorTrue(temp2,states.at(i)), coFactorFalse(temp2,states.at(i)));
+        cout<<"u fut7"<<endl;
+        cout<<"For 0 u kry"<<endl;
+        temp2 = or2(coFactorTrue(temp1,states.at(stateSize-1)), coFactorFalse(temp1, states.at(stateSize-1)));
+        cout<<"For 0 u kry"<<endl;
+        for(int i= stateSize-2; i>=0;i--){
+            cout<<"For 0 u kry i:"<<i<<endl;
+            temp2 = or2(coFactorTrue(temp2,states.at(i)), coFactorFalse(temp2,states.at(i)));
         }
+        img_next = temp2;
         temp1 = 1;
-        for(auto i = 0; i<stateSize; i++){
+        cout<<"For 1 u kry"<<endl;
+        for(int i = 0; i<stateSize; i++){
             temp1 = and2(temp1, xnor2(states.at(i), next_states.at(i)));
         }
         temp1 = and2(temp1, img_next);
-        for(auto i= 0; i<(stateSize-1);i++){
-            temp2 = or2(coFactorTrue(temp1, next_states.at(i+1)), coFactorFalse(temp1, next_states.at(i+1)));
-            img_current = or2(coFactorTrue(temp2,next_states.at(i)), coFactorFalse(temp2,next_states.at(i)));
+        temp2 = or2(coFactorTrue(temp1, next_states.at(stateSize-1)), coFactorFalse(temp1, next_states.at(stateSize-1)));
+        cout<<"For 2 u kry"<<endl;
+        for(int i= stateSize-2; i>=0;i--){
+            temp2 = or2(coFactorTrue(temp2,next_states.at(i)), coFactorFalse(temp2,next_states.at(i)));
         }
+        img_current = temp2;
+        cout<<"For 3 u kry"<<endl;
         CR_it = or2(CR,  img_current);
     } while (CR != CR_it);
     return CR;
@@ -104,13 +123,15 @@ void Reachability::setInitState(const std::vector<bool> &stateVector) {
 }
 
 bool Reachability::isReachable(const std::vector<bool>& stateVector){
-
+    cout<<"u fut1"<<endl;
     try
     {
+        cout<<"u fut2"<<endl;
         if(stateSize != stateVector.size())
             throw runtime_error("Number of states does not match with number of state bits!");
-
+        cout<<"u fut3"<<endl;
         BDD_ID C_R = compute_reachable_states();
+        cout<<"u fut4"<<endl;
         for(int i = 0; i < stateSize; i++) {
             if(stateVector.at(i)) {
                 C_R = coFactorTrue(C_R,  states.at(i));
@@ -118,6 +139,7 @@ bool Reachability::isReachable(const std::vector<bool>& stateVector){
                 C_R = coFactorFalse(C_R,  states.at(i));
             }
         }
+        cout<<"u fut"<<endl;
         if(C_R == 1)
             return true;
         else
