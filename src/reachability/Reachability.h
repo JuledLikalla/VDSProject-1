@@ -12,15 +12,19 @@ namespace ClassProject {
     public:
         Reachability(unsigned int stateSize);
         const std::vector<BDD_ID> &getStates() const;
-        void setTransitionFunctions(const vector<BDD_ID> &transitionFunctions) override;
+        void setTransitionFunctions(const vector<BDD_ID> &transitionFunctions) ;
         BDD_ID compute_reachable_states();
         bool isReachable(const std::vector<bool>& stateVector);
         void setInitState(const std::vector<bool> &stateVector);
-        void computeTransitionRelation();
+        BDD_ID computeTransitionRelation();
+        BDD_ID computeCs0();
+        BDD_ID computeImgNext(BDD_ID tau, BDD_ID CR);
+        BDD_ID computeImgCurrent(BDD_ID imgNext);
     private:
         unsigned int stateSize;
         std::vector<BDD_ID> states;
         std::vector<BDD_ID> next_states;
+        std::vector<BDD_ID> initalStates;
         BDD_ID tau;
         BDD_ID Cs_0;
         vector<BDD_ID> tFunctions;
