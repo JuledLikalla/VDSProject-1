@@ -150,16 +150,16 @@ BDD_ID Manager::createVar(const string &label){
     }));
     return id;
 }
-////checks if the variable already exists in the uniqueTable with this specific label
-//bool Manager::varExists(const string &label, BDD_ID &varId){
-//    for(auto &j: uniqueTable){
-//        if(j.label == label){
-//            varId = j.id;
-//            return true;
-//        }
-//    }
-//    return false;
-//}
+
+bool Manager::isInUniqueTable(BDD_ID ID){
+    auto found = find(uniqueTable.begin(), uniqueTable.end(), ID);
+    if(found != uniqueTable.end()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 /**
  * @brief Implementation of 'True' function,
  * The function gets the id of the True node from the unique table.

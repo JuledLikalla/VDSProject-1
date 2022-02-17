@@ -14,19 +14,6 @@ using namespace ClassProject;
 using namespace std;
 
 
-//struct ReachabilityTest : testing::Test{
-//    Reachability stateMachine;
-//    vector<BDD_ID> states = stateMachine.getStates();
-//    std::vector<BDD_ID> functions;
-//    BDD_ID s0 = states.at(0);
-//    BDD_ID s1 = states.at(1);
-//};
-
-struct ManagerTest : testing::Test{
-
-
-
-};
 
 TEST(managerTest, TwoVariableStateMachine) {
     ClassProject::Reachability stateMachine(2);

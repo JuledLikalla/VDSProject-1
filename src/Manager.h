@@ -63,6 +63,10 @@ namespace ClassProject {
                         && low == other.low
                         && topVar == other.topVar);
             }
+            bool operator==(const BDD_ID &other) const
+            {
+                return (id == other);
+            }
         };
 
         vector<u_tableElement> uniqueTable;
@@ -83,7 +87,7 @@ namespace ClassProject {
 
         BDD_ID createVar(const string &label) override;
 
-//        bool varExists(const string &label, BDD_ID &varId);
+        bool isInUniqueTable(BDD_ID ID);
 
         const BDD_ID &True() override;
 

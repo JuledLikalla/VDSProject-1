@@ -44,11 +44,12 @@ void Reachability::setTransitionFunctions(const vector<BDD_ID> &transitionFuncti
         if(stateSize != transitionFunctions.size())
             throw runtime_error("The number of given transition functions does not match the number of state bits!");
 
-      //for(int i=0; i<stateSize; i++){
-      //    if (find(states.begin(), states.end(), transitionFunctions.at(i))== states.end())
-      //        throw runtime_error("An unknown ID is provided!");
-       // }
-            tFunctions = transitionFunctions;
+        for(int i=0; i<stateSize; i++){
+          if (!isInUniqueTable(transitionFunctions.at(i)))
+              throw runtime_error("An unknown ID is provided!");
+        }
+
+        tFunctions = transitionFunctions;
     }
     catch (const runtime_error& e)
     {
@@ -107,11 +108,19 @@ ClassProject::BDD_ID ClassProject::Reachability::computeImgCurrent(BDD_ID imgNex
 }
 
 void Reachability::setInitState(const std::vector<bool> &stateVector) {
-    for (int i = 0; i < stateSize; i++) {
-        if (stateVector[i] == false)
-            initalStates.push_back(0);
-        else
-            initalStates.push_back(1);
+    try{
+        if(stateSize != stateVector.size())
+            throw runtime_error("The number of given transition functions does not match the number of state bits!");
+        for (int i = 0; i < stateSize; i++) {
+            if (!stateVector.at(i))
+                initalStates.push_back(0);
+            else
+                initalStates.push_back(1);
+        }
+    }
+    catch (const runtime_error& e)
+    {
+        cout << "Runtime error: " << e.what() << endl;
     }
 
 }
